@@ -1,0 +1,11 @@
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" ui-sref="main.home"><img src="images/icon.png" /></a>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse" id="bs-example-navbar-collapse-1">
+        <span class="pull-right btn btn-default" ng-click="logout()" data-title="Cerrar Sesi&oacute;n" data-placement="bottom" bs-tooltip><i class="fa fa-power-off" ></i> {{$root.usuario_acceso.username}}</span>
+    </div>
+</nav>
+        <span class="pull-right btn btn-default" ng-click="logout()" data-title="Cerrar Sesi&oacute;n" data-placement="bottom" bs-tooltip><i class="fa fa-power-off" ></i> {{$root.usuario_acceso.username}}</span>
+
+<div ui-view></div>

@@ -1,0 +1,62 @@
+<div class="container">
+    <div>
+        <h4>Ingresa tus datos bancarios</h4>
+        <small>*Todos los datos son necesarios</small>
+    </div>
+    <form novalidate ng-submit="submit()">
+        <div class="row">
+            <img src="images/cards1.png">&nbsp;&nbsp;
+            <img src="images/cards2.png">&nbsp;&nbsp;
+        </div>
+        <hr>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group m-b">
+                    <label class="col-form-label">*Nombre del titular</label> 
+                    <input class="form-control" ng-model="form_tarjeta_bancaria.nombre_titular" type="text" id="nombre-titular" required/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group m-b" ng-class="tarjeta_has_error ? 'has-error' : ''">
+                    <label class="col-form-label col-12">*Número de tarjeta</label> 
+                    <input class="form-control d-inline col-2" ng-model="form_tarjeta_bancaria.first_digits" ng-keyup="goNextOnMaxLength($event, form_tarjeta_bancaria.first_digits, '1')" type="text" id="numero-tarjeta-1" numbers-only lowerthan="10000" ng-trim="false"/>&nbsp;-
+                    <input class="form-control d-inline col-2" ng-model="form_tarjeta_bancaria.second_digits" ng-keyup="goNextOnMaxLength($event, form_tarjeta_bancaria.second_digits, '2')" type="text" id="numero-tarjeta-2" numbers-only lowerthan="10000" ng-trim="false"/>&nbsp;-
+                    <input class="form-control d-inline col-2" ng-model="form_tarjeta_bancaria.third_digits" ng-keyup="goNextOnMaxLength($event, form_tarjeta_bancaria.third_digits, '3')" type="text" id="numero-tarjeta-3" numbers-only lowerthan="10000" ng-trim="false"/>&nbsp;-
+                    <input class="form-control d-inline col-2" ng-model="form_tarjeta_bancaria.fourth_digits" ng-keyup="goNextOnMaxLength($event, form_tarjeta_bancaria.fourth_digits, '4')"  type="text" id="numero-tarjeta-4" numbers-only lowerthan="10000" ng-trim="false"/>
+                    <input ng-model="form_tarjeta_bancaria.numero_tarjeta" type="hidden" id="numero-tarjeta" numbers-only required ng-minlength="16" lowerthan="10000000000000000"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group m-b">
+                    <label class="col-form-label">*Fecha de expiración (mes)</label> 
+                    <input class="form-control" ng-model="form_tarjeta_bancaria.mes_expiracion" type="text" id="mes-expiracion" numbers-only ng-trim="false" lowerthan="13" required/>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group m-b">
+                    <label class="col-form-label">*Fecha de expiración (año)</label> 
+                    <input class="form-control" ng-model="form_tarjeta_bancaria.anio_expiracion" type="text" id="anio-expiracion"  lowerthan="100" ng-trim="false" numbers-only required/>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group m-b">
+                    <label class="col-form-label">*CVV</label> 
+                    <input class="form-control" ng-model="form_tarjeta_bancaria.codigo" type="text" id="codigo" numbers-only ng-trim="false" lowerthan="1000" required/>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <hr>
+        <div class="row"><img src="images/security.png">&nbsp;&nbsp; Tus pagos se realizan de forma segura con encriptación de 256 bits.</div>
+        <hr>
+        <div class="col-md-12"><button type="submit" class="btn btn-w-m btn-primary float-right">Siguiente</button></div>
+    </form>
+</div>

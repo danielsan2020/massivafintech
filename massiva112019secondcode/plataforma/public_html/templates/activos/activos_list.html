@@ -1,0 +1,70 @@
+<div class="card card-main">
+    <div class="card-header">
+        <a class="btn btn-outline-primary float-right ml-3" ui-sref="main.activos_create" title="Agregar"><i class="fa fa-plus"></i></a>
+        <a class="btn btn-outline-secondary float-right" ui-sref = "main.activos_personas_list_inactive" title="Editar Activos inactivos">Bienes inactivos</a>
+        <h2>Lista de Bienes</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="activos.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Fecha de compra
+                    </th>
+                    <th>
+                        Monto de compra sin impuestos
+                    </th>
+                    <th>
+                       Tipo
+                    </th>
+                    <th>
+                        Descripci&oacute;n
+                    </th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="activo in activos" ng-mouseover="activo.hover = true" ng-mouseleave="activo.hover = false" ng-init="activo.hover = false">
+                    <td>
+                        {{activo.fecha_compra}}
+                    </td>
+                    <td>
+                        {{activo.monto_compra_sin_impuestos}}
+                    </td>
+                    <td>
+                         <span ng-if="activo.tipo === '1'">
+                            Terreno
+                        </span>
+                        <span ng-if="activo.tipo === '2'">
+                            Edificio
+                        </span>
+                        <span ng-if="activo.tipo === '3'">
+                            Mobiliario
+                        </span>
+                        <span ng-if="activo.tipo === '4'">
+                            Equipo de cómputo
+                        </span>
+                        <span ng-if="activo.tipo === '5'">
+                            Equipo de producción
+                        </span>
+                        <span ng-if="activo.tipo === '6'">
+                            Vehículo
+                        </span>
+                    </td>
+                    <td>
+                        {{activo.descripcion}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="activo.hover === true" class="float-right">
+                            <a ui-sref="main.activos_edit({id:activo.id})" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                            <button class="btn btn-sm btn-danger" ng-click="inactivate(activo.id)"><i class="fa fa-trash"></i></button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="activos.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

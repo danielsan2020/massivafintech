@@ -1,0 +1,23 @@
+<style type="">
+    .nav-item{
+        min-width: 200px;
+    }
+</style>
+
+<ul class="nav nav-pills mb-4">
+    <li class="nav-item" ng-repeat="state in lista_states" ng-if="state.show">
+        <a class="nav-link rounded-0 text-left py-4" ui-sref-active="active" ng-if="state.number <= ultimo" ui-sref="{{state.state}}">
+            <span class="h2">{{state.number}}</span>
+            <div>
+                {{state.text}}
+            </div>
+        </a>
+        <a class="nav-link rounded-0 text-left py-4 text-muted" ng-if="state.number > ultimo">
+            <span class="h2">{{state.number}}</span>
+            <div>
+                {{state.text}}
+            </div>
+        </a>
+    </li>
+</ul>
+<div ui-view></div>

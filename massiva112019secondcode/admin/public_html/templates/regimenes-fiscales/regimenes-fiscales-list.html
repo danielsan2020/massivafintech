@@ -1,0 +1,42 @@
+<div class="card card-main">
+    <div class="card-header">
+        <a class="btn btn-outline-primary float-right ml-3" ui-sref="main.regimenes_fiscales_create" title="Agregar"><i class="fa fa-plus"></i></a>
+        <a class="btn btn-outline-secondary float-right" ui-sref = "main.regimenes_fiscales_list_inactive" title="Lista de regímenes fiscales inactivos">Regímenes fiscales inactivos</a>
+        <h2> Regímenes fiscales</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="regimenes_fiscales.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        R&eacute;gimen
+                    </th>
+                    <th>
+                        Tipo
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="regimen_fiscal in regimenes_fiscales" ng-mouseover="regimen_fiscal.hover = true" ng-mouseleave="regimen_fiscal.hover = false" ng-init="regimen_fiscal.hover = false">
+                    <td>
+                        {{regimen_fiscal.regimen}}
+                    </td>
+                    <td>
+                        {{regimen_fiscal.texto_tipo}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="regimen_fiscal.hover === true" class="float-right">
+                            <a ui-sref="main.regimenes_fiscales_edit({id:regimen_fiscal.id})" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                            <button class="btn btn-sm btn-danger" ng-click="inactivate(regimen_fiscal.id)"><i class="fa fa-trash"></i></button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="regimenes_fiscales.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

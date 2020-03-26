@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cfdi:Comprobante xmlns:nomina12="http://www.sat.gob.mx/nomina12" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/nomina12 http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd" Version="3.3" Fecha="2018-04-26T08:49:49" Sello="A9ypec5Scfmyoy5YQhPOZ99Uvx6obN5aYr5iQ2YBfyGvQDOMD86IpzyB8UXeIR+bkM56q9MuJvkWGclXqj6L1A+IUpUlb2KfJnep4GD1IchOUcrYHUFO4+0/HNHNHo+sKxgXjBANyxg08RQUi4RmkELxVhMPdc3Luvv7eoC6WuDS78W1Gre4eEk+Zz6BgzpjP6o0tGcPiT0z3WDwoYjLcKQv+SE+mpJV748ZX1Z19pnNKPbG+Rt25zc3MPU72G7hKwG3QJfukfh26vP15QZFau9lL+/MQvBGg/4FkDKM0bJKy+vTCPE0ndwk1cRYcUrQOYhHewVIQ0nFFRvwRo472g==" NoCertificado="00001000000404349972" Certificado="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" FormaPago="99" SubTotal="7830.95" Descuento="1990.34" Moneda="MXN" Total="5840.61" TipoDeComprobante="N" MetodoPago="PUE" LugarExpedicion="76806" xmlns:cfdi="http://www.sat.gob.mx/cfd/3">
+  <cfdi:Emisor Nombre="ALBEK DE MEXICO SA DE CV" Rfc="AME900523CM3" RegimenFiscal="603" />
+  <cfdi:Receptor Nombre="NARVAEZ ANAYA JUAN GUILLERMO" Rfc="NAAJ711109LX9" UsoCFDI="P01" />
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="84111505" Cantidad="1" ClaveUnidad="ACT" Descripcion="Pago de nómina" Descuento="1990.34" ValorUnitario="7830.95" Importe="7830.95" />
+  </cfdi:Conceptos>
+  <cfdi:Complemento>
+    <nomina12:Nomina Version="1.2" TipoNomina="O" FechaPago="2018-04-25" FechaInicialPago="2018-04-16" FechaFinalPago="2018-04-22" NumDiasPagados="7.000" TotalPercepciones="7830.95" TotalDeducciones="1990.34">
+      <nomina12:Emisor RegistroPatronal="E2413549106" />
+      <nomina12:Receptor Curp="NAAJ711109HDFRNN08" NumSeguridadSocial="18887108084" FechaInicioRelLaboral="2013-04-22" Antigüedad="P261W" TipoContrato="01" TipoJornada="03" TipoRegimen="02" NumEmpleado="00551" Departamento="PRODUCCION JAB P G" Puesto="OPERADOR A" RiesgoPuesto="3" PeriodicidadPago="02" Banco="012" CuentaBancaria="1555521327" SalarioBaseCotApor="703.10" SalarioDiarioIntegrado="703.10" ClaveEntFed="QUE" />
+
+      <nomina12:Percepciones TotalGravado="6370.47" TotalExento="1460.48" TotalSueldos="7830.95">
+
+        <nomina12:Percepcion TipoPercepcion="001" Clave="301" Concepto="SUELDO" ImporteGravado="2210.46" ImporteExento="0.00" />
+
+        <nomina12:Percepcion TipoPercepcion="019" Clave="315" Concepto="HORAS EXTRAS DOBLES" ImporteGravado="355.26" ImporteExento="355.25">
+        	<nomina12:HorasExtra Dias="3" TipoHoras="01" HorasExtra="9" ImportePagado="710.51" />
+        </nomina12:Percepcion>
+
+        <nomina12:Percepcion TipoPercepcion="019" Clave="316" Concepto="HORAS EXTRAS TRIPLES" ImporteGravado="3611.73" ImporteExento="0.00">
+
+          <nomina12:HorasExtra Dias="1" TipoHoras="02" HorasExtra="31" ImportePagado="3611.73" />
+
+        </nomina12:Percepcion>
+
+        <nomina12:Percepcion TipoPercepcion="010" Clave="318" Concepto="PREMIO DE PUNTUALIDAD" ImporteGravado="41.25" ImporteExento="0.00" />
+        <nomina12:Percepcion TipoPercepcion="010" Clave="319" Concepto="PREMIO DE ASISTENCIA" ImporteGravado="41.25" ImporteExento="0.00" />
+        <nomina12:Percepcion TipoPercepcion="038" Clave="324" Concepto="DESPENSA" ImporteGravado="110.52" ImporteExento="0.00" />
+        
+        <nomina12:Percepcion TipoPercepcion="021" Clave="380" Concepto="PRIMA VACACIONAL" ImporteGravado="0.00" ImporteExento="1105.23" />
+
+      </nomina12:Percepciones>
+
+      <nomina12:Deducciones TotalImpuestosRetenidos="1062.90" TotalOtrasDeducciones="927.44">
+        <nomina12:Deduccion TipoDeduccion="002" Clave="601" Concepto="ISPT" Importe="1062.90" />
+        <nomina12:Deduccion TipoDeduccion="021" Clave="615" Concepto="IMSS" Importe="129.81" />
+        <nomina12:Deduccion TipoDeduccion="010" Clave="616" Concepto="INFONAVIT" Importe="202.95" />
+        <nomina12:Deduccion TipoDeduccion="011" Clave="627" Concepto="CREDITO FONACOT" Importe="117.98" />
+        <nomina12:Deduccion TipoDeduccion="011" Clave="628" Concepto="CREDITO FONACOT 2" Importe="355.70" />
+        <nomina12:Deduccion TipoDeduccion="004" Clave="645" Concepto="DESCUENTO  POR DAÑOS" Importe="121.00" />
+      </nomina12:Deducciones>
+    </nomina12:Nomina>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" FechaTimbrado="2018-04-26T08:51:42" SelloCFD="A9ypec5Scfmyoy5YQhPOZ99Uvx6obN5aYr5iQ2YBfyGvQDOMD86IpzyB8UXeIR+bkM56q9MuJvkWGclXqj6L1A+IUpUlb2KfJnep4GD1IchOUcrYHUFO4+0/HNHNHo+sKxgXjBANyxg08RQUi4RmkELxVhMPdc3Luvv7eoC6WuDS78W1Gre4eEk+Zz6BgzpjP6o0tGcPiT0z3WDwoYjLcKQv+SE+mpJV748ZX1Z19pnNKPbG+Rt25zc3MPU72G7hKwG3QJfukfh26vP15QZFau9lL+/MQvBGg/4FkDKM0bJKy+vTCPE0ndwk1cRYcUrQOYhHewVIQ0nFFRvwRo472g==" UUID="0105C4D8-1FE8-F5F0-F6BB-2D9215D270B5" NoCertificadoSAT="00001000000402636111" RfcProvCertif="SAD110722MQA" SelloSAT="XZUs87KoJZduh7DwQoYDklYgROgolKXVvuyCHlx3h0JSl0dDhLx9xKoPcCubV6enOBKfa2g0dKGHCMaSlbHf8r+KldDcmg1Va+NbbEZXpWgBxqybVsnMXrzD1JE2qdUTu53rypa2wz7ws+ECL6+zEN52DYWHCEeWltnSi0zxjeRms8iPjQDC06FgQ2tNYB0BQtNJSRDs6ImbxdxRc6dq1PicyrGteJOhMuxtBvnkgZqqE5rstLqG2mVvYW7NxUBal8RqRGm/3UlYbBrtqpIIdeQE/fobjo+BOZHfTJWH9bDzAvNWgZf0ltxLtEQpJhNENum6z8tVwEhfftakw87T3g==" />
+  </cfdi:Complemento>
+</cfdi:Comprobante>

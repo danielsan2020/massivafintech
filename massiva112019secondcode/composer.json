@@ -1,0 +1,13 @@
+{
+    "name": "vendor/enogdai",
+    "description": "Description of project enogdai.",
+    "authors": [
+        {
+            "name": "dell",
+            "email": "your@email.here"
+        }
+    ],
+    "require": {
+        "mpdf/mpdf": "dev-master"
+    }
+}

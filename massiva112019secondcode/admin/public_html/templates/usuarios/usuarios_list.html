@@ -1,0 +1,66 @@
+<div class="card card-main">
+    <div class="card-header">
+        <a ui-sref="main.usuarios_create" class="btn btn-primary float-right ml-2" title="Agregar"><i class="fa fa-plus"></i></a>
+        <a ui-sref = "main.usuarios_list_inactive" class="btn btn-outline-secondary float-right" title="Usuarios inactivos">Usuarios inactivos</a>
+        <h2> Usuarios</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="usuarios.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Apellido paterno
+                    </th>
+                    <th>
+                        Apellido materno
+                    </th>
+                    <th>
+                        Usuario
+                    </th>
+                    <th>
+                        Tipo de usuario
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="usuario in usuarios" ng-mouseover="usuario.hover = true" ng-mouseleave="usuario.hover = false" ng-init="usuario.hover = false">
+                    <td>
+                        {{usuario.nombre}}
+                    </td>
+                    <td>
+                        {{usuario.apellido_paterno}}
+                    </td>
+                    <td>
+                        {{usuario.apellido_materno}}
+                    </td>
+                    <td>
+                        {{usuario.username}}
+                    </td>
+                    <td>
+                        <span ng-if="usuario.tipo === '1'">
+                            Administrador
+                        </span>
+                        <span ng-if="usuario.tipo === '4'">
+                            Contador
+                        </span>
+                    </td>
+
+                    <td class="actions">
+                        <span ng-show="usuario.hover === true" class="float-right">
+                            <a ui-sref="main.usuarios_edit({id:usuario.id})" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                            <button class="btn btn-sm btn-danger" ng-click="inactivate(usuario.id)"><i class="fa fa-trash"></i></button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="usuarios.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+
+</div>

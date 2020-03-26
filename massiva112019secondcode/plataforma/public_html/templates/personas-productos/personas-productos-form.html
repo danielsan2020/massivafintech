@@ -1,0 +1,183 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>{{heading}} producto</h2>
+        </div>
+        <div class="card-body">
+            <form novalidate name="form" ng-submit="submit()">
+                <div class="form-group col-md-12 row">
+                    <label class="col-md-3 col-form-label" for="clave_producto">Clave SAT del producto: *</label>
+                    <div class="col-md-9 row">
+                        <input class="form-control" maxlength="8" type="text" id="clave_producto" ng-model="clave_producto" ng-change="buscar()" placeholder="Clave"/> 
+                    </div> 
+                </div>
+                <div class="col-md-12 mt-1 mb-1 row">
+                    <div class="col-lg-6">
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label" for="descripcion_sat">Descripcion SAT: </label>
+                            <div class="col-md-8"  ng-if = "persona_producto !== null">
+                                <label>{{persona_producto.descripcion}}</label>
+                            </div> 
+                            <div class="col-md-8" ng-if = "persona_producto === null">
+                                <label>No se encontraron resultados</label>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label" for="unidad_sat">Unidad SAT: </label>
+                            <div class="col-md-8" ng-if = "persona_producto !== null">
+                                <label>{{persona_producto.unidad_sat}}</label>
+                            </div> 
+                            <div class="col-md-8" ng-if = "persona_producto === null">
+                                <label>No se encontraron resultados</label>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label" for="cantidad">Clave/C&oacute;digo de barras: *</label>
+                            <div class="col-md-8" ng-model="form_persona_producto.clave">
+                                <input class="form-control" type="text" id="tipo" ng-model="form_persona_producto.clave" placeholder="Clave o código de barras del producto" required/> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label" for="precio_venta">Producto: *</label>
+                            <div class="col-md-8" ng-model="form_persona_producto.producto">
+                                <input class="form-control" type="text" id="tipo" ng-model="form_persona_producto.producto" placeholder="Producto" required/> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="tipo">Tipo: *</label>
+                            <div class="col-md-5" ng-repeat="tipo in tipos" ng-model="form_persona_producto.tipo">
+                                <label><input type="radio" id="tipo" ng-value="tipo.value" ng-model="form_persona_producto.tipo" required/> {{tipo.tipo}}</label> 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label" for="cantidad">Cantidad: *</label>
+                            <div class="col-md-8" ng-model="form_persona_producto.cantidad">
+                                <input class="form-control" type="text" id="tipo" ng-model="form_persona_producto.cantidad" placeholder="Cantidad" numbers-only required/> 
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                <div class="col-md-12 row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label" for="precio_compra">Precio de compra: *</label>
+                            <div class="col-md-8" ng-model="form_persona_producto.precio_compra">
+                                <input class="form-control" type="text" id="tipo" ng-model="form_persona_producto.precio_compra" placeholder="Precio de compra" numbers-only allowDecimals="true" required/> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label" for="precio_venta">Precio de venta: *</label>
+                            <div class="col-md-8" ng-model="form_persona_producto.precio_venta">
+                                <input class="form-control" type="text" id="tipo" ng-model="form_persona_producto.precio_venta" placeholder="Precio de venta" numbers-only allowDecimals="true" required/> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-md-12 form-group row">
+                    <label class="col-md-2 col-form-label" for="proveedor">Proveedor: *</label>
+                    <div class="col-md-10" ng-model="form_persona_producto.proveedor">
+                        <input class="form-control" type="text" id="tipo" ng-model="form_persona_producto.proveedor" placeholder="Proveedor" required/> 
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label class="col-md-4 col-lg-2 col-form-label">Unidad de medida:*</label>
+                    <div class="col-md-8 col-lg-10">
+                        <ui-select theme="select2" name="" ng-model="unidad_medida_selected" class="w-100" on-select="get_id_unidad_medida(unidad_medida_selected.id)" required>
+                            <ui-select-match placeholder="Selecciona una unidad de medida" >
+                                <strong>Unidad de medida:</strong> {{$select.selected.unidad}} 
+                                <strong>Clave SAT:</strong> {{$select.selected.clave_sat}} 
+                            </ui-select-match>
+                            <ui-select-choices repeat="unidad in unidades_de_medida | filter: $select.search">
+                                <strong>Unidad:</strong> {{unidad.unidad}} 
+                                <strong>Clave SAT:</strong> {{unidad.clave_sat}} 
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+                <div class="form-group row col-md-12" ng-if="create_or_update === 1">
+                    <label class="col-form-label col-md-2">Fotograf&iacute;a del producto:</label>
+                    <div class="form-group col-md-10" ng-if="file_producto.subir_archivo">
+                        <button type="button" class="btn btn-outline-danger float-right" ng-if="editar_file_producto" title="Cancelar edici&oacute;n" ng-click="file_producto.subir_archivo = false"><i class="fa fa-times"></i></button>
+                        <div class="drop-box pointer"
+                             ng-class="{'mr-5': (files_guardados.file_edit)}"
+                             name="file_producto"
+                             ng-model="file_producto.file"
+                             ngf-drop="fileProductoUpload(file_producto.file)"
+                             ngf-select="fileProductoUpload(file_producto.file)"
+                             ngf-drop-available="dropAvailable"
+                             ngf-pattern="'image/*'" 
+                             ngf-accept="'image/*'" 
+                             ngf-max-size="50MB" 
+                             >
+                            <button type="button" class="btn btn-default"><i class="fa fa-upload"></i></button>
+                            <br/>
+                            <small>tama&ntilde;o m&aacute;ximo 50 MB</small>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-10" ng-if="!file_producto.subir_archivo">
+                        <button type="button" class="btn btn-danger btn-sm float-right " title="Eliminar imagen del producto" ng-click="eliminarImagenProducto()"><i class="fa fa-trash"></i></button>
+                        <button type="button" class="btn btn-info btn-sm float-right " title="Editar imagen del producto" ng-click="editarImagenProducto()"><i class="fa fa-edit"></i></button>
+                        <p class="border p-1 text-success"> {{file_producto.file.name}}</p>
+                    </div>
+                </div>
+                <div class="form-group row col-md-12" ng-if="create_or_update === 2">
+                    <label class="col-form-label col-md-2">Fotograf&iacute;a del producto:</label>
+                    <div class="form-group col-md-10" ng-if="file_producto.subir_archivo">
+                        <button type="button" class="btn btn-outline-danger float-right" ng-if="editar_file_producto" title="Cancelar edici&oacute;n" ng-click="file_producto.subir_archivo = false"><i class="fa fa-times"></i></button>
+                        <div class="drop-box pointer"
+                             ng-class="{'mr-5': (files_guardados.file_edit)}"
+                             name="file_producto"
+                             ng-model="file_producto.file"
+                             ngf-drop="fileProductoUpload(file_producto.file)"
+                             ngf-select="fileProductoUpload(file_producto.file)"
+                             ngf-drop-available="dropAvailable"
+                             ngf-pattern="'image/*'" 
+                             ngf-accept="'image/*'" 
+                             ngf-max-size="50MB" 
+                             >
+                            <button type="button" class="btn btn-default"><i class="fa fa-upload"></i></button>
+                            <br/>
+                            <small>tama&ntilde;o m&aacute;ximo 50 MB</small>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-10" ng-if="!file_producto.subir_archivo && !tiene_foto">
+                        <button type="button" class="btn btn-danger btn-sm float-right " title="Eliminar logotipo" ng-click="eliminarImagenProducto()"><i class="fa fa-trash"></i></button>
+                        <button type="button" class="btn btn-info btn-sm float-right " title="Editar logotipo" ng-click="editarImagenProducto()"><i class="fa fa-edit"></i></button>
+                        <p class="border p-1 text-success"> {{file_producto.file.name}}</p>
+                    </div>
+                    <div class="form-group row col-md-9" ng-if ="tiene_foto && !file_producto.subir_archivo"> 
+                        <img class="border p-1 text-success" width="300" height="300" ng-src="{{url}}"/>
+                        <div class="form-group col-md-3">
+                            <button type="button" class="btn btn-danger btn-sm float-right " title="Eliminar logotipo" ng-click="eliminarImagenProducto()"><i class="fa fa-trash"></i></button>
+                            <button type="button" class="btn btn-info btn-sm float-right " title="Editar logotipo" ng-click="editarImagenProducto()"><i class="fa fa-edit"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <label class="col-md-3 col-form-label" for="comentario">Comentario: </label>
+                    <div class="col-md-9" ng-model="form_persona_producto.comentario">
+                        <textarea class="form-control"  id="tipo" ng-model="form_persona_producto.comentario"></textarea> 
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary float-right" ><i class="fas fa-save"></i>  Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>

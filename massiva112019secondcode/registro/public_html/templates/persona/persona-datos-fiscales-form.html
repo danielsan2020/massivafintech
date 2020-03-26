@@ -1,0 +1,140 @@
+<div class="card card-main">
+    <div class="card-header">
+        <h2>Datos de la persona registrada ante el SAT</h2>
+    </div>
+    <div class="card-body">
+        <form novalidate name="form" ng-submit="submit()">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Datos generales</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="rfc">RFC: *</label>
+                                <div class="col-md-9">
+                                    <input class="form-control" type="text" ng-model="form_persona.rfc" id="rfc" placeholder="RFC" ng-pattern="/^([a-zA-Z]{3,4})([0-9]{6})([a-zA-Z0-9]{3})$/" pattern-err-type="rfc" required/>
+                                </div> 
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="razon_social">Raz&oacute;n Social: *</label>
+                                <div class="col-md-9">
+                                    <input class="form-control" type="text" ng-model="form_persona.razon_social" id="razon_social" placeholder="Raz&oacute;n social" required/>
+                                </div> 
+                            </div> 
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="curp">CURP: *</label>
+                                <div class="col-md-6">
+                                    <input class="form-control" type="text" ng-model="form_persona.curp" id="curp" placeholder="CURP" ng-pattern="/^([a-zA-Z]{4})([0-9]{6})([a-zA-Z]{6})([a-zA-Z0-9]{2})$/" pattern-err-type="curp" required/>
+                                </div> 
+                                <div class="col-md-3 text-right">
+                                    <a href="https://www.gob.mx/curp/" target="_blank">¿Olvidaste tu CURP?</a>
+                                </div>
+                            </div> 
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="actividad">Actividad: *</label>
+                                <div class="col-md-9">
+                                    <input class="form-control" type="text" ng-model="form_persona.actividad" id="actividad" placeholder="Actividad"  required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group row">
+                                <label class="col-md-6 col-form-label" for="tipo">Forma Jurídica: *</label>
+                                <div class="col-3" ng-repeat="tipo in tipos">
+                                    <label><input type="radio" id="tipo" ng-value="tipo.value" ng-model="form_persona.tipo" required> {{tipo.tipo}}</label> 
+                                </div> 
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-6 col-form-label" for="cantidad_trabajadores">Cantidad trabajadores: *</label>
+                                <div class="col-md-6">
+                                    <input class="form-control" type="text" ng-model="form_persona.cantidad_trabajadores" id="cantidad_trabajadores" placeholder="Cantidad trabajadores" numbers-only required/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-6 col-form-label">Tengo mi contabilidad atrasada: *</label>
+                                <label class="col-3"><input id="contabilidad_atrasada"  type="radio" ng-model="form_persona.contabilidad_atrasada" value="1" required>  S&iacute;</label> 
+                                <label class="col-3"><input id="contabilidad_atrasada" type="radio" ng-model="form_persona.contabilidad_atrasada" value="-1" required>  No</label>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-6 col-form-label">Tengo e.firma vigente: *</label>
+                                <label class="col-3"><input id=""  type="radio" ng-model="form_persona.tiene_efirma_vigente" value="1" required>  S&iacute;</label> 
+                                <label class="col-3"><input id="" type="radio" ng-model="form_persona.tiene_efirma_vigente" value="-1" required>  No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h4>Direcci&oacute;n fiscal</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label">Tipo de domicilio: *</label>
+                                <label class="col-sm-6 col-md-4"><input type="radio" ng-model="form_persona.nombre" value="Particular" required>  Particular</label> 
+                                <label class="col-sm-6 col-md-4"><input type="radio" ng-model="form_persona.nombre" value="Oficina" required>  Oficina</label>
+                                <small ng-if="form_persona.nombre == 'Particular'" class="alert alert-warning">Toma en cuenta que en los domicilios particulares, la mayoría de los gastos no son deducibles.</small>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label" for="codigo_postal">C&oacute;digo postal:*</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" ng-blur='get_colonias_by_codigo_postal()' type="text" ng-model="form_persona.codigo_postal" id="codigo_postal" placeholder="C&oacute;digo Postal" numbers-only required/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-lg-2 col-form-label">Colonia:*</label>
+                        <div class="col-md-8 col-lg-10">
+                            <ui-select theme="select2" name="" ng-model="colonia_selected" class="w-100" on-select="get_id_colonia(colonia_selected.id)" required>
+                                <ui-select-match placeholder="Selecciona una colonia" >
+                                    <strong>Colonia:</strong> {{$select.selected.colonia}} 
+                                    <strong>Alcaldía/municipio:</strong> {{$select.selected.alcaldia_municipio}} 
+                                    <strong>Estado:</strong> {{$select.selected.estado}} 
+                                </ui-select-match>
+                                <ui-select-choices repeat="colonia in colonias | filter: $select.search">
+                                    <strong>Colonia:</strong> {{colonia.colonia}} 
+                                    <strong>Alcaldía/Municipio:</strong>{{colonia.alcaldia_municipio}}
+                                    <strong>Estado:</strong>{{colonia.estado}}
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-lg-2 col-form-label" for="calle">Calle:*</label>
+                        <div class="col-md-8 col-lg-10">
+                            <input class="form-control" type="text" ng-model="form_persona.calle" id="calle" placeholder="Calle" required/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label" for="numero_exterior">N&uacute;mero exterior: *</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" ng-model="form_persona.numero_exterior" id="numero_interior" placeholder="N&uacute;mero exterior"  required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label" for="numero_interior">N&uacute;mero interior: *</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" ng-model="form_persona.numero_interior" id="numero_exterior" placeholder="N&uacute;mero interior" required/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-md btn-primary float-right">Siguiente</button>
+            </div>
+        </form>
+    </div>
+</div>

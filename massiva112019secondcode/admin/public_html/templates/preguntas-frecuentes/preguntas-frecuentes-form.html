@@ -1,0 +1,57 @@
+<div class="card card-main">
+    <div class="card-header">
+        <h2>{{heading}} pregunta frecuente en {{categoria.categoria}}</h2>
+    </div>
+    <div class="card-body">
+        <form novalidate name="form" ng-submit="submit()">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="pregunta">Pregunta:</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" ng-model="form_preguntas_frecuentes.pregunta" id="pregunta" placeholder="Pregunta"  required/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="respuesta">Respuesta:</label>
+                <div class="col-md-10">
+                    <ng-quill-editor ng-model="form_preguntas_frecuentes.respuesta" id="respuesta" placeholder="Respuesta" required>
+                        <ng-quill-toolbar>
+                            <div id="ng-quill-toolbar">
+                                <button class="ql-bold" ng-attr-title="{{'Negrita'}}"></button>
+                                <button class="ql-italic" ng-attr-title="{{'Cursiva'}}"></button>                                            
+                                <button class="ql-underline" ng-attr-title="{{'Subrayado'}}"></button>                                            
+                                <button class="ql-strike" ng-attr-title="{{'Tachado'}}"></button>
+                                <select class="ql-align" ng-attr-title="{{'Alineacion'}}">
+                                    <option selected></option>
+                                    <option value="center"></option>
+                                    <option value="right"></option>
+                                    <option value="justify"></option>
+                                </select>    
+                                <button class="ql-blockquote" ng-attr-title="{{'Cita'}}"></button>
+                                <select class="ql-header">
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                    <option value="4"></option>
+                                    <option value="5"></option>
+                                    <option value="6"></option>
+                                </select>
+                                <button class="ql-list" value="ordered" ng-attr-title="{{'Lista ordenada'}}"></button>
+                                <button class="ql-list" value="bullet" ng-attr-title="{{'Viñetas'}}"></button>
+                                <button class="ql-script" value="sub" ng-attr-title="{{'Subindice'}}"></button>
+                                <button class="ql-script" value="super" ng-attr-title="{{'Superindice'}}"></button>
+                                <button class="ql-indent" value="-1" ng-attr-title="{{'Disminuir sangria'}}"></button>
+                                <button class="ql-indent" value="+1" ng-attr-title="{{'Aumentar sangria'}}"></button>
+                                <button type="button" class="ql-clean" ng-attr-title="{{'Borrar formato'}}"></button>
+                                <button type="button" class="ql-image" ng-attr-title="{{'Agregar imagen'}}"></button>
+                            </div>
+                        </ng-quill-toolbar>
+                    </ng-quill-editor>
+                </div>
+            </div>
+            <div class="form-group text-right">
+                <button type="submit" class="btn btn-md btn-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>

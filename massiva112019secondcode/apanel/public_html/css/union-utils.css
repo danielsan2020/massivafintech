@@ -1,0 +1,46 @@
+.pointer{
+    cursor: pointer;
+}
+.actions{
+    width: 20%;
+    min-width: 150px;
+    text-align: right;
+}
+.has-error .help-block{
+    display: block;
+}
+.has-error .col-form-label, .has-error .custom-control, .has-error .form-check-label, .has-error .help-block, .has-error .form-control-label {
+    color: #F1005E;
+}
+.has-success .col-form-label, .has-success .custom-control, .has-success .form-check-label, .has-success .help-block, .has-success .form-control-label {
+    color: #28a745;
+}
+.has-error .form-control, .has-error .form-control-drop, .has-error .ql-container{
+    border-color: #F1005E;
+}
+.has-error .form-control:focus{
+    box-shadow: 0 0 0 .2rem rgba(220,53,69,.25);
+}
+.has-success .form-control, .has-success .form-control-drop, .has-success .ql-container {
+    border-color: #28a745;
+}
+.has-success .form-control:focus{
+    box-shadow: 0 0 0 .2rem rgba(40,167,69,.25);
+}
+.drop-box {
+    background: #F8F8F8;
+    border: 1px dashed #DDD;
+    text-align: center;
+    padding: 30px 10px;
+    border-radius: 4px;
+}
+.drop-box.dragover {
+    border: 1px dashed #18a12f;
+    background-color: #dffae4;
+}
+.drop-box.dragover-err {
+    border: 5px dashed #5cb85c;
+}
+.noty_buttons{
+    text-align: center;
+}

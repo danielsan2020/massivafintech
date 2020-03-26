@@ -1,0 +1,26 @@
+<div class="card card-main">
+    <div class="card-header">
+        <h2> Personas asignadas</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="personas.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Persona id
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="persona in personas">
+                    <td>
+                        {{persona.id}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="personas.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

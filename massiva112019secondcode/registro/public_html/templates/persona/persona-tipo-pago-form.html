@@ -1,0 +1,24 @@
+<div class="card card-main" ng-if="!pagado">
+    <div class="card-header">
+        <h2>Realiza tu pago</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="form-group col-12 row">
+                <a class="col-12 col-md-4" ui-sref="main.menu_registro.tipo_pago.tarjeta_bancaria">
+                    Tarjeta bancaria
+                </a>
+                <a class="col-12 col-md-4" ui-sref="main.menu_registro.tipo_pago.transferencia_bancaria">
+                    Transferencia bancaria
+                </a>
+                <a class="col-12 col-md-4" ui-sref="main.menu_registro.tipo_pago.pago_efectivo">
+                    Pago en efectivo
+                </a>
+            </div>
+            <div class="col-12" ui-view=""></div>
+            <div class="container">
+                <a ui-sref="main.menu_registro.elegir_paquetes"  class="btn btn-md btn-primary float-left">Anterior</a>
+            </div>
+        </div>
+    </div>
+</div>

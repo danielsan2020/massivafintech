@@ -1,0 +1,36 @@
+<div class="card card-main">
+    <div class="card-header">
+        <a ui-sref="main.preguntas_frecuentes_by_categoria_create({categoria_id:categoria.id})" class="btn btn-outline-success float-right ml-2" title="Agregar"><i class="fa fa-plus"></i></a>
+        <a ui-sref="main.preguntas_frecuentes_by_categoria_inactivate({categoria_id:categoria.id})" class="btn btn-outline-secondary float-right" title="Inactivos">Preguntas inactivas</a>
+        <a class="btn btn-sm btn-secondary float-left mr-2 mt-2" ui-sref="main.categorias_preguntas_frecuentes_list"><i class="fas fa-arrow-left"></i></a>
+        <h2>Preguntas frecuentes de: {{categoria.categoria}}</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="preguntas_frecuentes.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Pregunta
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="pregunta_frecuente in preguntas_frecuentes" ng-mouseover="pregunta_frecuente.hover = true" ng-mouseleave="pregunta_frecuente.hover = false" ng-init="pregunta_frecuente.hover = false">
+                    <td>
+                        {{pregunta_frecuente.pregunta}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="pregunta_frecuente.hover === true" class="float-right">
+                            <a ui-sref="main.preguntas_frecuentes_by_categoria_update({categoria_id:categoria.id, id:pregunta_frecuente.id})" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                            <button class="btn btn-sm btn-danger" ng-click="inactivate(pregunta_frecuente.id)"><i class="fa fa-trash"></i></button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="preguntas_frecuentes.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+<div class="container">
+    <h2>Ticket: {{soporte_ticket.numero_ticket}}</h2>
+    <button type="submit" class="btn btn-md btn-info" ng-click="showBeforeComentarios()">Mostrar mas</button>
+    <div class="card">
+        <ul class="list-group">
+            <li class="" ng-repeat="comentario in lista_comentarios">
+                <div ng-if="comentario.tipo === '1'">
+                {{comentario.comentario.name}}.{{comentario.comentario.extension}}
+                    <span ng-switch="comentario.comentario.extension">
+                        <span ng-switch-when="pdf">
+                            <button class="btn btn-primary btn-sm" ng-click="clickToOpen(comentario.comentario.extension, comentario.id)"><i class="fas fa-eye"></i></button>
+                        </span>
+                        <span ng-switch-when="png">
+                            <button class="btn btn-primary btn-sm" ng-click="clickToOpen(comentario.comentario.extension, comentario.id)"><i class="fas fa-eye"></i></button>
+                        </span>
+                        <span ng-switch-when="jpg">
+                            <button class="btn btn-primary btn-sm" ng-click="clickToOpen(comentario.comentario.extension, comentario.id)"><i class="fas fa-eye"></i></button>
+                        </span>
+                        <span ng-switch-when="jpeg">
+                            <button class="btn btn-primary btn-sm" ng-click="clickToOpen(comentario.comentario.extension, comentario.id)"><i class="fas fa-eye"></i></button>
+                        </span>
+                        <span ng-switch-default>
+                            <button class="btn btn-primary btn-sm"><i class="fas fa-file-download" ng-click="fileDownload(comentario)"></i></button>
+                        </span>
+                    </span>
+                </div>
+                <div ng-if="comentario.tipo === '2'">
+                    {{comentario.comentario}}
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Ingresa un comentario</h3>
+        </div>
+        <div class="card-body">
+            <form novalidate name="form_ingresar_comentario" ng-submit="submit()">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Tipo de mensaje:*</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tipo" id="tipoRadio1" ng-value="2" ng-model="soporte_ticket_form.tipo">
+                            <label class="form-check-label" for="tipoRadio1">texto</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tipo" id="tipoRadio2" ng-value="1" ng-model="soporte_ticket_form.tipo">
+                            <label class="form-check-label" for="tipoRadio2">Archivo</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row" ng-if="soporte_ticket_form.tipo === 2">
+                    <label class="col-sm-2 col-form-label" for="comentario">Comentario:*</label>
+                    <div class="col-sm-10">
+                        <textarea name="comentario" class="form-control" ng-model="soporte_ticket_form.comentario" required></textarea>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="soporte_ticket_form.tipo === 1">
+                    <div class="card form-control-drop">
+                        <div class="card-header">
+                            Selecciona o arrastra los archivos
+                        </div>
+                        <div class="card-body">
+                            <div  class="drop-box"
+                                  name="file"
+                                  ng-model="archivo.file"
+                                  ngf-drop=""
+                                  ngf-select=""
+                                  ngf-drop-available="dropAvailable"
+                                  ngf-pattern="'!video/*'" 
+                                  ngf-accept="'!video/*'" 
+                                  ngf-max-size="50MB" 
+                                  required
+                                  >
+                                <button type="button" class="btn btn-lg btn-default"><i class="fa fa-upload"></i></button>
+                                <br/>
+                                <small>tama&ntilde;o m&aacute;ximo 50 MB</small>
+                            </div>
+                            <div ng-show="archivo.file">
+                                <h4>{{archivo.file.name}}</h4>
+                                <small>{{archivo.file.size|size_format}}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group float-right">
+                    <small>* Campos obligatorios</small>
+                    <button type="submit" class="btn btn-md btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

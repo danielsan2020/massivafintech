@@ -1,0 +1,98 @@
+<div class="card card-main">
+    <div class="card-header">
+        <h2>{{heading}} paquete</h2>
+    </div>
+    <div class="card-body">
+        <form novalidate name="form" ng-submit="submit()">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="nombre">Nombre:*</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" ng-model="paquete_form.nombre" id="nombre" placeholder="Nombre"  required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="precio">Precio:*</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" ng-model="paquete_form.precio" id="precio" placeholder="Precio" numbers-only allowDecimals="true" required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="periodo">Periodo del paquete en meses:*</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" ng-model="paquete_form.periodo" id="periodo" placeholder="Periodo en meses" numbers-only allowDecimals="false" required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="descripcion">Descripci&oacute;n:*</label>
+                <div class="col-md-10">
+                    <ng-quill-editor ng-model="paquete_form.descripcion" id="descripcion" placeholder="Descripci&oacute;n" required>
+                        <ng-quill-toolbar>
+                            <div id="ng-quill-toolbar">
+                                <button class="ql-bold" ng-attr-title="{{'Negrita'}}"></button>
+                                <button class="ql-italic" ng-attr-title="{{'Cursiva'}}"></button>                                            
+                                <button class="ql-underline" ng-attr-title="{{'Subrayado'}}"></button>                                            
+                                <button class="ql-strike" ng-attr-title="{{'Tachado'}}"></button>
+                                <select class="ql-align" ng-attr-title="{{'Alineacion'}}">
+                                    <option selected></option>
+                                    <option value="center"></option>
+                                    <option value="right"></option>
+                                    <option value="justify"></option>
+                                </select>    
+                                <button class="ql-blockquote" ng-attr-title="{{'Cita'}}"></button>
+                                <select class="ql-header">
+                                    <option value="1"></option>
+                                    <option value="2"></option>
+                                    <option value="3"></option>
+                                    <option value="4"></option>
+                                    <option value="5"></option>
+                                    <option value="6"></option>
+                                </select>
+                                <button class="ql-list" value="ordered" ng-attr-title="{{'Lista ordenada'}}"></button>
+                                <button class="ql-list" value="bullet" ng-attr-title="{{'Viñetas'}}"></button>
+                                <button class="ql-script" value="sub" ng-attr-title="{{'Subindice'}}"></button>
+                                <button class="ql-script" value="super" ng-attr-title="{{'Superindice'}}"></button>
+                                <button class="ql-indent" value="-1" ng-attr-title="{{'Disminuir sangria'}}"></button>
+                                <button class="ql-indent" value="+1" ng-attr-title="{{'Aumentar sangria'}}"></button>
+                                <button type="button" class="ql-clean" ng-attr-title="{{'Borrar formato'}}"></button>
+                                <button type="button" class="ql-image" ng-attr-title="{{'Agregar imagen'}}"></button>
+                            </div>
+                        </ng-quill-toolbar>
+                    </ng-quill-editor>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="tipo">Tipo:*</label>
+                <div class="col-md-10">
+                    <div class="col-3" ng-repeat="tipo in tipos">
+                        <label><input type="radio" id="tipo" ng-value="tipo.value" ng-model="paquete_form.tipo" required> {{tipo.tipo}}</label> 
+                    </div> 
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label">Regimenes</label>
+                <div class="col-md-10">
+                    <div class="form-control" style="height: auto;">
+                        <div u-checkbox-list="regimenes_fiscales" u-checkbox-list-text="regimen" ng-model="paquete_form.regimenes" u-checkbox-list-class="{container: 'form-check form-check-inline'}"></div>
+                        <input type="hidden" ng-model="paquete_form.regimenes" at-least-one-checked />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="cfdis_al_mes">N&uacute;mero de CFDIS mensuales:*</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" ng-model="paquete_form.cfdis_al_mes" id="cfdis_al_mes" placeholder="N&uacute;mero de CFDIS" numbers-only allowDecimals="false" required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="custom-control custom-switch m-2">
+                    <input ng-true-value ="'1'" ng-false-value="'-1'"  ng-model = "paquete_form.mostrar_en_principal" type="checkbox" class="custom-control-input" id="customSwitch1">
+                    <label class="custom-control-label" for="customSwitch1">Mostrar en la p&uacute;blica</label>
+                </div>
+            </div>
+          
+            <div class="form-group text-right">
+                <button type="submit" class="btn btn-md btn-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>

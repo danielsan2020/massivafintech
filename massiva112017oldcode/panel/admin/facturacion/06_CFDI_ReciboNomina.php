@@ -1,0 +1,877 @@
+<?php
+header('Content-Type: text/html; charset=UTF-8');
+include("qrlib/qrlib.php");
+
+### CÓDIGO FUENTE, FACTURACIÓN ELECTRÓNICA CFDI VERSIÓN 3.3 ACORDE A LOS REQUIRIMIENTOS DEL SAT, ANEXO 20.
+
+echo '<div style="font-size: 12pt; color: #B40404; margin-bottom: 10px; margin-top: 8px; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+echo 'PROCESO DE TIMBRADO DE CFDI 3.3 CON COMPLEMENTO DE NÓMINA 1.2';
+echo '</div>';    
+
+### 1. CONFIGURACIÓN INICIAL ######################################################
+
+    # 1.1 Configuración de zona horaria
+    date_default_timezone_set('America/Mexico_City'); // 
+
+    # 1.2 Muestra la zona horaria predeterminada del servidor (opcional a mostrar)
+    echo '<div style="font-size: 10pt; color: #000099; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+    echo 'ZONA HORARIA PREDETERMINADA';
+    echo '</div>';
+    echo '<div style="font-size: 10pt; color: #000000; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+    echo date_default_timezone_get();
+    echo '</div><br>';
+
+
+### 2. ASIGNACIÓN DE VALORES A VARIABLES ##########################################
+    $SendaPEMS  = "archs_pem/";   // 2.1 Directorio en donde se encuentran los archivos *.cer.pem y *.key.pem (para efectos de demostración se utilizan los que proporciona el SAT para pruebas).
+    $SendaCFDI  = "archs_cfdi/";  // 2.2 Directorio en donde se almacenarán los archivos *.xml (CFDIs).
+    $SendaGRAFS = "archs_graf/";  // 2.3 Directorio en donde se almacenan los archivos .jpg (logo de la empresa) y .png (códigos bidimensionales).
+    $SendaXSD   = "archs_xsd/";   // 2.4 Directorio en donde se almacenan los archivos .xsd (esquemas de validación, especificaciones de campos del Anexo 20 del SAT);
+    
+    
+    // 2.5 Datos de acceso del usuario (proporcionados por www.finkok.com) modo de integración (para pruebas) o producción.
+    $username = "controlescolarenlinea@gmail.com";
+    $password = "CtrlEsc@26"; 
+
+    
+    ### MUESTRA LOS DATOS DEL USUARIO QUE ESTÁ TIMBRANDO (OPCIONAL A MOSTRAR) ######
+    echo '<div style="font-size: 10pt; color: #000099; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+    echo 'DATOS DEL USUARIO QUE ESTÁ TIMBRANDO';
+    echo '</div>';
+    echo '<div style="font-size: 10pt; color: #000000; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+    echo 'USUARIO: <span style="color: #088A29; font-size: 11pt;">'.$username."</span><br>";
+    echo 'PASSWORD: <span style="color: #088A29; font-size: 11pt;">'.$password."</span><br>";
+    echo '</div><br>';    
+    
+    
+### 3. DEFINICIÓN DE VARIABLES INICIALES ##########################################
+    $noCertificado = "20001000000300022762";  // 3.1 Número de certificado.
+    $file_cer      = "TCM970625MB1.cer.pem";  // 3.2 Nombre del archivo .cer.pem 
+    $file_key      = "TCM970625MB1.key.pem";  // 3.3 Nombre del archivo .cer.key    
+    
+###################################################################################
+    
+    
+    
+### DATOS GENERALES DEL RECIBO DE NÓMINA ##########################################
+    
+    $TipoNomina        = "O"; // Clave de TipoNomina: O= Nómina ordinaria o E= Nómina extraordinaria
+    $RegistroPatronal  = "Y3743947107";                   // Registro patronal.
+    $fact_serie        = "A";                             // Número de serie.
+    $fact_folio        = mt_rand(1000, 9999);             // Número de folio.
+    $NoRecNom          = $fact_serie.$fact_folio;         // Serie del RECIBO concatenado con el número de folio.
+    $fact_tipcompr     = "egreso";                        // Tipo de comprobante.
+    $fecha_fact        = date("Y-m-d")."T".date("H:i:s"); // Fecha y hora de facturación.
+    $metodoDePago      = "NA";                            // En nómina la clave del método de pago debe ser NA.
+    $formaDePago       = "PAGO EN UNA SOLA EXHIBICION";   // Forma de pago.
+    $TipoCambio        = 1;                               // Tipo de cambio de la moneda.
+    $moneda            = "MXN";                           // Moneda    
+    $LugarExpedicion   = "56806";                         // Lugar de expedición.
+
+    $totalPercepciones   = "0.00"; // Total de percepciones.
+    $totalDeducciones    = "0.00"; // Total de deducciones.
+    $totalOtrosPagos     = "0.00"; // Suma de otros pagos.
+    
+    $Percep_TotalSueldos = "0.00"; // Percepciones, total sueldos.
+    $Percep_TotalGravado = "0.00"; // Percepciones, total gravado.
+    $Percep_TotalExento  = "0.00"; // Percepciones, total exento.
+    
+    $TotalOtrasDeducciones   = "0.00"; // Deducciones, total otras deducciones.
+    $TotalImpuestosRetenidos = "0.00"; // Deducciones, toal impuestos retenidos.
+    
+    $subTotal            = "0.00"; // SubTotal.
+    $descuento           = "0.00"; // descuento.
+    $total               = "0.00"; // Total.
+    
+### DATOS DEL EMPLEADO ######################################################
+    
+    $receptor_rfc  = "AUAC4601138F9";         // RFC del empleado.
+    $receptor_nom  = "GERMAN SANTIAGO LOPEZ"; // Nombre del empleado.    
+    
+    $NumEmpleado            = "001";
+    $CURP_Empleado          = "GOVA550404MTSMLN15";
+    $Departamento           = "SISTEMAS";
+    $Puesto                 = "PROGRAMADOR";
+    $NumSeguridadSocial     = "43715435038";
+    $PeriodicidadPago       = "04";
+    
+    // Nomina ========================================
+    
+    $FechaInicioRelLaboral  = "2016-06-01"; // <====== 
+    $FechaPago              = "2016-10-31";
+    $FechaInicialPago       = "2016-10-17";
+    $FechaFinalPago         = "2016-10-31"; // <====== 
+    $NumDiasPagados         = "15";
+    $Antigüedad             = "P21W";
+    
+    $SalarioDiarioIntegrado = "304.00";
+    $TipoContrato           = "01";
+    $TipoJornada            = "01";
+    $TipoRegimen            = "02";
+    $Banco                  = "012";
+    $CuentaBancaria         = "6787543287";
+    $ClaveEntFed            = "AGU";
+    $ClaveRiesgoPuesto      = "1";
+ 
+    
+### MUESTRA LA ZONA HORARIA PREDETERMINADA DEL SERVIDOR (OPCIONAL A MOSTRAR) ### 
+    echo '<div style="font-size: 10pt; color: #000099; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+    echo 'FECHA Y HORA DE SOLICITUD DE TIMBRADO';
+    echo '</div>';
+    echo '<div style="font-size: 10pt; color: #000000; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+    echo $fecha_fact; // 6.1 Se muestra solo para consultar y confirmar que sea la correcta.
+    echo '</div><br>';    
+    
+    
+### PERCEPCIONES ###############################################################
+    
+    // ArraysPercepciones.
+    $ArrayPercep_Clave          = ['101', '102', '106', '114', '116', '122', '1CH', '1SC'];
+    $ArrayPercep_Concepto       = ['SUELDO BASE', 'FONDO SOCIAL DE PREV  MULT', 'QUINQUENIOS', 'COMPENSACION EXTRAORDINARIA', 'B O N O   S I N D I C A L', 'D E S P E N S A', 'COMP HOMOLOG A SIMILARES PODER', 'COMPLEMENTO SALARIAL'];
+    $ArrayPercep_ImporteExento  = ['0', '77.28', '377.5', '0', '224.17', '120.72', '0', '0'];
+    $ArrayPercep_ImporteGravado = ['3184', '0', '0', '1737.65', '0', '0', '125.5', '165.48'];
+    $ArrayPercep_TipoPercepcion = ['001', '038', '038', '038', '038', '029', '001', '001'];
+    
+    
+    
+    for ($i=0; $i<count($ArrayPercep_ImporteGravado); $i++){
+         $totalPercepciones = $totalPercepciones + $ArrayPercep_ImporteGravado[$i];
+    }
+    
+    $Percep_TotalGravado = number_format($totalPercepciones,2,'.','');
+    
+
+### DEDUCCIONES ################################################################
+
+    // ArraysDeducciones.
+    $ArrayDeduc_Clave          = ['251', '253', '262', '263', '272', '274', '275'];
+    $ArrayDeduc_Concepto       = ['IMPUESTO SOBRE LA RENTA', 'CUOTA SINDICAL', 'FONDO DE PENSIONES', 'PAGARE', 'PRESTAMO SINDICATO', 'IMSS', 'FONDO DE AHORRO  S T A S P E'];
+    $ArrayDeduc_Importe        = ['566.23', '31.84', '260.62', '1470.39', '705.88', '165.25', '300'];
+    $ArrayDeduc_TipoDeduccion  = ['002', '019', '004', '004', '004', '001', '004'];
+
+//    for ($i=0; $i<count($ArrayDeduc_ImporteExento); $i++){
+//        
+//        if ($ArrayDeduc_TipoDeduccion[$i]=="002"){
+//            $TotalImpuestosRetenidos = $TotalImpuestosRetenidos + $ArrayDeduc_ImporteExento[$i];
+//        }else{
+//            $TotalOtrasDeducciones =  $TotalOtrasDeducciones + $ArrayDeduc_ImporteExento[$i];
+//        }
+//        
+//    }
+//    
+//    $Percep_TotalExento  = number_format($totalDeducciones,2,'.','');
+//    
+//    $totalDeducciones = $TotalOtrasDeducciones + $TotalImpuestosRetenidos;
+//    
+//    $descuento = $totalDeducciones;
+    
+### OTROS PAGOS ################################################################
+    // ArraysOtrosPagos.
+//    $ArrayOtrosPag_TipoOtroPago  = ['', '', '', '', '', '', ''];
+//    $ArrayOtrosPag_Clave         = ['', '', '', '', '', '', ''];
+//    $ArrayOtrosPag_Concepto      = ['', '', '', '', '', '', ''];
+//    $ArrayOtrosPag_Importe       = ['', '', '', '', '', '', ''];
+    
+//    for ($i=0; $i<count($ArrayOtrosPag_Importe); $i++){
+//        $totalOtrosPagos = $totalOtrosPagos + $ArrayOtrosPag_Importe[$i];
+//    }
+
+    
+### CONCEPTO DE PAGO DE NÓMINA #################################################
+    $ConceptPagNom_Cant     = "1";
+    $ConceptPagNom_Unidad   = "ACT";
+    $ConceptPagNom_Descrip  = utf8_decode("Pago de nómina");
+    $ConceptPagNom_ValorUni = number_format($totalPercepciones+$totalOtrosPagos,2,'.','');
+    $ConceptPagNom_Importe  = number_format($totalPercepciones+$totalOtrosPagos,2,'.','');    
+    
+
+### DETERMINAR TOTALES #########################################################    
+    $subTotal = number_format($totalPercepciones+$totalOtrosPagos,2,'.',''); // SubTotal.
+    $total    = number_format($totalPercepciones+$totalOtrosPagos-$totalDeducciones,2,'.',''); // Total.
+    
+    $Percep_TotalSueldos = number_format($totalPercepciones,2,'.','');
+    
+    
+    
+    
+### DATOS GENERALES DEL EMISOR #################################################
+    $emisor_rs     = "ALLIANCE EMPEÑOS S DE RL DE CV"; // Nombre o Razón social.
+    $emisor_rfc    = "TCM970625MB1"; // RFC.
+    $emisor_regfis = "601";          // Régimen fiscal.
+    $emisor_OrigenRecurso = "IP";      // IP = Ingresos propios , IF = Ingreso federales,  IM = Ingresos mixtos.
+    
+//    $CURP_Emisor      = "RUTR720120HDFDRN01";
+//    $RfcPatronOrigen  = "AAD990814BP7";
+    
+    
+### 4. DATOS GENERALES DE LA FACTURA ##############################################
+    $fact_serie        = "A";                             // 4.1 Número de serie.
+    $fact_folio        = mt_rand(1000, 9999);             // 4.2 Número de folio (para efectos de demostración se asigna de manera aleatoria).
+    $NoFac             = $fact_serie.$fact_folio;         // 4.3 Serie de la factura concatenado con el número de folio.
+//    $fact_tipcompr     = "I";                             // 4.4 Tipo de comprobante.
+//    $tasa_iva          = 16;                              // 4.5 Tasa del impuesto IVA.
+//    $subTotal          = 0;                               // 4.6 Subtotal, suma de los importes antes de descuentos e impuestos (se calculan mas abajo). 
+//    $descuento         = number_format(0,2,'.','');       // 4.7 Descuento (se calculan mas abajo).
+//    $IVA               = number_format(536,2,'.','');     // 4.8 IVA, suma de los impuestos (se calculan mas abajo).
+//    $total             = 0;                               // 4.9 Total, Subtotal - Descuentos + Impuestos (se calculan mas abajo). 
+//    $fecha_fact        = date("Y-m-d")."T".date("H:i:s"); // 4.10 Fecha y hora de facturación.
+//    $NumCtaPago        = "6473";                          // 4.11 Número de cuenta (sólo últimos 4 dígitos, opcional).
+//    $condicionesDePago = "CONDICIONES";                   // 4.12 Condiciones de pago.
+//    $formaDePago       = "01";                            // 4.13 Forma de pago.
+//    $metodoDePago      = "PUE";                           // 4.14 Clave del método de pago. Consultar catálogos de métodos de pago del SAT.
+//    $TipoCambio        = 1;                               // 4.15 Tipo de cambio de la moneda.
+//    $LugarExpedicion   = "45079";                         // 4.16 Lugar de expedición (código postal).
+//    $moneda            = "MXN";                           // 4.17 Moneda
+//    $totalImpuestosRetenidos   = 0;                       // 4.18 Total de impuestos retenidos (se calculan mas abajo).
+//    $totalImpuestosTrasladados = 0;                       // 4.19 Total de impuestos trasladados (se calculan mas abajo).
+ 
+
+    
+    
+### 9. DATOS GENERALES DEL EMISOR #################################################  
+    
+    $emisor_rs     = "ENVACES Y EMPAQUES INTERNACIONALES";  // 9.1 Nombre o Razón social.
+    $emisor_rfc    = "TCM970625MB1";                        // 9.2 RFC (al momento de timbrar el SAT comprueba que el RFC se encuentre registrado y vigente en su base de datos)
+    $emisor_regfis = "REGIMEN GENERAL DE PERSONAS MORALES"; // 9.3 Régimen fiscal.    
+        
+    
+### 10. DATOS GENERALES DEL RECEPTOR (CLIENTE) #####################################
+    
+    $RFC_Recep = "AAD990814BP7";                                                              // 10.1 RFC (al momento de timbrar el SAT comprueba que el RFC se encuentre registrado y vigente en su base de datos).
+    if (strlen($RFC_Recep)==12){$RFC_Recep = " ".$RFC_Recep; }else{$RFC_Recep = $RFC_Recep;}  // 10.2 Al RFC de personas morales se le antecede un espacio en blanco para que su longitud sea de 13 caracteres ya que estos son de longitud 12.
+    $receptor_rfc = $RFC_Recep;                                                               // 10.3 RFC.
+    $receptor_rs  = "ASOCIACION DE AGRICULTORES";                       // 10.4 Nombre o razón social.
+    
+
+### 11. CREACIÓN Y ALMACENAMIENTO DEL ARCHIVO .XML (CFDI) ANTES DE SER TIMBRADO ###################
+    
+    #== 11.1 Creación de la variable de tipo DOM, aquí se conforma el XML a timbrar posteriormente.
+    $xml = new DOMdocument('1.0', 'UTF-8'); 
+    $root = $xml->createElement("cfdi:Comprobante");
+    $root = $xml->appendChild($root); 
+    
+    $cadena_original='||';
+    $noatt=  array();
+    
+
+    
+    #== 11.3 Rutina de integración de nodos =========================================
+    cargaAtt($root, array(
+            "Version"=>"3.3",
+            "Fecha"=>date("Y-m-d")."T".date("H:i:s"),
+            "FormaPago"=>"99",
+            "NoCertificado"=>$noCertificado,
+            "SubTotal"=>"6012.30",
+            "Descuento"=>"3500.21", 
+            "Moneda"=>"MXN",
+            "Total"=>"2512.09",
+            "TipoDeComprobante"=>"N",
+            "LugarExpedicion"=>"58000"
+          )
+       );
+    
+    #== 11.2 Se crea e inserta el primer nodo donde se declaran los namespaces ======
+    cargaAttSinIntACad($root, array(
+            "xmlns:cfdi"=>"http://www.sat.gob.mx/cfd/3",
+            "xmlns:nomina12"=>"http://www.sat.gob.mx/nomina12",
+            "xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance",
+            "xsi:schemaLocation"=>"http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd http://www.sat.gob.mx/nomina12 http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd"
+        )
+    );    
+    
+    
+    ################################################################################################
+    
+    
+    $emisor = $xml->createElement("cfdi:Emisor");
+    $emisor = $root->appendChild($emisor);
+    cargaAtt($emisor, array(
+            "Rfc"=>"TCM970625MB1",
+            "Nombre"=>"Prueba SA de CV",
+            "RegimenFiscal"=>"603"
+        )
+    );
+    
+    
+    $receptor = $xml->createElement("cfdi:Receptor");
+    $receptor = $root->appendChild($receptor);
+    cargaAtt($receptor, array(
+                        "Rfc"=>"TUCA2107035N9",
+                        "Nombre"=>"DEMO-NOMBRE",
+                        "UsoCFDI"=>"G03"
+                    )
+                );    
+    
+    $conceptos = $xml->createElement("cfdi:Conceptos");
+    $conceptos = $root->appendChild($conceptos);
+       	
+    $concepto = $xml->createElement("cfdi:Concepto");
+    $concepto = $conceptos->appendChild($concepto);
+    cargaAtt($concepto, array(
+                       "ClaveProdServ"=>"84111505",
+                       "Cantidad"=>"1",
+                       "ClaveUnidad"=>"ACT",
+                       "Descripcion"=>utf8_decode("Pago de nómina"),
+                       "ValorUnitario"=>"6012.30",
+                       "Importe"=>"6012.30",
+                       "Descuento"=>"3500.21"
+            )
+        );    
+    
+    
+// INICIA CODIFICACIÓN DEL COMPLEMENTO DE NÓMINA 1.2 ###########################
+    
+    $complemento = $xml->createElement("cfdi:Complemento");
+    $complemento = $root->appendChild($complemento);
+    
+    $nomina = $xml->createElement("nomina12:Nomina");
+    $nomina = $complemento->appendChild($nomina);
+    
+    cargaAtt($nomina, array(
+                "Version"=>"1.2",
+                "TipoNomina"=>"O",
+                "FechaPago"=>"2017-03-15",
+                "FechaInicialPago"=>"2017-03-01",
+                "FechaFinalPago"=>"2017-03-15",
+                "NumDiasPagados"=>"15",
+                "TotalPercepciones"=>"6012.3",
+                "TotalDeducciones"=>"3500.21"
+            )
+        );
+
+    
+    $NominaEmisor = $xml->createElement("nomina12:Emisor");
+    $NominaEmisor = $nomina->appendChild($NominaEmisor);
+    cargaAtt($NominaEmisor, array(
+            "RegistroPatronal"=>"C111119110-0"
+        )
+    );
+    
+    $EntidadSNCF = $xml->createElement("nomina12:EntidadSNCF");
+    $EntidadSNCF = $NominaEmisor->appendChild($EntidadSNCF);
+    cargaAtt($EntidadSNCF, array(
+                "OrigenRecurso"=>"IP"
+            )
+        );      
+    
+    
+    $NominaReceptor = $xml->createElement("nomina12:Receptor");
+    $NominaReceptor = $nomina->appendChild($NominaReceptor);
+    cargaAtt($NominaReceptor, array(
+                "Curp"=>"VAAI901027HNLRRS07",
+                "NumSeguridadSocial"=>"01131121161",
+                "FechaInicioRelLaboral"=>"2001-11-16",
+                "Antigüedad"=>"P799W",
+                "TipoContrato"=>"01",
+                "Sindicalizado"=>utf8_decode("Sí"),
+                "TipoJornada"=>"01",
+                "TipoRegimen"=>"02",
+                "NumEmpleado"=>"143712",
+                "Departamento"=>"Ejecutivo de Pruebas",
+                "Puesto"=>"CHOFER",
+                "RiesgoPuesto"=>"2",
+                "PeriodicidadPago"=>"04",
+                "SalarioBaseCotApor"=>"231.67",
+                "SalarioDiarioIntegrado"=>"428.46",
+                "ClaveEntFed"=>"MIC"
+            )
+        );
+    
+    
+    $percepciones = $xml->createElement("nomina12:Percepciones");
+    $percepciones = $nomina->appendChild($percepciones);
+    cargaAtt($percepciones, array(
+                "TotalSueldos"=>"6012.3",
+                "TotalGravado"=>"5212.63",
+                "TotalExento"=>"799.67"
+            )
+        );        
+    
+    
+    // Ciclo "for", recopilación de datos de percepciones. ===============
+    for ($i=0; $i<count($ArrayPercep_TipoPercepcion); $i++){
+       	
+        $percepcion = $xml->createElement("nomina12:Percepcion");
+        $percepcion = $percepciones->appendChild($percepcion);
+        cargaAtt($percepcion, array(
+                   "TipoPercepcion"=>$ArrayPercep_TipoPercepcion[$i],
+                   "Clave"=>$ArrayPercep_Clave[$i],
+                   "Concepto"=>$ArrayPercep_Concepto[$i],
+                   "ImporteGravado"=>$ArrayPercep_ImporteGravado[$i],
+                   "ImporteExento"=>$ArrayPercep_ImporteExento[$i]
+                )
+             );    
+    }
+    
+
+    if (count($ArrayDeduc_TipoDeduccion)>0){    
+        $deducciones = $xml->createElement("nomina12:Deducciones");
+        $deducciones = $nomina->appendChild($deducciones);
+        cargaAtt($deducciones, array(
+                    "TotalOtrasDeducciones"=>"2933.98",
+                    "TotalImpuestosRetenidos"=>"566.23"
+                )
+            );    
+
+        // Ciclo "for", recopilación de datos de deducciones. ===============
+        for ($i=0; $i<count($ArrayDeduc_TipoDeduccion); $i++){
+
+            $deduccion = $xml->createElement("nomina12:Deduccion");
+            $deduccion = $deducciones->appendChild($deduccion);
+            cargaAtt($deduccion, array(
+                       "TipoDeduccion"=>$ArrayDeduc_TipoDeduccion[$i],
+                       "Clave"=>$ArrayDeduc_Clave[$i],
+                       "Concepto"=>$ArrayDeduc_Concepto[$i],
+                       "Importe"=>$ArrayDeduc_Importe[$i]
+                    )
+                 );    
+        }
+    }    
+    
+    
+    #== 11.6 Termina de conformarse la "Cadena original" con doble ||
+    $cadena_original .= "|";   
+    
+        $file = fopen($SendaCFDI."CadenaOriginal_RecNom_".$NoFac.".txt", "w");
+        fwrite($file, $cadena_original . PHP_EOL);
+        fclose($file);
+        chmod($SendaCFDI."CadenaOriginal_RecNom_".$NoFac.".txt", 0777);      
+    
+    #=== Muestra la cadena original (opcional a mostrar) =======================
+    echo '<div style="font-size: 11pt; color: #000099; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+    echo 'CADENA ORIGINAL';
+    echo '</div>';
+    echo '<div style="font-size: 9pt; color: #000000; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+    echo $cadena_original;
+    echo '</div><br>';
+    
+    
+    # 11.7 PROCESO OPCIONAL, NO NECESARIO PARA TIMBRAR UN DOCUMENTO FISCAL #####
+    #== Proceso para agregar una Addenda con datos del sistema local (estos datos son ignorados por el PAC al momento de timbrar el documento XML). 
+    
+    // 11.17.1 Datos a integrar a la Addenda ===================================
+    $IdEmpresa        = "TX34JK83";
+    $UsuarioDeSistema = "ALEJANDRA OROSIO";
+    $Fecha            = date("d/m/Y");
+    $Hora             = date("H:i:s");
+    $TipDocOrigen     = "PEDIDO";
+    $FolioDocOrigen   = "A345";
+    $Observaciones    = "ESTE ES UN EJEMPLO DE TEXTO CORRESPONDIENTE A OBSERVACIONES CAPTURADAS POR EL USUARIO QUE SE INTEGRAN AL DOCUMENTO .XML DEL CFDI COMO UNA ADDENDA DEL SISTEMA LOCAL, NO ES REQUISITO PARA TIMBRAR UN CFDI VERSION 3.3";
+    
+    // 11.17.2 Integración del nodo "Addenda" al documento .XML ================
+    $Addenda = $xml->createElement("cfdi:Addenda");
+    $Addenda = $root->appendChild($Addenda);     
+    
+        $SisLoc = $xml->createElement("cfdi:SistemaLocal");
+        $SisLoc = $Addenda->appendChild($SisLoc);
+    
+        cargaAttSinIntACad($SisLoc, array(
+                "IdEmpresa"=>$IdEmpresa,
+                "UsuarioDeSistema"=>$UsuarioDeSistema,
+                "Fecha"=>$Fecha,
+                "Hora"=>$Hora,
+                "serie"=>$fact_serie,
+                "folio"=>$fact_folio,
+                "NoRec"=>$NoRecNom,
+                "TipoDocOrigen"=>$TipDocOrigen,
+                "FolioDocOrigen"=>$FolioDocOrigen,
+                "Observaciones"=>$Observaciones
+            )
+        );
+        
+    ## Fin de la integración de la Addenda. ####################################    
+    
+    
+    #== 11.8 Proceso para obtener el sello digital del archivo .pem.key ========
+    $keyid = openssl_get_privatekey(file_get_contents($SendaPEMS.$file_key));
+    openssl_sign($cadena_original, $crypttext, $keyid, OPENSSL_ALGO_SHA256);
+    openssl_free_key($keyid);
+    
+
+    #== 11.9 Se convierte la cadena digital a Base 64 ==========================
+    $sello = base64_encode($crypttext);    
+    
+    #=== Muestra el sello (opcional a mostrar) =================================
+    echo '<div style="font-size: 11pt; color: #000099; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+    echo 'SELLO';
+    echo '</div>';
+    echo '<div style="font-size: 9pt; color: #000000; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+    echo $sello;
+    echo '</div><br>';    
+    
+    #== 11.10 Proceso para extraer el certificado del sello digital ============
+    $file = $SendaPEMS.$file_cer;      // Ruta al archivo
+    $datos = file($file);
+    $certificado = ""; 
+    $carga=false;  
+    for ($i=0; $i<sizeof($datos); $i++){
+        if (strstr($datos[$i],"END CERTIFICATE")) $carga=false;
+        if ($carga) $certificado .= trim($datos[$i]);
+
+        if (strstr($datos[$i],"BEGIN CERTIFICATE")) $carga=true;
+    } 
+    
+    #=== Muestra el certificado del sello digital (opcional a mostrar) =========
+    echo '<div style="font-size: 11pt; color: #000099; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+    echo 'CERTIFICADO DEL SELLO DIGITAL';
+    echo '</div>';
+    echo '<div style="font-size: 9pt; color: #000000; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+    echo $certificado;
+    echo '</div><br>';    
+    
+    #== 11.12 Se continua con la integración de nodos ===========================   
+    $root->setAttribute("Sello",$sello);
+    $root->setAttribute("Certificado",$certificado);   # Certificado.
+    
+    
+    #== Fin de la integración de nodos =========================================
+    
+    
+    $NomArchCFDI = $SendaCFDI."PreCFDI-33_RecNom_".$NoFac.".xml";
+    
+    
+    #=== 11.12 Se guarda el archivo .XML antes de ser timbrado =======================
+    $cfdi = $xml->saveXML();
+    $xml->formatOutput = true;             
+    $xml->save($NomArchCFDI); // Guarda el archivo .XML (sin timbrar) en el directorio predeterminado.
+    unset($xml);
+    
+    #=== 11.13 Se dan permisos de escritura al archivo .xml. =========================
+    chmod($NomArchCFDI, 0777); 
+    
+    
+##### FIN DE LA CREACIÓN DEL ARCHIVO .XML ANTES DE SER TIMBRADO ####################################################   
+    
+    
+    
+    
+### 12. PROCESO DE TIMBRADO ########################################################
+    
+    #=== Se muestra el .XML antes de ser timbrado (opcional a mostrar)==========
+    echo '<div style="font-size: 11pt; color: #000099; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+    echo 'ARCHIVO .XML A TIMBRAR';
+    echo '</div>';
+    echo '<div style="font-size: 9pt; color: #000000; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+    echo htmlspecialchars($cfdi);
+    echo '</div><br>';    
+    
+    #== 12.1 Se crea una variable de tipo DOM y se le carga el CFDI =================================
+    $xml2 = new DOMDocument();
+    $xml2->loadXML($cfdi); 
+
+    
+    #== 12.2 Convirtiendo el contenido del CFDI a BASE 64 ======================
+    $xml_cfdi_base64 = base64_encode($cfdi);
+
+    
+    #== 12.3 Datos de acceso al servidor de pruebas ============================
+    $process  = curl_init('https://demo-facturacion.finkok.com/servicios/soap/stamp.wsdl');     
+    
+    #== 12.4 Datos de acceso al servidor de producción =========================
+    # $process = curl_init('https://facturacion.finkok.com/servicios/soap/stamp.wsdl');    
+    
+    
+#== 12.5 Creando el SOAP de envío ==============================================
+    
+$cfdixml = <<<XML
+<?xml version="1.0" encoding="UTF-8"?> 
+<SOAP-ENV:Envelope xmlns:ns0="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:ns1="http://facturacion.finkok.com/stamp"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <ns0:Body>
+        <ns1:stamp>
+            <ns1:xml>$xml_cfdi_base64</ns1:xml>
+            <ns1:username>$username</ns1:username>
+            <ns1:password>$password</ns1:password>
+        </ns1:stamp>
+    </ns0:Body>
+</SOAP-ENV:Envelope>
+XML;
+  
+    #== 12.6 Proceso para guardar los datos que se envían al servidor en un archivo .XML ========================
+    $NomArchSoap = $SendaCFDI."DatosEnvio_RecNom_".$NoFac.".xml";
+
+        #== 12.6.1 Si el archivo ya se encuentra se elimina ===========================
+        if (file_exists ($NomArchSoap)==true){
+            unlink($NomArchSoap);
+        }
+    
+        #== 12.6.2 Se crea el archivo .XML con el SOAP ================================
+//        $fp = fopen($NomArchSoap,"a");
+//        fwrite($fp, $cfdixml);
+//        fclose($fp);     
+//        chmod($NomArchSoap, 0777);
+    
+    
+    #=== 12.7 Muestra el contenido del SOAP que se envía al servidor del PAC (REQUEST) =========================
+    echo '<div style="font-size: 11pt; color: #000099; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+    echo 'CONTENIDO DEL SOAP QUE SE ENVIA AL SERVIDOR DEL PAC';
+    echo '</div>';
+    echo '<div style="font-size: 9pt; color: #000000; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+    echo htmlspecialchars($cfdixml);
+    echo '</div><br>';      
+
+    #== 12.8 Se envía el contenido del SOAP al servidor del PAC =====================
+    curl_setopt($process, CURLOPT_HTTPHEADER, array('Content-Type: text/xml',' charset=utf-8'));
+    curl_setopt($process, CURLOPT_POSTFIELDS, $cfdixml);  
+    curl_setopt($process, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($process, CURLOPT_POST, true);
+    curl_setopt($process, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($process, CURLOPT_SSL_VERIFYHOST, false);
+    $RespServ = curl_exec($process);
+
+    #== 12.9 Se muestra la respuesta del servidor del PAC (opcional a mostrar) ================
+    echo '<div style="font-size: 11pt; color: #000099; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+    echo 'RESPUESTA DEL SERVIDOR DEL PAC';
+    echo '</div>';
+    echo '<div style="font-size: 9pt; color: #000000; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+    echo htmlspecialchars($RespServ);
+    echo '</div><br>';              
+
+    curl_close($process);    
+    
+## FIN DEL PROCESO DE TIMBRADO #################################################
+    
+    
+    
+    
+## 13. PROCESOS POSTERIORES AL TIMBRADO ########################################
+    
+    #== 13.1 Se asigna la respuesta del servidor a una variable de tipo DOM ====
+    $VarXML = new DOMDocument();
+    $VarXML->loadXML($RespServ);
+
+    #== 13.2 Se graba la respuesta del servidor a un archivo .xml
+//    $VarXML->save($SendaCFDI."RespServ_RecNom_".$NoFac.".xml");
+//    chmod($SendaCFDI."RespServ_RecNom_".$NoFac.".xml", 0777);
+
+    echo "<hr size=2 color=blue >";
+
+    #== 13.3 Se asigna el contenido del tag "xml" a una variable ===============
+    $RespServ = $VarXML->getElementsByTagName('xml');
+
+
+    #== 13.4 Se obtiene el valor del nodo ======================================
+    foreach($RespServ as $Nodo){
+        $valor_del_nodo = $Nodo->nodeValue; 
+    }
+
+        
+        #== Si el nodo contiene datos se realizan los siguientes procesos ======
+        if($valor_del_nodo != ""){
+
+            // unlink($SendaCFDI."xlst_".$NoFac.".xml"); <-- Puede ser descomentado para eliminar el archivo .XML sin timbrar.
+
+            #== 13.5 Se muestra el .XML ya timbrado (CFDI V 3.2), opcional a mostrar =====
+            echo '<div style="font-size: 11pt; color: #000099; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+            echo 'ARCHIVO .XML (CFDI CON COMPLEMENTO DE NÓMINA) YA TIMBRADO';
+            echo '</div>';
+            echo '<div style="font-size: 9pt; color: #000000; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+            echo htmlspecialchars($Nodo->nodeValue);
+            echo '</div><br>';              
+
+            #=== 13.6 Guardando el CFDI en archivo .XML  ============================
+
+            $NomArchXML = "CFDI-33_RecNom_".$NoFac.".xml";
+            $NomArchPDF = "CFDI-33_RecNom_".$NoFac.".pdf";
+
+            $xmlt = new DOMDocument();
+            $xmlt->loadXML($valor_del_nodo);
+            $xmlt->save($SendaCFDI.$NomArchXML); 
+            chmod($SendaCFDI.$NomArchXML, 0777);
+            
+                #== 13.6.1 Convertir archivo .XML a UTF-8 (OPCIONAL).
+//                $file_name = $SendaCFDI.$NomArchXML;
+//                $f = file_get_contents($file_name);
+//                $f = iconv("WINDOWS-1252", "UTF-8", $f);
+//                file_put_contents($file_name, "\xEF\xBB\xBF".$f);
+                
+
+            #== 13.7 Procesos para extraer datos del Timbre Fiscal del CFDI =========
+            $docXML = new DOMDocument();
+            $docXML->load($SendaCFDI."CFDI-33_RecNom_".$NoFac.".xml");
+            
+            $params = $docXML->getElementsByTagName("Comprobante");
+            foreach ($params as $param) {
+                $VersionCFDI = $param->getAttribute("Version");
+            }      
+                        
+            $comprobante = $docXML->getElementsByTagName("TimbreFiscalDigital");
+
+            #== 13.8 Se obtienen contenidos de los atributos y se asignan a variables para ser mostrados =======
+            foreach($comprobante as $timFis){
+                    $version_timbre = $timFis->getAttribute('Version');
+                    $sello_SAT      = $timFis->getAttribute('SelloSAT');
+                    $cert_SAT       = $timFis->getAttribute('NoCertificadoSAT'); 
+                    $sello_CFD      = $timFis->getAttribute('SelloCFD'); 
+                    $tim_fecha      = $timFis->getAttribute('FechaTimbrado'); 
+                    $tim_uuid       = $timFis->getAttribute('UUID'); 
+
+                    echo 'Versión de CFDI: <span style="color: #088A29;">'.$VersionCFDI.'</span><br>';
+                    echo 'Versión de timbre: <span style="color: #088A29;">'.$version_timbre.'</span><br>';
+                    echo 'Sello del SAT: <span style="color: #088A29">'.$sello_SAT.'</span><br>';
+                    echo 'Certificado del SAT: <span style="color: #088A29">'.$cert_SAT.'</span><br>';
+                    echo 'Sello del CFDI: <span style="color: #088A29">'.$sello_CFD.'</span><br>';
+                    echo 'Fecha de timbrado: <span style="color: #088A29">'.$tim_fecha.'</span><br>';
+                    echo 'Folio fiscal: <span style="color: #0830D2">'.$tim_uuid.'</span><br>';
+            }
+            
+            #== 13.8.1 Se muestra el número de factura asignado por el sistema local (no asingado por el SAT).
+            echo 'No. de factura asignado por el sistema local: <span style="color: #B71616">'.$NoFac.'</span><br><br>';
+            
+            $params = $docXML->getElementsByTagName('Emisor');
+            foreach ($params as $param) {
+                $Emisor_RFC = $param->getAttribute('Rfc');
+            }  
+            
+            $params = $docXML->getElementsByTagName('Receptor');
+            foreach ($params as $param) {
+                $Receptor_RFC = $param->getAttribute('Rfc');
+            }              
+            
+            $params = $docXML->getElementsByTagName('Comprobante');
+            foreach ($params as $param) {
+                $total = $param->getAttribute('Total');
+            }        
+            
+            #== 13.9 Se crea el archivo .PNG con codigo bidimensional =================================
+            $filename = "archs_graf/Img_".$tim_uuid.".png";
+            $CadImpTot = ProcesImpTot($total);
+            $Cadena = "?re=".$Emisor_RFC."&rr=".$Receptor_RFC."&tt=".$CadImpTot."&id=".$tim_uuid;
+            QRcode::png($Cadena, $filename, 'H', 3, 2);    
+            chmod($filename, 0777); 
+            
+            echo '<div style="font-size: 11pt; color: #000099; ; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+            echo 'GRÁFICO "QR" RESULTANTE.';
+            echo '</div>';
+            echo '<img src="'.$filename.'" width="159" height="159" alt="'.$filename.'" style="margin-right: 20px;" />';      
+            
+            
+            #== 13.10 Se crea código HTML para mostrar opciones al usuario.
+            ?>
+            
+            <html>
+                <head>
+                    <title>TODO supply a title</title>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                </head>
+                <body>
+                    
+                    <div style="margin-top: 15px; margin-bottom: 300px;" >
+                        
+                    <input type="button" value="Imprimir Recibo de nómina" onclick="ImprimirFact()" />
+                    &nbsp;&nbsp;
+                    <input type="button" value="Descargar archivo .XML del CFDI"  onclick="DescargarFact()" />
+                    &nbsp;&nbsp;
+
+                    <script type="text/javascript">
+                        
+                        function ImprimirFact(){
+                            window.open("pdf_reciboNomina.php?NomArchXML=<?php echo $NomArchXML ?>&NomArchPDF=<?php echo $NomArchPDF ?>","_blank");
+                        }
+                        
+                        function DescargarFact(){
+                            window.open("descargar_xml.php?NomArchXML=<?php echo $NomArchXML ?>","_blank");
+                        }
+
+                    </script>
+                        
+                    </div>
+                    
+                </body>
+                
+            </html>
+            
+            <?php
+          
+        }else{
+            
+            #== 13.11 En caso de error de timbrado se muestran los detalles al usuario.
+            
+            $codigoError = $VarXML->getElementsByTagName('CodigoError');
+
+            foreach($codigoError as $NodoStatus){
+                $valorNod = $NodoStatus->nodeValue; 
+            }        
+            
+            echo '<div style="font-size: 11pt; color: #000099; font-family: Verdana, Arial, Helvetica, sans-serif;">';
+            echo 'CÓDIGO DE ERROR.';
+            echo '</div>';
+            echo '<div style="font-size: 14pt; color: #A70202; font-family: Verdana, Arial, Helvetica, sans-serif; margin-bottom: 100px;" >';
+            echo $valorNod;
+            echo '</div>';
+        }
+        
+##### FIN DE PROCEDIMIENTOS ####################################################   
+
+        
+    
+    
+### 14. FUNCIONES DEL MÓDULO #########################################################
+        
+    # 14.1 Función que integra los nodos al archivo .XML y forma la "Cadena original".
+    function cargaAtt(&$nodo, $attr){
+        global $xml, $cadena_original;
+        $quitar = array('sello'=>1,'noCertificado'=>1,'certificado'=>1);
+        foreach ($attr as $key => $val){
+            $val = preg_replace('/\s\s+/', ' ', $val);
+            $val = trim($val);
+            if (strlen($val)>0){
+                 $val = utf8_encode(str_replace("|","/",$val));
+                 $nodo->setAttribute($key,$val);
+                 if (!isset($quitar[$key])) 
+                   if (substr($key,0,3) != "xml" &&
+                       substr($key,0,4) != "xsi:")
+                    $cadena_original .= $val . "|";
+            }
+         }
+     }
+     
+     
+    # 14.2 Función que integra los nodos al archivo .XML sin integrar a la "Cadena original". 
+    function cargaAttSinIntACad(&$nodo, $attr){
+        global $xml;
+        $quitar = array('sello'=>1,'noCertificado'=>1,'certificado'=>1);
+        foreach ($attr as $key => $val){
+            $val = preg_replace('/\s\s+/', ' ', $val);
+            $val = trim($val);
+            if (strlen($val)>0){
+                 $val = utf8_encode(str_replace("|","/",$val));
+                 $nodo->setAttribute($key,$val);
+                 if (!isset($quitar[$key])) 
+                   if (substr($key,0,3) != "xml" &&
+                       substr($key,0,4) != "xsi:");
+            }
+         }
+     }     
+
+    
+    # 14.3 Funciónes que da formato al "Importe total" como lo requiere el SAT para ser integrado al código QR.
+     
+    function ProcesImpTot($ImpTot){
+        $ImpTot = number_format($ImpTot, 4); // <== Se agregó el 30 de abril de 2017.
+        $ArrayImpTot = explode(".", $ImpTot);
+        $NumEnt = $ArrayImpTot[0];
+        $NumDec = ProcesDecFac($ArrayImpTot[1]);
+        
+        return $NumEnt.".".$NumDec;
+    }
+    
+    function ProcesDecFac($Num){
+        $FolDec = "";
+        if ($Num < 10){$FolDec = "00000".$Num;}
+        if ($Num > 9 and $Num < 100){$FolDec = $Num."0000";}
+        if ($Num > 99 and $Num < 1000){$FolDec = $Num."000";}
+        if ($Num > 999 and $Num < 10000){$FolDec = $Num."00";}
+        if ($Num > 9999 and $Num < 100000){$FolDec = $Num."0";}
+        return $FolDec;
+    }        
+    
+
+   
+    
+    
+    

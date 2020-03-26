@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>{{heading}} activo</h2>
+        </div>
+        <div class="card-body">
+            <form novalidate name="form" ng-submit="submit()">                               
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="fecha_compra">Fecha de compra:</label>
+                    <div class=" col-md-10 input-group" moment-picker="form_activos.fecha_compra" format="YYYY-MM-DD" >
+                        <span class="input-group-addon">
+                            <i class="octicon octicon-calendar"></i>
+                        </span>
+                        <input class="form-control" placeholder="Selecciona la fecha" ng-model="form_activos.fecha_compra" ng-model-options="{updateOn: 'blur'}" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="monto_compra_sin_impuestos">Monto de compra sin impuestos:</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" ng-model="form_activos.monto_compra_sin_impuestos" id="monto_compra_sin_impuestos" placeholder="Monto de compra sin impuestos"  required/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="tipo">Tipo:</label>
+                    <div class="col-md-10">
+                        <select class="form-control" id="tipo" required ng-model="form_activos.tipo">   
+                            <option ng-repeat="tipo in tipos" ng-value="tipo.value">{{tipo.text}}</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="descripcion">Descripci&oacute;n:</label>
+                    <div class="col-md-10">
+                        <textarea class="form-control" ng-model="form_activos.descripcion" id="descripcion" placeholder="Descripci&oacute;n" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-md btn-primary pull-right"><i class="fa fa-save"></i> Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

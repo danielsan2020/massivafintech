@@ -1,0 +1,36 @@
+<div class="card card-main">
+    <div class="card-header">
+        <a ui-sref="main.categorias_preguntas_frecuentes_create" class="btn btn-primary float-right ml-2" title="Agregar"><i class="fa fa-plus"></i></a>
+        <a ui-sref="main.categorias_preguntas_frecuentes_inactive" class="btn btn-outline-secondary float-right" title="Inactivos">Categorías inactivas</a>
+        <h2> Categorias</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="categorias_preguntas_frecuentes.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Categor&iacute;a
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="categoria in categorias_preguntas_frecuentes" ng-mouseover="categoria.hover = true" ng-mouseleave="categoria.hover = false" ng-init="categoria.hover = false">
+                    <td>
+                        {{categoria.categoria}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="categoria.hover === true" >
+                            <a ui-sref="main.preguntas_frecuentes_by_categoria_list({categoria_id:categoria.id})" class="btn btn-sm btn-primary"><i class="fas fa-list"></i></a>
+                            <a ui-sref="main.categorias_preguntas_frecuentes_update({id:categoria.id})" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                            <button class="btn btn-sm btn-danger" ng-click="inactivate(categoria.id)"><i class="fa fa-trash"></i></button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="categorias_preguntas_frecuentes.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

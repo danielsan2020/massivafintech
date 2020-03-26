@@ -1,0 +1,45 @@
+<div class="card card-main">
+    <div class="card-header">
+        <button class="btn btn-primary float-right ml-2" title="Solicitar" ng-click="solicitar_cfdis()"><i class="fa fa-plus"></i></button>
+        <h2>Solicitudes de CFDIs</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="solicitudes.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Fecha solicitud
+                    </th>
+                    <th>
+                        Id de la solicitud
+                    </th>
+                    <th>
+                        Estatus
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="solicitud in solicitudes" ng-mouseover="solicitud.hover = true" ng-mouseleave="solicitud.hover = false" ng-init="solicitud.hover = false">
+                    <td>
+                        {{solicitud.created_at}}
+                    </td>
+                    <td>
+                        {{solicitud.solicitud_sat_id}}
+                    </td>
+                    <td>
+                        <span ng-if="solicitud.status == 1">solicitada</span>
+                        <span ng-if="solicitud.status == 2">descargada</span>
+                    </td>
+                    <td class="actions">
+                        <button ng-if="solicitud.status == 1" ng-click="descargar(solicitud.id)">descargar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="solicitudes.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

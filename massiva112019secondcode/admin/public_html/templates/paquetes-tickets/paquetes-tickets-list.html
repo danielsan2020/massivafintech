@@ -1,0 +1,42 @@
+<div class="card card-main">
+    <div class="card-header">
+        <a class="btn btn-outline-primary float-right ml-3" ui-sref="main.paquetes_tickets_create" title="Agregar"><i class="fa fa-plus"></i></a>
+        <a class="btn btn-outline-secondary float-right" ui-sref = "main.paquetes_tickets_list_inactive" title="Editar Paquetes_tickets inactivos">Paquetes de tickets inactivos</a>
+        <h2> Paquetes de tickets</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="paquetes_tickets.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Cantidad de facturas
+                    </th>
+                    <th>
+                        Precio
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="paquete_tickets in paquetes_tickets" ng-mouseover="paquete_tickets.hover = true" ng-mouseleave="paquete_tickets.hover = false" ng-init="paquete_tickets.hover = false">
+                    <td>
+                        {{paquete_tickets.cantidad}}
+                    </td>
+                    <td>
+                        {{paquete_tickets.precio}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="paquete_tickets.hover === true" class="float-right">
+                            <a ui-sref="main.paquetes_tickets_edit({id:paquete_tickets.id})" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                            <button class="btn btn-sm btn-danger" ng-click="inactivate(paquete_tickets.id)"><i class="fa fa-trash"></i></button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="paquetes_tickets.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

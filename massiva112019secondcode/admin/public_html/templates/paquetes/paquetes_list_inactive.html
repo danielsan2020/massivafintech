@@ -1,0 +1,60 @@
+<div class="card card-main">
+    <div class="card-header">
+        <a ui-sref = "main.paquetes_list" class="btn btn-outline-secondary float-right">Regresar</a>
+        <h2> Paquetes Inactivos</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="paquetes.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Precio
+                    </th>
+                    <th>
+                        Periodo en meses
+                    </th>
+                    <th>
+                        Tipo
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="paquete in paquetes" ng-mouseover="paquete.hover = true" ng-mouseleave="paquete.hover = false" ng-init="paquete.hover = false">
+
+                    <td>
+                        {{paquete.nombre}}
+                    </td>
+                    <td>
+                        {{paquete.precio}}
+                    </td>
+                    <td>
+                        {{paquete.periodo}}
+                    </td>
+                    <td>
+                        <span ng-if="paquete.tipo === '1'">
+                            Personas F&iacute;sicas
+                        </span>
+                        <span ng-if="paquete.tipo === '2'">
+                            Personas Morales
+                        </span>
+                        <span ng-if="paquete.tipo === '3'">
+                            Extras
+                        </span>
+                    </td>
+                    <td class="actions">
+                        <span ng-show="paquete.hover === true" class="float-right">
+                            <button class="btn btn-sm btn-success" ng-click="reactivate(paquete.id)">Activar</button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="paquetes.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

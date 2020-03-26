@@ -1,0 +1,49 @@
+<div class="card card-main">
+    <div class="card-header">
+        <a ui-sref="main.soporte_create_ticket" class="btn btn-primary float-right" title="Agregar"><i class="fa fa-plus"></i></a>
+        <label class="float-right">&nbsp;</label>
+        <h2> Lista de tickets</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="lista_tickets.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>N&uacute;mero de ticket</th>
+                    <th>Categor&iacute;a</th>
+                    <th>Descripci&oacute;n</th>
+                    <th>Estado</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="ticket in lista_tickets" ng-mouseover="ticket.hover = true" ng-mouseleave="ticket.hover = false" ng-init="ticket.hover = false">
+                    <td>
+                        {{ticket.numero_ticket}}
+                    </td>
+                    <td>
+                        {{ticket.categoria}}
+                    </td>
+                    <td>
+                        {{ticket.descripcion}}
+                    </td>
+                    <td>
+                        <span ng-if="ticket.status === '1'">
+                            Abierto
+                        </span>
+                    </td>
+                    <td>
+                        <span ng-if="ticket.status === '-1'">Cerrado</span>
+                    </td>
+                    <td class="actions">
+                        <span ng-show="ticket.hover === true" class="float-right">
+                            <a ui-sref="main.soporte_lista_comentarios({soporte_ticket_id:ticket.id})" class="btn btn-sm btn-primary"><i class="far fa-eye"></i></a>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="lista_tickets.length === 0">
+            <h4>No hay tickets registrados...</h4>
+        </div>
+    </div>
+</div>

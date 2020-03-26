@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>{{heading}} divisiones sat</h2>
+        </div>
+        <div class="card-body">
+            <form novalidate name="form" ng-submit="submit()">
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="clave">Clave:</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" ng-model="form_divisiones_sat.clave" id="clave" placeholder="Clave" maxlength="3" required/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="descripcion">Descripci&oacute;n:</label>
+                    <div class="col-md-10">
+                        <textarea class="form-control" ng-model="form_divisiones_sat.descripcion" id="descripcion" placeholder="Descripci&oacute;n" required></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="tipo">Tipo:</label>
+                    <div class="col-md-10">
+                        <select class="form-control" ng-model="form_divisiones_sat.tipo"  id="tipo" required>
+                            <option value=""></option>
+                            <option ng-repeat="tipo in tipos" ng-value="tipo.id">{{tipo.tipo}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="iva">IVA:</label>
+                    <div class="col-md-10  ">
+                        <div class="input-group">
+                            <input class="form-control" type="text" ng-model="form_divisiones_sat.iva_texto" id="iva" placeholder="IVA" pattern="[0-9]*" maxlength="2" required/>
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="iva_retenido">IVA Retenido:</label>
+                    <div class="col-md-10">
+                        <div class="input-group">
+                            <input class="form-control" type="text" ng-model="form_divisiones_sat.iva_retenido_texto" id="iva_retenido" placeholder="IVA retenido"  pattern="[0-9]*" maxlength="2" required/>
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="isr_retenido">ISR Retenido:</label>
+                    <div class="col-md-10">
+                        <div class="input-group">
+                            <input class="form-control" type="text" ng-model="form_divisiones_sat.isr_retenido_texto" id="isr_retenido" placeholder="ISR retenido"  pattern="[0-9]*" maxlength="2" required/>
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-md btn-primary float-right">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

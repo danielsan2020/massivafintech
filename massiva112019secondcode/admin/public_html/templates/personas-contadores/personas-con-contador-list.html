@@ -1,0 +1,71 @@
+<div class="card card-main">
+    <div class="card-header">
+        <h2> Cambiar contador a clientes. </h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="personas.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th rowspan="2">
+                        RFC
+                    </th>
+                    <th rowspan="2">
+                        Raz&oacute;n Social
+                    </th>
+                    <th rowspan="2">
+                        Fecha registro
+                    </th>
+                    <th colspan="3" class="text-center">
+                        Datos contador actual
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Apellido paterno
+                    </th>
+                    <th>
+                        Apellido materno
+                    </th> 
+                    <th></th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr ng-repeat="persona in personas" ng-mouseover="persona.hover = true" ng-mouseleave="persona.hover = false" ng-init="persona.hover = false">
+
+                    <td>
+                        {{persona.rfc}}
+                    </td>
+                    <td>
+                        {{persona.razon_social}}
+                    </td>
+                    <td>
+                        {{persona.fecha_registro}}
+                    </td>
+                    <td>
+                        {{persona.nombre}}
+                    </td>
+                    <td>
+                        {{persona.apellido_paterno}}
+                    </td>
+                    <td>
+                        {{persona.apellido_materno}}
+                    </td>
+                    <td>
+                        <span ng-show="persona.hover === true" class="float-right">
+                            <a class="btn btn-sm btn-primary" ui-sref="main.persona_contador_edit({persona_contador_id:persona.persona_contador_id, persona_id:persona.id})" >Editar</a>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="personas.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

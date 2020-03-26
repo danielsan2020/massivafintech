@@ -1,0 +1,24 @@
+<div class="card card-main">
+    <div class="card-header">
+        <h2>{{heading}} paquete de tickets</h2>
+    </div>
+    <div class="card-body">
+        <form novalidate name="form" ng-submit="submit()">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="cantidad">Cantidad de facturas:</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" ng-model="form_paquetes_tickets.cantidad" id="cantidad" placeholder="Cantidad de facturas" numbers-only required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="precio">Precio:</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" ng-model="form_paquetes_tickets.precio" id="precio" placeholder="Precio" numbers-only allowDecimals="true" required/>
+                </div>
+            </div>
+            <div class="form-group text-right">
+                <button type="submit" class="btn btn-md btn-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>

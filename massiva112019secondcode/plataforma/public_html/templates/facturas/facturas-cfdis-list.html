@@ -1,0 +1,51 @@
+<div class="card card-main">
+    <div class="card-header">
+        <h2>{{header}}</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="facturas.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        RFC {{emisor_o_receptor}}
+                    </th>
+                    <th>
+                        Raz&oacute;n social {{emisor_o_receptor}}
+                    </th>
+                    <th>
+                        Fecha de Emisi&oacute;n
+                    </th>
+                    <th>
+                        Total
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="factura in facturas" ng-mouseover="factura.hover = true" ng-mouseleave="factura.hover = false" ng-init="factura.hover = false">
+                    <td>
+                        {{factura.rfc}}
+                    </td>
+                    <td>
+                        {{factura.razon_social}}
+                    </td>
+                    <td>
+                        {{factura.fecha_emision}}
+                    </td>
+                    <td>
+                        {{factura.total | currency}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="factura.hover === true" class="float-right">
+                            <a ui-sref = "main.descarga_xml" class="btn btn-sm btn-primary"><i class="fas fa-file-download m-1"></i>Descargar XML</a>
+                            <a ui-sref = "main.descarga_pdf" class="btn btn-sm btn-info"><i class="fas fa-file-download m-1"></i>Descargar PDF</a>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="facturas.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

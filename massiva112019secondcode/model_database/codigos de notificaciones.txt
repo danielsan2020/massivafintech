@@ -1,0 +1,39 @@
+101 pago faltante
+102 plan a punto de caducar
+121 cfdis 0
+122 tickets 0
+151 cotizacion de contabilidad atrasada terminada
+
+201 autorizar declaracion mensual
+202 autorizar declaracion anual
+203 contabilidad atrasada terminada
+204 autorizar declaracion atrasada
+
+221 solicita actualizacion de pago
+
+251 ticket facturado
+252 factura generada
+
+
+301 declaracion mensual autorizada
+302 declaracion anual autorizada
+303 requiere contabilidad atrasada
+304 declaracion atrasada autorizada
+
+321 requiere actualizacion de pago
+
+351 requiere facturar un ticket
+352 requiere generar factura
+
+
+401 soporte contabilidad
+402 soporte tecnico
+
+
+501 requerimiento de documento(s)
+502 actualizacion de documentos
+503 requerimiento de estado de cuenta
+
+601 nuevo cliente para asignar
+602 nuevo cliente asignado
+603 nuevo contador asignado

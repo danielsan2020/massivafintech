@@ -1,0 +1,152 @@
+<style>
+    .drop-box {
+        background: #F8F8F8;
+        border: 5px dashed #DDD;
+        height: 150px;
+        width: 100%;
+        text-align: center;
+    }
+</style>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>{{heading}} cliente</h2>
+        </div>
+        <div class="card-body">
+            <form novalidate name="form" ng-submit="submit()">
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="nombre">Nombre: *</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" ng-model="form_personas_clientes.nombre" id="nombre" placeholder="Nombre"  required/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="razon_social">Raz&oacute;n social: *</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" ng-model="form_personas_clientes.razon_social" id="razon_social" placeholder="Raz&oacute;n social"  required/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="rfc">RFC: *</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" ng-model="form_personas_clientes.rfc" id="rfc" placeholder="RFC" ng-pattern="/^([a-zA-Z]{3,4})([0-9]{6})([a-zA-Z0-9]{3})$/" pattern-err-type="rfc"  required/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group row col-md-6">
+                        <label class="col-md-4 col-form-label" for="codigo_postal">C&oacute;digo postal: *</label>
+                        <div class="col-md-8">
+                            <input class="form-control" ng-blur='get_colonias_by_codigo_postal()' type="text" ng-model="form_personas_clientes.codigo_postal" id="codigo_postal" placeholder="C&oacute;digo postal" numbers-only/>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-6">
+                        <label class="col-md-3 col-form-label" for="colonia">Colonia: *</label>
+                        <div class="col-md-9">
+                            <ui-select theme="select2" name="" ng-model="colonia_selected" class="w-100" on-select="get_id_colonia(colonia_selected.id)" required>
+                                <ui-select-match placeholder="Selecciona una colonia" >
+                                    <strong>Colonia:</strong> {{$select.selected.colonia}} 
+                                    <strong>Alcaldia/municipio:</strong> {{$select.selected.alcaldia_municipio}} 
+                                    <strong>Estado:</strong> {{$select.selected.estado}} 
+                                </ui-select-match>
+                                <ui-select-choices repeat="colonia in colonias | filter: $select.search">
+                                    <strong>Colonia:</strong> {{colonia.colonia}} 
+                                    <strong>Alcaldia/Municipio:</strong>{{colonia.alcaldia_municipio}}
+                                    <strong>Estado:</strong>{{colonia.estado}}
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group row col-md-6">
+                        <label class="col-md-4 col-form-label" for="Calle">Calle: *</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" ng-model="form_personas_clientes.calle" id="direccion" placeholder="Calle"  required/>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-3">
+                        <label class="col-md-6 col-form-label" for="numero_interior">N&uacute;mero interior:</label>
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" ng-model="form_personas_clientes.numero_interior" id="numero_interior" placeholder="N&uacute;mero interior" />
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-3">
+                        <label class="col-md-6 col-form-label" for="numero_exterior">N&uacute;mero Exterior:</label>
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" ng-model="form_personas_clientes.numero_exterior" id="numero_exterior" placeholder="N&uacute;mero Exterior" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row ">
+                    <label class="col-md-2 col-form-label" for="email">Correo electr&oacute;nico:*</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="email" ng-model="form_personas_clientes.email" id="email" placeholder="Correo electr&oacute;nico" required/>
+                    </div>
+                </div>
+                <div class="form-group row" ng-if="create_or_update === 1">
+                    <label class="col-form-label col-md-2">Logotipo:</label>
+                    <div class="form-group col-md-10" ng-if="file_logotipo.subir_archivo">
+                        <button type="button" class="btn btn-outline-danger float-right" ng-if="editar_file_logotipo" title="Cancelar edici&oacute;n" ng-click="file_logotipo.subir_archivo = false"><i class="fa fa-times"></i></button>
+                        <div class="drop-box pointer"
+                             ng-class="{'mr-5': (files_guardados.file_edit)}"
+                             name="file_logotipo"
+                             ng-model="file_logotipo.file"
+                             ngf-drop="fileLogotipoUpload(file_logotipo.file)"
+                             ngf-select="fileLogotipoUpload(file_logotipo.file)"
+                             ngf-drop-available="dropAvailable"
+                             ngf-pattern="'image/*'" 
+                             ngf-accept="'image/*'" 
+                             ngf-max-size="50MB" 
+                             >
+                            <button type="button" class="btn btn-default"><i class="fa fa-upload"></i></button>
+                            <br/>
+                            <small>tama&ntilde;o m&aacute;ximo 50 MB</small>
+                        </div>
+                    </div>
+                    <div class="form-group col-10" ng-if="!file_logotipo.subir_archivo">
+                        <button type="button" class="btn btn-danger btn-sm float-right " title="Eliminar logotipo" ng-click="eliminarLogotipo()"><i class="fa fa-trash"></i></button>
+                        <button type="button" class="btn btn-info btn-sm float-right " title="Editar logotipo" ng-click="editarLogotipo()"><i class="fa fa-edit"></i></button>
+                        <p class="border p-1 text-success"> {{file_logotipo.file.name}}</p>
+                    </div>
+                </div>
+                <div class="form-group row" ng-if="create_or_update === 2">
+                    <label class="col-form-label col-md-2">Logotipo:</label>
+                    <div class="form-group col-md-10" ng-if="file_logotipo.subir_archivo">
+                        <button type="button" class="btn btn-outline-danger float-right" ng-if="editar_file_producto"   title="Cancelar edici&oacute;n" ng-click="file_logotipo.subir_archivo = false"><i class="fa fa-times"></i></button>
+                        <div class="drop-box pointer"
+                             ng-class="{'mr-5': (files_guardados.file_edit)}"
+                             name="file_logotipo"
+                             ng-model="file_logotipo.file"
+                             ngf-drop="fileLogotipoUpload(file_logotipo.file)"
+                             ngf-select="fileLogotipoUpload(file_logotipo.file)"
+                             ngf-drop-available="dropAvailable"
+                             ngf-pattern="'image/*'" 
+                             ngf-accept="'image/*'" 
+                             ngf-max-size="50MB" 
+                             >
+                            <button type="button" class="btn btn-default"><i class="fa fa-upload"></i></button>
+                            <br/>
+                            <small>tama&ntilde;o m&aacute;ximo 50 MB</small>
+                        </div>
+
+                    </div>
+                    <div class="form-group col-10" ng-if="!file_logotipo.subir_archivo && !tiene_foto">
+                        <button type="button" class="btn btn-danger btn-sm float-right " title="Eliminar logotipo" ng-click="eliminarLogotipo()"><i class="fa fa-trash"></i></button>
+                        <button type="button" class="btn btn-info btn-sm float-right " title="Editar logotipo" ng-click="editarLogotipo()"><i class="fa fa-edit"></i></button>
+                        <p class="border p-1 text-success"> {{file_logotipo.file.name}}</p>
+                    </div>
+                    <div class="form-group col-10" ng-if="tiene_foto && !file_logotipo.subir_archivo">
+                        <button type="button" class="btn btn-danger btn-sm float-right " title="Eliminar logotipo" ng-click="eliminarLogotipo()"><i class="fa fa-trash"></i></button>
+                        <button type="button" class="btn btn-info btn-sm float-right " title="Editar logotipo" ng-click="editarLogotipo()"><i class="fa fa-edit"></i></button>
+                        <img class="border p-1 text-success" ng-src="{{url}}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-md btn-primary float-right"><i class="fa fa-save"></i> Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

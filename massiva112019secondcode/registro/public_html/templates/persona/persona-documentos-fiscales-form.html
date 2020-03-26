@@ -1,0 +1,206 @@
+<div class="card card-main">
+    <div class="card-header">
+        <h2>Entrega de documentos fiscales</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-6 pb-3">
+                <div class="embed-responsive embed-responsive-1by1">
+                    <iframe class="embed-responsive-item" ng-src="{{url_contrato}}"></iframe>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Documentos</h4>
+                    </div>
+                    <div class="card-body">
+                        <form novalidate name="formDocumentosFiscales" ng-submit="submit()">
+                            <div class="form-group">
+                                <label class="col-form-label">Comprobante de domicilio:*</label>
+                                <div class="form-group" ng-if="files_guardados.comprobante_domicilio.guardado === -1">
+                                    <button type="button" class="btn btn-outline-danger float-right" title="Cancelar edici&oacute;n" ng-if="files_guardados.comprobante_domicilio.file_edit" ng-click="cancelEdit('5')"><i class="fa fa-times"></i></button>
+                                    <div class="drop-box pointer"
+                                         ng-class="{'mr-5': (files_guardados.comprobante_domicilio.file_edit)}"
+                                         name="file_comprobante_domicilio"
+                                         ng-model="file_comprobante_domicilio.file"
+                                         ngf-drop="fileComprobanteDomicilioUpload(file_comprobante_domicilio.file)"
+                                         ngf-select="fileComprobanteDomicilioUpload(file_comprobante_domicilio.file)"
+                                         ngf-drop-available="dropAvailable"
+                                         ngf-pattern="'image/*,application/pdf'" 
+                                         ngf-accept="'image/*,application/pdf'" 
+                                         ngf-max-size="50MB" 
+                                         required="true"
+                                         >
+                                        <button type="button" class="btn btn-default"><i class="fa fa-upload"></i></button>
+                                        <br/>
+                                        <small>tama&ntilde;o m&aacute;ximo 50 MB</small>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-if="files_guardados.comprobante_domicilio.guardado === 1 && !files_guardados.comprobante_domicilio.file_edit">
+                                    <button type="button" class="btn btn-info btn-sm float-right m-1" title="Editar comprobante" ng-click="editarFile('5')"><i class="fa fa-edit"></i></button>
+                                    <p class="border p-2">{{files_guardados.comprobante_domicilio.nombre}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">Identificación oficial frontal:*</label>
+                                <div class="form-group" ng-if="files_guardados.identificacion_oficial_delantera.guardado === -1">
+                                    <button type="button" class="btn btn-outline-danger float-right" title="Cancelar edici&oacute;n" ng-if="files_guardados.identificacion_oficial_delantera.file_edit" ng-click="cancelEdit('3')"><i class="fa fa-times"></i></button>
+                                    <div class="drop-box pointer"
+                                         ng-class="{'mr-5': (files_guardados.identificacion_oficial_delantera.file_edit)}"
+                                         name="file_identificacion_oficial_delantera"
+                                         ng-model="file_identificacion_oficial_delantera.file"
+                                         ngf-drop="fileIdentificacionOficialDelanteraUpload(file_identificacion_oficial_delantera.file)"
+                                         ngf-select="fileIdentificacionOficialDelanteraUpload(file_identificacion_oficial_delantera.file)"
+                                         ngf-drop-available="dropAvailable"
+                                         ngf-pattern="'image/*,application/pdf'" 
+                                         ngf-accept="'image/*,application/pdf'" 
+                                         ngf-max-size="50MB" 
+                                         required="true"
+                                         >
+                                        <button type="button" class="btn btn-default"><i class="fa fa-upload"></i></button>
+                                        <br/>
+                                        <small>tama&ntilde;o m&aacute;ximo 50 MB</small>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-if="files_guardados.identificacion_oficial_delantera.guardado === 1 && !files_guardados.identificacion_oficial_delantera.file_edit">
+                                    <button type="button" class="btn btn-info btn-sm float-right m-1" title="Editar identificacion oficial" ng-click="editarFile('3')"><i class="fa fa-edit"></i></button>
+                                    <p class="border p-2">{{files_guardados.identificacion_oficial_delantera.nombre}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">Identificación oficial trasera:*</label>
+                                <div class="form-group" ng-if="files_guardados.identificacion_oficial_trasera.guardado === -1">
+                                    <button type="button" class="btn btn-outline-danger float-right" title="Cancelar edici&oacute;n" ng-if="files_guardados.identificacion_oficial_trasera.file_edit" ng-click="cancelEdit('4')"><i class="fa fa-times"></i></button>
+                                    <div class="drop-box pointer"
+                                         ng-class="{'mr-5': (files_guardados.identificacion_oficial_trasera.file_edit)}"
+                                         name="file_identificacion_oficial_trasera"
+                                         ng-model="file_identificacion_oficial_trasera.file"
+                                         ngf-drop="fileIdentificacionOficialTraseraUpload(file_identificacion_oficial_trasera.file)"
+                                         ngf-select="fileIdentificacionOficialTraseraUpload(file_identificacion_oficial_trasera.file)"
+                                         ngf-drop-available="dropAvailable"
+                                         ngf-pattern="'image/*,application/pdf'" 
+                                         ngf-accept="'image/*,application/pdf'" 
+                                         ngf-max-size="50MB" 
+                                         required="true"
+                                         >
+                                        <button type="button" class="btn btn-default"><i class="fa fa-upload"></i></button>
+                                        <br/>
+                                        <small>tama&ntilde;o m&aacute;ximo 50 MB</small>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-if="files_guardados.identificacion_oficial_trasera.guardado === 1 && !files_guardados.identificacion_oficial_trasera.file_edit">
+                                    <button type="button" class="btn btn-info btn-sm float-right m-1" ng-click="editarFile('4')"><i class="fa fa-edit"></i></button>
+                                    <p class="border p-2">{{files_guardados.identificacion_oficial_trasera.nombre}}</p>
+                                </div>
+                            </div>
+                            <div ng-class="{'border-danger card p-2': tiene_efirma_vigente == -1}">
+                                <small class="text-danger" ng-if="tiene_efirma_vigente == -1">
+                                    Para continuar debes tener tu e.firma actualizada
+                                    <a href="https://citas.sat.gob.mx/citasat/agregarcita.aspx">haz tu cita aqu&iacute; para obtenerla.</a>
+                                </small>
+
+                                <div class="form-group">
+                                    <label class="col-form-label">e.firma KEY:*</label>
+                                    <div class="form-group" ng-if="files_guardados.key.guardado === -1">
+                                        <button type="button" class="btn btn-outline-danger float-right" title="Cancelar edici&oacute;n" ng-if="files_guardados.key.file_edit" ng-click="cancelEdit('1')"><i class="fa fa-times"></i></button>
+                                        <div class="drop-box pointer"
+                                             ng-class="{'mr-5': (files_guardados.key.file_edit)}"
+                                             name="file_key"
+                                             ng-model="file_key.file"
+                                             ngf-drop="fileKeyUpload(file_key.file)"
+                                             ngf-select="fileKeyUpload(file_key.file)"
+                                             ngf-drop-available="dropAvailable"
+                                             ngf-pattern="'.key'" 
+                                             ngf-accept="'.key'" 
+                                             ngf-max-size="50MB" 
+                                             required="true"
+                                             >
+                                            <button type="button" class="btn btn-default"><i class="fa fa-upload"></i></button>
+                                            <br/>
+                                            <small>tama&ntilde;o m&aacute;ximo 50 MB</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" ng-if="files_guardados.key.guardado === 1 && !files_guardados.key.file_edit">
+                                        <button type="button" class="btn btn-info btn-sm float-right m-1" ng-click="editarFile('1')"><i class="fa fa-edit"></i></button>
+                                        <p class="border p-2">{{files_guardados.key.nombre}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">e.firma CER:*</label>
+                                    <div class="form-group" ng-if="files_guardados.cer.guardado === -1">
+                                        <button type="button" class="btn btn-outline-danger float-right" title="Cancelar edici&oacute;n" ng-if="files_guardados.cer.file_edit" ng-click="cancelEdit('2')"><i class="fa fa-times"></i></button>
+                                        <div class="drop-box pointer"
+                                             ng-class="{'mr-5': (files_guardados.cer.file_edit)}"
+                                             name="file_cer"
+                                             ng-model="file_cer.file"
+                                             ngf-drop="fileCerUpload(file_cer.file)"
+                                             ngf-select="fileCerUpload(file_cer.file)"
+                                             ngf-drop-available="dropAvailable"
+                                             ngf-pattern="'.cer'" 
+                                             ngf-accept="'.cer'" 
+                                             ngf-max-size="50MB" 
+                                             required="true"
+                                             >
+                                            <button type="button" class="btn btn-default"><i class="fa fa-upload"></i></button>
+                                            <br/>
+                                            <small>tama&ntilde;o m&aacute;ximo 50 MB</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" ng-if="files_guardados.cer.guardado === 1 && !files_guardados.cer.file_edit">
+                                        <button type="button" class="btn btn-info btn-sm float-right m-1" ng-click="editarFile('2')"><i class="fa fa-edit"></i></button>
+                                        <p class="border p-2">{{files_guardados.cer.nombre}}</p>
+                                    </div>
+                                </div>
+
+                                <div ng-if="tiene_efirma">
+                                    <div ng-if="cambiar_efirma">
+                                        <div class="form-group">
+                                            <button class="btn btn-outline-danger float-right m-3" type="button" title="Cancelar edici&oacute;n" ng-click="cambiarEfirma()"><i class="fa fa-times"></i></button>
+                                            <div class="form-group">
+                                                <label class="col-form-label" for="efirma">Contrase&ntilde;a e.firma:*</label>
+                                                <div class="input-group">
+                                                    <input ng-attr-type="{{ show_password ? 'text' : 'password' }}" name="efirma" class="form-control" ng-model="form_documentos_fiscales.efirma" required/>
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text" ng-click="show_password = !show_password"><i ng-class="show_password ? 'fa fa-eye-slash' : 'fa fa-eye'"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="!cambiar_efirma">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="efirma">Contrase&ntilde;a e.firma:*</label>
+                                            <div  class="input-group">
+                                                <input name="efirma" class="form-control" placeholder="Contrase&ntilde;a guardada" readonly/>
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary btn-sm" type="button" ng-click="cambiarEfirma()"><i class="fa fa-edit"></i></button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-if="!tiene_efirma">
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="efirma">Contrase&ntilde;a e.firma:*</label>
+                                        <div class="input-group">
+                                            <input ng-attr-type="{{ show_password ? 'text' : 'password' }}" name="efirma" class="form-control" ng-model="form_documentos_fiscales.efirma" required/>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" ng-click="show_password = !show_password"><i ng-class="show_password ? 'fa fa-eye-slash' : 'fa fa-eye'"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-md btn-primary float-right">Siguiente</button>
+                                    <small>* Campos obligatorios</small>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

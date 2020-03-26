@@ -1,0 +1,23 @@
+<div class="card card-main">
+    <div class="card-header">
+        <h2>Asignar Contador a Clientes</h2>
+    </div>
+    <div class="card-body">
+        <form name="form" ng-submit="submit()" required>
+            <p><label><strong>RFC:</strong></label>  <label>{{form_persona.rfc}}</label></p>
+            <p><label><strong>Raz&oacute;n Social:</strong></label>  <label>{{form_persona.razon_social}}</label></p>
+            <div class="form-group">
+                <ui-select theme="select2" name="contadores" ng-model="contador_selected" on-select="get_id_contador(contador_selected.id)"style="min-width: 300px; width: 80%; cursor: pointer; " required>
+                    <ui-select-match placeholder="Selecciona un contador" ><strong>Contador:</strong> {{$select.selected.nombre}}  <strong>N&uacute;mero de personas asignadas actualmente:</strong>  {{$select.selected.contadores.numero_personas}} </ui-select-match>
+                    <ui-select-choices repeat="contador in contadores | filter: $select.search" >
+                        <strong>Contador:</strong> {{contador.nombre}}
+                        <strong>N&uacute;mero de personas asignadas actualmente:</strong> {{contador.contadores.numero_personas}}
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            <div class="form-group text-right">
+                <button type="submit" class="btn btn-md btn-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>

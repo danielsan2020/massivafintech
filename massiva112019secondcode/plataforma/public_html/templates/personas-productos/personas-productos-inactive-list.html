@@ -1,0 +1,66 @@
+<div class="card card-main">
+    <div class="card-header">
+        <a class="btn btn-outline-secondary float-right" ui-sref = "main.personas_productos_list" title="Productos activos">Productos activos</a>
+        <h2>Productos {{heading}} del cliente</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="personas_productos.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Clave producto
+                    </th>
+                    <th>
+                        Producto
+                    </th>
+                    <th>
+                        Cantidad
+                    </th>
+                    <th>
+                        Precio compra
+                    </th>
+                    <th>
+                        Precio venta
+                    </th>
+                    <th>
+                        Proveedor
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="producto in personas_productos" ng-mouseover="producto.hover = true" ng-mouseleave="producto.hover = false" ng-init="producto.hover = false">
+                    <td>
+                        {{producto.clave}}
+                    </td>
+                    <td>
+                        {{producto.producto}}
+                    </td>
+                    <td>
+                        {{producto.cantidad}}
+                    </td>
+                    <td>
+                        {{producto.precio_compra}}
+                    </td>
+                    <td>
+                        {{producto.precio_venta}}
+                    </td>
+                    <td>
+                        {{producto.proveedor}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="producto.hover === true" class="float-right">
+                            <span ng-show="producto.hover === true" class="float-right">
+                                <button class="btn btn-sm btn-success" ng-click="reactivate(producto.id)">Activar</button>
+                            </span>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="personas_productos.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

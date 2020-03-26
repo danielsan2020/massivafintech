@@ -1,0 +1,71 @@
+.menu-area{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    padding-top: 30px;
+    -webkit-transition: background-color 1000ms linear;
+    -moz-transition: background-color 1000ms linear;
+    -o-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
+}
+.menu-area.menu-black{
+    background-color: rgba(64, 64, 64, .95);
+    padding-top: 0;
+}
+.menu-area .logo-light{
+    display: inline-block;
+}
+.menu-area .logo-dark{
+    display: none;
+}
+.menu-area.menu-black .logo-light{
+    display: none;
+}
+.menu-area.menu-black .logo-dark{
+    display: inline-block;
+}
+.menu-area button{
+    background-color: transparent;
+    border: 0;
+}
+.menu-area img{
+    padding: 5px 15px;
+}
+.navbar{
+    padding: 0 15px;
+}
+.navbar-toggler {
+    color: #fff;
+    border: #fff 1px solid;
+    margin-top: 15px;
+}
+.navbar-default .navbar-nav > li > a, .menu-area ul li a, .menu-area .navbar-expand-lg .navbar-nav .nav-link,
+.navbar-default .navbar-nav > li > button, .menu-area ul li button{
+    color:#fff;
+    font-size:14px;
+    text-transform:capitalize;
+    padding:18px 15px;
+    display: block !important;
+}
+.menu-area .active a, .menu-area .active a:focus, .menu-area .active a:hover, .menu-area li a:hover, .menu-area li a:focus, .navbar-default .navbar-nav>.show>a, .navbar-default .navbar-nav>.show>a:focus, .navbar-default .navbar-nav>.show>a:hover,
+.menu-area .active button, .menu-area .active button:focus, .menu-area .active button:hover, .menu-area li button:hover, .menu-area li button:focus, .navbar-default .navbar-nav>.show>button, .navbar-default .navbar-nav>.show>button:focus, .navbar-default .navbar-nav>.show>button:hover{
+    outline: 0;
+    text-decoration: none;
+    color: #F1005E !important;
+}
+
+@media only screen and (max-width: 991px) {
+    .navbar-nav .show .dropdown-menu .dropdown-menu > li > a,
+    .navbar-nav .show .dropdown-menu .dropdown-menu > li > button
+    {
+        padding:16px 15px 16px 35px
+    }
+    .navbar-nav .show .dropdown-menu .dropdown-menu .dropdown-menu > li > a,
+    .navbar-nav .show .dropdown-menu .dropdown-menu .dropdown-menu > li > button
+    {
+        padding:16px 15px 16px 45px
+    }
+}

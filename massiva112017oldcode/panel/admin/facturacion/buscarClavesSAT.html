@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+    
+    <head>
+        <title>Buscar Claves SAT.</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="estilos.css?ver=2323332" type="text/css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="Browser.ico"/>
+    </head>
+
+    <body>
+        
+        <script src="jquery.js" type="text/javascript"></script>
+
+        <div style="width: 100%; height: 26px; background-color: #2F5C9F;">
+            <div style="width: 920px; margin-left: auto; margin-right: auto; color: #FFFFFF; padding-top: 5px; font-size: 11pt;">CFDI 3.3. - Búsqueda de claves del SAT.</div>
+        </div>
+        
+        <div id="ClaSAT_ContIni" style="width: 900px; height: auto; background-color: #FFFFFF; margin-left: auto; margin-right: auto; margin-top: 0px; padding: 10px;" class="EstiloTablaSombra">
+
+            <table border="0" cellpadding="6" cellspacing="0" style="width: 100%; margin-bottom: 10px;">
+                
+                <tr>
+                    
+                    <td align="left" valign="top" colspan="2">
+                        
+                        <table border="1" cellpadding="4" cellspacing="0" style="width: 800px;" class="EstiloBordeFino">
+                            <tr>
+                                <td align="left" valign="middle" style="width: 35%; height: 28px;">
+                                    Descripción:<input type="text" id="ClaSAT_CadBus" onchange="LimpiarCadenaObj(this)" onkeypress="ClaSAT_BusArtSerDetectTecl(event)" style="margin-left: 5px;" size="20" class="EstiloTextBox" />
+                                </td>
+                                <td align="left" valign="middle" style="width: 65%;">
+                                    Buscar claves de: 
+                                    <input type="radio" name="ClaSAT_OpcsBus" style="margin-left: 4px;" checked />Productos y servicios
+                                    <input type="radio" name="ClaSAT_OpcsBus" style="margin-left: 6px;" />Unidades de medida
+                                </td>
+                            </tr>
+                        </table>
+                        
+                    </td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td align="left" valign="top" style="width: 570px;">
+
+                        <div id="ClaSAT_Enca" style="width: 550px; height: auto; padding: 3px; border-bottom: 0px; padding-left: 4px; border-style: solid; border-width: 0px; border-color: #595959; margin-bottom: 2px;">
+
+                            <table border="1" cellpadding="2" cellspacing="0" style="width: 530px" class="EstiloBordeFino">
+
+                                <tr>
+                                    <td align="left" valign="middle" style="width: 84%" class="EstiloGrisTenue9">
+                                        Descripción
+                                    </td>
+
+                                    <td align="center" valign="middle" style="width: 16%" class="EstiloGrisTenue9">
+                                        Clave SAT
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+                        <div id="ClaSAT_Tabla" style="width: 550px; height: auto; padding: 3px; border-style: solid; border-width: 1px; border-color: #595959; overflow-y: auto;">
+
+                        </div>
+                        
+                    </td>
+                    
+                    <td align="left" valign="top" style="width: auto;">
+ 
+                        <div id="ClaSAT_Descrip" style="height: auto; width: 90%; font-size: 12pt; color: #5C5C5C; margin-top: 28px; margin-bottom: 4px;">
+                            
+                        </div>
+                        
+                        <div id="ClaSAT_Clave" style="height: auto; width: 90%; font-size: 16pt; color: #045FB4;">
+                            
+                        </div>
+                        
+                    </td>
+                    
+                </tr>                
+                
+            </table>
+            
+        </div>
+        
+        <script type="text/javascript">
+            
+            $.ajax({
+                url: "buscarClavesSAT.js",
+                dataType: 'script',
+                cache: false
+            });   
+            
+            document.getElementById("ClaSAT_ContIni").style.height = ($(window).height()-100) + "px";
+            document.getElementById("ClaSAT_Tabla").style.height = ($(window).height()-194) + "px";
+            
+            $(window).resize(function(){        
+                document.getElementById("ClaSAT_ContIni").style.height = ($(window).height()-100) + "px";
+                document.getElementById("ClaSAT_Tabla").style.height = ($(window).height()-194) + "px";
+            }); 
+            
+            document.getElementById("ClaSAT_CadBus").focus();
+
+        </script>        
+        
+    </body>
+    
+</html>

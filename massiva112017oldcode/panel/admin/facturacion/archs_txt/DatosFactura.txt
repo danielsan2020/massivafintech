@@ -1,0 +1,38 @@
+{
+"NoSerie":"A",
+"NoFolio":8295,
+"TipoCompr":"I",
+"NumCtaPago":"7591",
+"condsDePago":"CONTADO",
+"formaDePago":"01",
+"metodoDePago":"PUE",
+"TipoCambio":1,
+"LugarExpedicion":"45079",
+"moneda":"MXN",
+"emisor_RazSoc":"ENVACES Y EMPAQUES INTERNACIONALES",
+"emisor_RFC":"TCM970625MB1",
+"emisor_ClaRegFis":"601",
+"receptor_RFC":"AAD990814BP7",
+"receptor_RazSoc":"ASOCIACION DE AGRICULTORES",
+"Articulos":
+[
+{"ClaveProdServ":"23241610", "NoIdentificacion":"CORCOB", "Cantidad":"5", "ClaveUnidad":"H87", "Unidad":"PIEZA", "Descripcion":"CORTADOR DE TUBO DE COBRE", "ValorUnitario":"125.50", "Importe":"627.50", "Descuento":"0"},
+{"ClaveProdServ":"20142900", "NoIdentificacion":"TANQG-BUT", "Cantidad":"3", "ClaveUnidad":"H87", "Unidad":"PIEZA", "Descripcion":"TANQUE CON GAS BUTANO", "ValorUnitario":"35.80", "Importe":"107.40", "Descuento":"0"},
+{"ClaveProdServ":"31151600", "NoIdentificacion":"CADGALV", "Cantidad":"3.5", "ClaveUnidad":"LM", "Unidad":"METRO", "Descripcion":"CADENA GALVANIZADA", "ValorUnitario":"131.00", "Importe":"458.50", "Descuento":"0"},
+{"ClaveProdServ":"50202300", "NoIdentificacion":"AGUA-ENB", "Cantidad":"5", "ClaveUnidad":"K62", "Unidad":"LITRO", "Descripcion":"AGUA ENBOTELLADA", "ValorUnitario":"10.00", "Importe":"50.00", "Descuento":"0"}
+],
+"ImportesTrasladados":
+[
+{"Base":"627.50", "Impuesto":"002", "TipoFactor":"Tasa", "TasaOCuota":"0.160000", "Importe":100.40},
+{"Base":"107.40", "Impuesto":"002", "TipoFactor":"Tasa", "TasaOCuota":"0.160000", "Importe":17.18},
+{"Base":"458.50", "Impuesto":"002", "TipoFactor":"Tasa", "TasaOCuota":"0.160000", "Importe":73.36},
+{"Base":"50.00", "Impuesto":"002", "TipoFactor":"Exento", "TasaOCuota":"0.000000", "Importe":0}
+]
+}
+
+
+
+
+
+
+

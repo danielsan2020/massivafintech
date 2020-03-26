@@ -1,0 +1,83 @@
+<div class="card card-main">
+    <div class="card-header">
+        <h2>Adjuntar para pago</h2>
+    </div>
+    <div class="card-body">
+        <table>
+            <tr>
+                <th>RFC</th>
+                <td>{{declaracion.rfc}}</td>
+            </tr>
+            <tr>
+                <th>Mes</th>
+                <td>{{declaracion.mes_correspondiente}}</td>
+            </tr>
+            <tr>
+                <th>A&ntilde;o</th>
+                <td>{{declaracion.anio_correspondiente}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="card">
+    <div class="card-title">
+        <h2>Selecci&oacute;n de archivos</h2>
+    </div>
+    <div class="card-body">
+        <form ng-submit="subir_archivos()">
+            <div class="form-group row col-12">
+                <label class="col-form-label col-md-2">PDF:</label>
+                <div class="form-group col-md-10" ng-if="!file_pdf.seleccionado">
+                    <button type="button" class="btn btn-outline-danger float-right" ng-if="file_pdf.editando" title="Cancelar edici&oacute;n" ng-click="cancelar_edicion(file_pdf)"><i class="fa fa-times"></i></button>
+                    <div class="drop-box pointer"
+                         ng-class="{'mr-5': (files_guardados.file_edit)}"
+                         name="file_pdf"
+                         ng-model="file_pdf.file"
+                         ngf-drop="fileProductoUpload(file_pdf)"
+                         ngf-select="fileProductoUpload(file_pdf)"
+                         ngf-drop-available="dropAvailable"
+                         ngf-pattern="'.pdf'" 
+                         ngf-accept="'.pdf'" 
+                         ngf-max-size="50MB" 
+                         >
+                        <button type="button" class="btn btn-default"><i class="fa fa-upload"></i></button>
+                        <br/>
+                        <small>Adjunta un archivo</small>
+                    </div>
+                </div>
+                <div class="form-group col-10" ng-if="file_pdf.seleccionado">
+                    <button type="button" class="btn btn-danger btn-sm float-right " title="Quitar archivo" ng-click="quitar_archivo_seleccionado(file_pdf)"><i class="fa fa-trash"></i></button>
+                    <button type="button" class="btn btn-info btn-sm float-right " title="Editar Seleccion" ng-click="editar_archivo_seleccionado(file_pdf)"><i class="fa fa-edit"></i></button>
+                    <p class="border p-1 text-success"> {{file_pdf.file.name}}</p>
+                </div>
+            </div>
+            <div class="form-group row col-12">
+                <label class="col-form-label col-md-2">ZIP:</label>
+                <div class="form-group col-md-10" ng-if="!file_zip.seleccionado">
+                    <button type="button" class="btn btn-outline-danger float-right" ng-if="file_zip.editando" title="Cancelar edici&oacute;n" ng-click="cancelar_edicion(file_zip)"><i class="fa fa-times"></i></button>
+                    <div class="drop-box pointer"
+                         ng-class="{'mr-5': (files_guardados.file_edit)}"
+                         name="file_zip"
+                         ng-model="file_zip.file"
+                         ngf-drop="fileProductoUpload(file_zip)"
+                         ngf-select="fileProductoUpload(file_zip)"
+                         ngf-drop-available="dropAvailable"
+                         ngf-pattern="'.zip'" 
+                         ngf-accept="'.zip'" 
+                         ngf-max-size="50MB" 
+                         >
+                        <button type="button" class="btn btn-default"><i class="fa fa-upload"></i></button>
+                        <br/>
+                        <small>Adjunta un archivo</small>
+                    </div>
+                </div>
+                <div class="form-group col-10" ng-if="file_zip.seleccionado">
+                    <button type="button" class="btn btn-danger btn-sm float-right " title="Quitar archivo" ng-click="quitar_archivo_seleccionado(file_zip)"><i class="fa fa-trash"></i></button>
+                    <button type="button" class="btn btn-info btn-sm float-right " title="Editar seleccion" ng-click="editar_archivo_seleccionado(file_zip)"><i class="fa fa-edit"></i></button>
+                    <p class="border p-1 text-success"> {{file_zip.file.name}}</p>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-danger btn-md float-right">Enviar</button>
+        </form>
+    </div>
+</div>

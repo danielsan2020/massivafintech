@@ -1,0 +1,18 @@
+<div class="container">
+    <h2 class="text-center">Tu C&oacute;digo de pago</h2>
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" ng-src="{{url_pago_efectivo}}"></iframe>
+            </div>
+        </div>
+        <div class="col-12 text-center">
+            <button class="btn btn-danger" ng-click="showTiendasModal()">Ver todas las tiendas afiliadas</button>
+            <button class="btn btn-danger" ng-click="showMapaModal()">Buscar tiendas afiliadas</button>
+        </div>
+        <div class="col-12 text-center">
+            <button class="btn btn-link" ng-click="showTarjetaAmazonModal()">¿No tienes tarjeta de crédito o débito?</button>
+        </div>
+    </div>                
+    <button class="btn btn-md btn-primary float-right" type="button" ng-click="goToNextState()">Siguiente</button>
+</div>

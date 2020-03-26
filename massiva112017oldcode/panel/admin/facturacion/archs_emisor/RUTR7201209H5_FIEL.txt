@@ -1,0 +1,80 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            30:30:30:30:31:30:30:30:30:30:30:33:30:33:33:32:31:31:33:35
+    Signature Algorithm: sha1WithRSAEncryption
+        Issuer: CN=A.C. del Servicio de Administraci\xC3\xB3n Tributaria, O=Servicio de Administraci\xC3\xB3n Tributaria, OU=Administraci\xC3\xB3n de Seguridad de la Informaci\xC3\xB3n/emailAddress=acods@sat.gob.mx/street=Av. Hidalgo 77, Col. Guerrero/postalCode=06300, C=MX, ST=Distrito Federal, L=Cuauht\xC3\xA9moc/x500UniqueIdentifier=SAT970701NN3/unstructuredName=Responsable: Claudia Covarrubias Ochoa
+        Validity
+            Not Before: Mar 13 19:04:20 2014 GMT
+            Not After : Mar 13 19:05:00 2018 GMT
+        Subject: CN=RENE RUEDA TORRES/name=RENE RUEDA TORRES, O=RENE RUEDA TORRES, C=MX/emailAddress=reneruedatorres@hotmail.com/x500UniqueIdentifier=RUTR7201209H5/serialNumber=RUTR720120HDFDRN01
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (1024 bit)
+                Modulus:
+                    00:84:bc:9d:6b:71:0f:a4:7c:8c:84:e6:86:86:71:
+                    54:a5:ca:79:78:df:91:3a:1a:10:d5:88:cd:00:4c:
+                    f3:12:bc:6e:a0:18:bd:7f:ce:15:8d:ea:6e:c8:ef:
+                    96:42:ee:83:9e:e7:84:a6:d0:c4:24:bf:49:03:b2:
+                    22:a3:de:60:57:97:62:8e:8a:74:bf:5e:14:ea:9c:
+                    aa:c4:b2:e2:1c:39:f7:d2:fc:bd:b7:41:e6:e5:32:
+                    b6:dc:0b:f1:2b:9c:a6:96:64:6d:f0:50:e7:1e:6e:
+                    03:23:a9:1b:b1:fa:c9:b8:7f:3b:5b:66:f6:a9:64:
+                    97:1f:9d:df:c2:9a:9b:b8:cb
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: critical
+                CA:FALSE
+            X509v3 Key Usage: 
+                Digital Signature, Non Repudiation, Data Encipherment, Key Agreement
+            Netscape Cert Type: 
+                SSL Client, S/MIME
+            X509v3 Extended Key Usage: 
+                E-mail Protection, TLS Web Client Authentication
+            X509v3 Subject Alternative Name: 
+                email:reneruedatorres@hotmail.com
+    Signature Algorithm: sha1WithRSAEncryption
+         70:d5:73:01:97:96:55:f9:20:a4:83:d3:fb:42:8f:b8:78:4d:
+         3d:ed:b6:d2:f4:20:ce:86:1e:8d:59:26:53:d9:d3:6b:e5:0c:
+         f8:f0:a6:31:62:2d:a7:9e:5b:fe:44:96:50:98:d2:19:26:47:
+         4a:f1:f5:1f:af:70:27:2f:5e:aa:71:b4:71:d9:db:52:0f:6c:
+         96:af:c2:13:79:db:92:0a:01:10:03:e9:1a:73:c2:50:a7:4d:
+         35:4e:5c:26:db:49:c0:2f:4c:d5:34:59:b0:26:2e:36:cb:13:
+         23:51:ad:81:b3:15:76:5e:67:0b:f3:4f:3a:d2:73:29:a0:56:
+         3d:11:c2:1d:5f:88:94:97:de:58:a7:9b:a4:fb:53:cc:dc:e0:
+         17:5e:1e:9c:a9:59:72:51:e7:81:08:00:b2:39:c7:bb:15:38:
+         2b:a2:6b:3f:48:a0:a4:89:3c:b4:8a:0c:ca:4b:16:f5:2d:ce:
+         92:42:ca:0d:2d:5d:e1:6f:5f:d7:64:f1:d4:33:79:d7:3c:a5:
+         93:15:11:49:13:13:53:e4:2e:b9:a5:22:96:03:9b:6a:09:29:
+         71:08:ae:f1:6f:8c:5c:d9:a3:7e:cd:be:b6:cb:91:ee:4f:f7:
+         c0:48:8c:d2:ab:6d:fc:23:b7:1c:f4:65:8c:44:a5:9c:76:7d:
+         78:2c:66:67
+-----BEGIN CERTIFICATE-----
+MIIE0DCCA7igAwIBAgIUMDAwMDEwMDAwMDAzMDMzMjExMzUwDQYJKoZIhvcNAQEF
+BQAwggGKMTgwNgYDVQQDDC9BLkMuIGRlbCBTZXJ2aWNpbyBkZSBBZG1pbmlzdHJh
+Y2nDs24gVHJpYnV0YXJpYTEvMC0GA1UECgwmU2VydmljaW8gZGUgQWRtaW5pc3Ry
+YWNpw7NuIFRyaWJ1dGFyaWExODA2BgNVBAsML0FkbWluaXN0cmFjacOzbiBkZSBT
+ZWd1cmlkYWQgZGUgbGEgSW5mb3JtYWNpw7NuMR8wHQYJKoZIhvcNAQkBFhBhY29k
+c0BzYXQuZ29iLm14MSYwJAYDVQQJDB1Bdi4gSGlkYWxnbyA3NywgQ29sLiBHdWVy
+cmVybzEOMAwGA1UEEQwFMDYzMDAxCzAJBgNVBAYTAk1YMRkwFwYDVQQIDBBEaXN0
+cml0byBGZWRlcmFsMRQwEgYDVQQHDAtDdWF1aHTDqW1vYzEVMBMGA1UELRMMU0FU
+OTcwNzAxTk4zMTUwMwYJKoZIhvcNAQkCDCZSZXNwb25zYWJsZTogQ2xhdWRpYSBD
+b3ZhcnJ1YmlhcyBPY2hvYTAeFw0xNDAzMTMxOTA0MjBaFw0xODAzMTMxOTA1MDBa
+MIHCMRowGAYDVQQDExFSRU5FIFJVRURBIFRPUlJFUzEaMBgGA1UEKRMRUkVORSBS
+VUVEQSBUT1JSRVMxGjAYBgNVBAoTEVJFTkUgUlVFREEgVE9SUkVTMQswCQYDVQQG
+EwJNWDEqMCgGCSqGSIb3DQEJARYbcmVuZXJ1ZWRhdG9ycmVzQGhvdG1haWwuY29t
+MRYwFAYDVQQtEw1SVVRSNzIwMTIwOUg1MRswGQYDVQQFExJSVVRSNzIwMTIwSERG
+RFJOMDEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAIS8nWtxD6R8jITmhoZx
+VKXKeXjfkToaENWIzQBM8xK8bqAYvX/OFY3qbsjvlkLug57nhKbQxCS/SQOyIqPe
+YFeXYo6KdL9eFOqcqsSy4hw599L8vbdB5uUyttwL8SucppZkbfBQ5x5uAyOpG7H6
+ybh/O1tm9qlklx+d38Kam7jLAgMBAAGjdzB1MAwGA1UdEwEB/wQCMAAwCwYDVR0P
+BAQDAgPYMBEGCWCGSAGG+EIBAQQEAwIFoDAdBgNVHSUEFjAUBggrBgEFBQcDBAYI
+KwYBBQUHAwIwJgYDVR0RBB8wHYEbcmVuZXJ1ZWRhdG9ycmVzQGhvdG1haWwuY29t
+MA0GCSqGSIb3DQEBBQUAA4IBAQBw1XMBl5ZV+SCkg9P7Qo+4eE097bbS9CDOhh6N
+WSZT2dNr5Qz48KYxYi2nnlv+RJZQmNIZJkdK8fUfr3AnL16qcbRx2dtSD2yWr8IT
+eduSCgEQA+kac8JQp001Tlwm20nAL0zVNFmwJi42yxMjUa2BsxV2XmcL80860nMp
+oFY9EcIdX4iUl95Yp5uk+1PM3OAXXh6cqVlyUeeBCACyOce7FTgroms/SKCkiTy0
+igzKSxb1Lc6SQsoNLV3hb1/XZPHUM3nXPKWTFRFJExNT5C65pSKWA5tqCSlxCK7x
+b4xc2aN+zb62y5HuT/fASIzSq238I7cc9GWMRKWcdn14LGZn
+-----END CERTIFICATE-----

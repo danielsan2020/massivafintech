@@ -1,0 +1,16 @@
+<div class="card card-main" ng-if="pagado">
+    <div class="card-header">
+        <h2>¡Felicidades!</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="form-group row">
+                <h3>Tu plan {{paquete.nombre}} ha sido pagado por un plazo de {{paquete.periodo}} {{paquete.periodo>1?'meses':'mes'}}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-md btn-primary float-right" ng-click="goToNextState()">Siguiente</button>
+        <a class="btn btn-md btn-primary float-left" ui-sref="main.menu_registro.documentos_fiscales">Anterior</a >
+    </div>
+</div>

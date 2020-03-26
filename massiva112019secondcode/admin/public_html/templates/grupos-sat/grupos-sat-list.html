@@ -1,0 +1,42 @@
+<div class="card card-main">
+    <div class="card-header">
+        <a ui-sref="main.grupos_sat_create({division_id:division_sat.id})" class="btn btn-outline-success float-right ml-2" title="Agregar"><i class="fa fa-plus"></i></a>
+        <a ui-sref="main.grupos_sat_by_divisiones_sat_inactiva({division_sat_id:division_sat.id})" class="btn btn-outline-secondary float-right" title="Inactivos">Grupos inactivas</a>
+        <a class="btn btn-sm btn-secondary float-left mr-2 mt-2" ui-sref="main.divisiones_sat"><i class="fas fa-arrow-left"></i></a>
+        <h2>Grupos de Division: {{division_sat.clave}}</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="grupos_sat.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Clave grupo
+                    </th>
+                    <th>
+                        Descripcion
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="grupo_sat in grupos_sat" ng-mouseover="grupo.hover = true" ng-mouseleave="grupo.hover = false" ng-init="grupo.hover = false">
+                    <td>
+                        {{grupo_sat.clave}}
+                    </td>
+                    <td>
+                        {{grupo_sat.descripcion}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="grupo.hover === true" class="float-right">
+                            <a ui-sref="main.productos_sat_by_grupos_sat_list({grupo_sat_id:grupo_sat.id,division_sat_id:division_sat.id })" class="btn btn-sm btn-primary"><i class="fas fa-list"></i></a>
+                            <a ui-sref="main.grupos_sat_by_division_update({division_id:division_sat.id, id:grupo_sat.id})" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                            <button class="btn btn-sm btn-danger" ng-click="inactivate(grupo_sat.id)"><i class="fa fa-trash"></i></button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="grupos_sat.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

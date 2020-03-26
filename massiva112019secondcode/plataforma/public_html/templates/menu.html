@@ -1,0 +1,146 @@
+<nav class="navbar navbar-expand-md fixed-top flex-fill">
+    <div class="navbar-header pl-2 pr-2 ml-3 text-center">
+        <a class="navbar-brand m-0 w-100" href="#">
+            <img alt="logo" src="images/logo-dark.png" width="150px">
+        </a>
+    </div>
+    <div class="sidebar-toggler ml-auto mr-3">
+        <a class="btn nav-link"> <i class="fa fa-bars"></i></a>
+    </div>
+    <ul class="navbar-nav flex-fill mt-1 align-items-center left-nav">
+        <li class="nav-item flex-fill">
+            <input class="form-control navbar-search" placeholder="Search . . ." type="text">
+        </li>
+    </ul>
+    <div class="collapse navbar-collapse right-nav" id="collapseBasic" aria-expanded="false" aria-hidden="true">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="btn nav-link"><i class="far fa-bell"></i> <span class="link-text">Alertas</span><span class="nav-alert notifications"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="btn nav-link"><i class="far fa-envelope"></i> <span class="link-text">Mensajes</span><span class="nav-alert messages"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="btn nav-link"  ng-click="logout()"><i class="fas fa-sign-out-alt"></i> <span class="link-text">Salir</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="main">
+    <aside class="sidebar shadow-sm">
+        <div class="sidebar-profile d-flex flex-column justify-content-center pt-5 pb-3 text-center">
+            <div class="picture-wrapper mb-4">
+                <div class="user-picture m-auto" ng-if="usuario.foto_perfil"><img alt="" class="img-fluid" src="./assets/img/user.jpg"></div>
+                <i class="fas fa-user-circle fa-5x" ng-if="!usuario.foto_perfil"></i>
+            </div>
+            <div class="profile-details pb-4">
+                <p class="mb-0 text-uppercase name">Nombre</p>
+                <small class="text-uppercase role">Perfil</small>
+            </div>
+        </div>
+        <nav class="sidebar-menu">
+            <ul>
+                <!--                    <li>
+                                        <a href="index.php?secc=portada" class="active"><i class="fa fa-home"></i> <span class="nav-label">Inicio</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="index.php?secc=misclientes"><i class="fa fa-users"></i> <span class="nav-label">Mis clientes</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="index.php?secc=misproveedores"><i class="fa fa-truck"></i> <span class="nav-label"> Mis proveedores | Gastos</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-dot-circle-o"></i> <span class="nav-label"> Mi contabilidad</span> <span class="fa fa-arrow"></span></a>
+                                        <ul>
+                                            <li>
+                                                <a href="index.php?secc=ticketusu"><i class="fa fa-align-center"></i> Facturar tickets</a>
+                                            </li>
+                            
+                                            <li>
+                                                <a href="index.php?secc=moviConta"><i class="fa fa-list"></i>Movimientos</a>
+                                            </li>
+                                            <li>
+                                                <a href="index.php?secc=respaldo"><i class="fa fa-hdd-o"></i>Mi respaldo</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-building-o"></i> <span class="nav-label">Mi Empresa</span> <span class="fa fa-arrow"></span></a>
+                                        <ul>
+                                            <li>
+                                                <a href="index.php?secc=areasTrabajo"><i class="fa fa-briefcase"></i> Activos</a>
+                                            </li>
+                                            <li>
+                                                <a href="index.php?secc=inventario"><i class="fa fa-cube"></i> Servicios | Productos</a>
+                                            </li>
+                                            <li>
+                                                <a href="index.php?secc=cuentaBancarias"><i class="fa fa-line-chart"></i> Banca</a></li>
+                                            <li>
+                                                <a href="index.php?secc=seguros"><i class="fa fa-wpforms"></i> Seguros</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="index.php?secc=archivos"><i class="fa fa-folder-open"></i> <span class="nav-label">Documentación</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-cogs"></i> <span class="nav-label">Actualizaciones ante SAT</span> <span class="fa fa-arrow"></span></a>
+                                        <ul>
+                                            <li>
+                                                <a href="index.php?secc=obligacionesFiscales_inicio"><i class="fa fa-spinner"></i> Cambio de actividades</a>
+                                            </li>
+                                            <li>
+                                                <a href="index.php?secc=actualizacionefirma"><i class="fa fa-refresh"></i> e.firma </a></li>
+                                            <li>
+                                                <a href="index.php?secc=suspencionActividades"><i class="fa fa-pause-circle-o"></i> Suspensión de actividades</a>
+                                            </li>
+                                            <li>
+                                                <a href="index.php?secc=cambioDomicilio"><i class="fa fa-map-pin"></i> Cambio de domicilio </a>
+                                            </li>
+                                            <li>
+                                                <a href="index.php?secc=constanciaFiscal"><i class="fa fa-folder"></i> Constancia </a>
+                                            </li>
+                                            <li>
+                                                <a href="index.php?secc=defuncion"><i class="fa fa-minus-square"></i> Defunción </a>
+                                            </li>
+                
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="index.php?secc=sopte"><i class="fa fa-comment"></i> <span class="nav-label">Soporte</span></a>
+                                    </li>-->
+                <li ng-repeat="menu_element in menu_elements" ng-class="{'submenu-open': menu_element.show_subelements}" ui-sref-active="current">
+                    <a ui-sref="{{menu_element.state}}" ng-if="!menu_element.submenu_elements">
+                        <i class="{{menu_element.icon}}"></i> {{menu_element.text}}
+                    </a>
+                    <span ng-if="menu_element.submenu_elements" class="d-block pointer" ng-click="menu_element.show_subelements = !menu_element.show_subelements">
+                        <i class="{{menu_element.icon}}"></i> {{menu_element.text}}
+                    </span>
+                    <ul ng-if="menu_element.submenu_elements" ng-show="menu_element.show_subelements">
+                        <li ng-repeat="submenu_element in menu_element.submenu_elements">
+                            <a ui-sref="{{submenu_element.state}}" ui-sref-active="current">
+                                <i class="{{submenu_element.icon}}"></i> {{submenu_element.text}}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <div class="pages container-fluid pt-4 pb-4 pl-4 pr-4">
+        <div ui-view style="min-height:calc(100vh - 200px);">
+        </div>
+        <hr>
+        <div class="container-fluid mb-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <strong>Copyright</strong> Todos los derechos reservados massiva.mx © 2019
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

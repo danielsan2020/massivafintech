@@ -1,0 +1,37 @@
+<div class="card card-main">
+    <div class="card-header">
+        <h2> Notificaciones</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="notificaciones.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Notificación
+                    </th>
+                    <th>
+                        Fecha
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="notificacion in notificaciones" ng-class="(notificacion.status === '1') ? 'table-warning' : ''">
+                    <td ng-click="view_notification(notificacion)" class="pointer">
+                        {{notificacion.texto}}
+                    </td>
+                    <td>
+                        <small>{{notificacion.created_at}}</small>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-danger" ng-click="inactivate(notificacion.id)"><i class="fa fa-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="notificaciones.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

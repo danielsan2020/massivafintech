@@ -1,0 +1,56 @@
+<div class="card card-main">
+    <div class="card-header">
+        <a class="btn btn-outline-primary float-right ml-3" ui-sref="main.personas_clientes_create" title="Agregar"><i class="fa fa-plus"></i></a>
+        <a class="btn btn-outline-secondary float-right" ui-sref = "main.personas_clientes_list_inactive" title="Editar Clientes inactivos">Clientes inactivos</a>
+        <h2> Clientes</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="personas_clientes.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Raz&oacute;n social
+                    </th>
+                    <th>
+                        RFC
+                    </th>
+                    <th>
+                        Correo electr&oacute;nico
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cliente in personas_clientes" ng-mouseover="cliente.hover = true" ng-mouseleave="cliente.hover = false" ng-init="cliente.hover = false">
+                    <td>
+                        <img ng-src="{{cliente.url}}" width="50" height="50">
+                    </td>
+                    <td>
+                        {{cliente.nombre}}
+                    </td>
+                    <td>
+                        {{cliente.razon_social}}
+                    </td>
+                    <td>
+                        {{cliente.rfc}}
+                    </td>
+                    <td>
+                        {{cliente.email}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="cliente.hover === true" class="float-right">
+                            <a ui-sref="main.personas_clientes_edit({id:cliente.id})" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                            <button class="btn btn-sm btn-danger" ng-click="inactivate(cliente.id)"><i class="fa fa-trash"></i></button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="personas_clientes.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

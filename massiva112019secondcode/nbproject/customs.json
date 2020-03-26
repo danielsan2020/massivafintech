@@ -1,0 +1,11 @@
+{
+    "elements": {},
+    "attributes": {
+        "ng-repeat": {
+            "context": "li"
+        },
+        "ui-sref": {
+            "context": "button"
+        }
+    }
+}

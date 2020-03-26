@@ -1,0 +1,62 @@
+<div class="card card-main">
+    <div class="card-header">
+        <a class="btn btn-outline-secondary float-right" ui-sref = "main.divisiones_sat" title="Lista de divisiones sat activos">Divisiones Sat activos</a>
+        <h2> Divisiones Sat inactivas</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="divisiones_sat.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Clave
+                    </th>
+                    <th>
+                        Tipo
+                    </th>
+                    <th>
+                        Descripcion
+                    </th>
+                    <th>
+                        IVA
+                    </th>
+                    <th>
+                        IVA Retenido
+                    </th>
+                    <th>
+                        ISR Retenido
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="division_sat in divisiones_sat" ng-mouseover="regimen_fiscal.hover = true" ng-mouseleave="regimen_fiscal.hover = false" ng-init="regimen_fiscal.hover = false">
+                    <td>
+                        {{division_sat.clave}}
+                    </td>
+                    <td>
+                        {{division_sat.tipo_texto}}
+                    </td>
+                    <td>
+                        {{division_sat.descripcion}}
+                    </td>
+                    <td>
+                        {{division_sat.iva_texto}}
+                    </td>
+                    <td>
+                        {{division_sat.iva_retenido_texto}}
+                    </td>
+                    <td>
+                        {{division_sat.isr_retenido_texto}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="regimen_fiscal.hover === true" class="float-right">
+                            <button class="btn btn-sm btn-danger" ng-click="reactivate(division_sat.id)"><i class="fa fa-trash"></i></button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="divisiones_sat.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

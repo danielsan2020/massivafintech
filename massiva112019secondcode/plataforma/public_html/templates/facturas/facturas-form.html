@@ -1,0 +1,238 @@
+<div class="container">
+    <div class="card card-main">
+        <div class="card-header">
+            <h2>{{heading}}</h2>
+        </div>
+        <div class="card-body">
+            <form novalidate id="create_factura_form" name="create_factura_form" ng-submit="submit()"></form>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="rfc">R.F.C.:*</label>
+                <div class="col-md-10">
+                    <input class="form-control" form="create_factura_form" type="text" ng-model="rfc" id="rfc" placeholder="RFC"  pattern-err-type="rfc"  required ng-change="searchCliente()" minlength="13" maxlength="13"/>
+                    <!--<input class="form-control" form="create_factura_form" type="text" ng-model="form_factura.rfc" id="rfc" placeholder="RFC" ng-pattern="/^([a-zA-Z]{3,4})([0-9]{6})([a-zA-Z0-9]{3})$/" pattern-err-type="rfc"  required ng-change="searchCliente()"/>-->
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label">Raz&oacute;n social:*</label>
+                <div class="col-md-10">
+                    {{razon_social}}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="tipo_factura">Tipo de factura:*</label>
+                <div class="col-md-10">
+                    <select class="form-control" form="create_factura_form" ng-model="form_factura.tipo_factura" id="tipo_factura" required>
+                        <option ng-repeat="tipo in tipos_factura" ng-value="tipo.id">{{tipo.text}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="uso_factura">Uso de la factura:*</label>
+                <div class="col-md-10">
+                    <select class="form-control" form="create_factura_form" ng-model="form_factura.uso_factura" id="uso_factura" required>
+                        <option ng-repeat="uso_factura in usos_factura" ng-value="uso_factura.id">{{uso_factura.text}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="forma_pago">Forma de pago:*</label>
+                <div class="col-md-10">
+                    <select class="form-control" form="create_factura_form" ng-model="form_factura.forma_pago" id="forma_pago" required>
+                        <option ng-repeat="forma_pago in formas_pago" ng-value="forma_pago.id">{{forma_pago.text}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="metodo_pago">M&eacute;todo de pago:*</label>
+                <div class="col-md-10">
+                    <select class="form-control" form="create_factura_form" ng-model="form_factura.metodo_pago" id="metodo_pago" required>
+                        <option ng-repeat="metodo_pago in metodos_pago" ng-value="metodo_pago.id">{{metodo_pago.text}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="moneda">Moneda:*</label>
+                <div class="col-md-10">
+                    <select class="form-control" form="create_factura_form" ng-model="form_factura.moneda" id="moneda" required>
+                        <option ng-repeat="moneda in monedas" ng-value="moneda.id">{{moneda.text}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group row col-md-4">
+                    <label class="col-md-4 col-form-label" for="tipo_cambio">Tipo de cambio:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" form="create_factura_form" type="text" ng-model="form_factura.tipo_cambio" id="tipo_cambio" placeholder="Tipo de cambio"/>
+                    </div>
+                </div>
+                <div class="form-group row col-md-4">
+                    <label class="col-md-4 col-form-label" for="serie">Serie:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" form="create_factura_form" type="text" ng-model="form_factura.serie" id="serie" placeholder="Serie"/>
+                    </div>
+                </div>
+                <div class="form-group row col-md-4">
+                    <label class="col-md-4 col-form-label" for="folio">Folio:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" form="create_factura_form" type="text" ng-model="form_factura.folio" id="folio" placeholder="Folio"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="condiciones_pago">Condiciones de pago:</label>
+                <div class="col-md-10">
+                    <textarea class="form-control" form="create_factura_form" ng-model="form_factura.condiciones_pago" id="condiciones_pago">
+                            
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-12 card">
+                    <div class="card-header">
+                        <button class="btn btn-sm btn-success float-right" type="button" ng-click="show_forms.show_buscando_producto = true;" title="Agregar Productos"><i class="fa fa-plus"></i></button>
+                        <h4>Agregar Productos</h4>
+                    </div>
+                    <div class="card-body" ng-show="show_forms.show_buscando_producto">
+                        <form class="form" novalidate ng-submit="searchProducto()" name="search_producto_form">
+                            <div class="form-group row">
+                                <label class="col-md-2 col-form-label" for="clave_producto_search">Clave:*</label>
+                                <div class="col-md-10">
+                                    <div class="input-group mb-3">
+                                        <input class="form-control" type="text" ng-model="form_search_producto.clave_producto_search" id="clave_producto_search" placeholder="Clave Producto" required/>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="submit" title="Buscar"><i class="fas fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <form class="form" novalidate ng-submit="addProducto()" name="addproducto" ng-if="show_forms.show_add_producto">
+                            <div class="form-group row">
+                                <label class="col-md-2 col-form-label">Clave:</label>
+                                <div class="col-md-10">
+                                    {{form_add_update_producto.clave_producto}}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-2 col-form-label">Descripcion:</label>
+                                <div class="col-md-10">
+                                    {{form_add_update_producto.comentario}}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-2 col-form-label" for="cantidad">Cantidad:*</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" type="number" min="1" ng-model="form_add_update_producto.cantidad" id="cantidad" placeholder="Cantidad" required/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-2 col-form-label" for="precio">Precio:*</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" type="text" ng-model="form_add_update_producto.precio" id="precio" placeholder="Precio" required/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-md btn-primary float-right"><i class="fa fa-save"></i> Agregar Producto</button>
+                            </div>
+                        </form>
+                        <form class="form" novalidate ng-submit="updateProducto()" name="updateproducto" ng-if="show_forms.show_update_producto">
+                            <div class="form-group row">
+                                <label class="col-md-2 col-form-label">Clave:</label>
+                                <div class="col-md-10">
+                                    {{form_add_update_producto.clave_producto}}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-2 col-form-label">Descripcion:</label>
+                                <div class="col-md-10">
+                                    {{form_add_update_producto.comentario}}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-2 col-form-label" for="cantidad">Cantidad:*</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" type="number" min="1" ng-model="form_add_update_producto.cantidad" id="cantidad" placeholder="Cantidad" required/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-2 col-form-label" for="precio">Precio:*</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" type="text" ng-model="form_add_update_producto.precio" id="precio" placeholder="Precio" required/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-md btn-primary float-right"><i class="fa fa-save"></i> Editar Producto</button>
+                            </div>
+                        </form>
+                        <table class="table table-striped" ng-if="lista_productos_agregados.length > 0">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Clave
+                                    </th>
+                                    <th>
+                                        descripci&oacute;n
+                                    </th>
+                                    <th>
+                                        cantidad
+                                    </th>
+                                    <th>
+                                        precio
+                                    </th>
+                                    <th>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="(key,producto_agregado) in lista_productos_agregados" ng-mouseover="producto_agregado.hover = true" ng-mouseleave="producto_agregado.hover = false" ng-init="producto_agregado.hover = false">
+                                    <td>
+                                        {{producto_agregado.clave_producto}}
+                                    </td>
+                                    <td>
+                                        {{producto_agregado.comentario}}
+                                    </td>
+                                    <td>
+                                        {{producto_agregado.cantidad}}
+                                    </td>
+                                    <td>
+                                        {{producto_agregado.precio}}
+                                    </td>
+                                    <td class="actions">
+                                        <span ng-show="producto_agregado.hover === true" class="float-right">
+                                            <button class="btn btn-sm btn-primary" type="button" ng-click="show_update_producto(key)" title="Editar Producto"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"  type="button" ng-click="eliminarProductoLista(key)"><i class="fa fa-trash"></i></button>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">I.V.A.</td>
+                                    <td>{{totales.iva_trasladado}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">I.V.A. retenido</td>
+                                    <td>{{totales.total_iva_retenido}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">ISR retenido</td>
+                                    <td>{{totales.total_isr_retenido}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Subtotal</td>
+                                    <td>{{totales.subtotal}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Total</td>
+                                    <td>{{totales.total}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" form="create_factura_form" class="btn btn-md btn-primary float-right" ng-disabled="lista_productos_agregados.length === 0"><i class="fa fa-save"></i> Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>

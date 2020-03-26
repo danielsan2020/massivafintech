@@ -1,0 +1,29 @@
+<h2>Lista de personas</h2>
+<ul class="list-group">
+    <li class="list-group-item list-group-item-action" ng-repeat="persona in personas" ng-init="persona.show_files = false;">
+        <span>{{persona.razon_social}}</span>
+        <button class="btn btn-light btn-xs" ng-show="persona.file_exist_zip === 1" ng-click="downloadZip(persona)" title="Descargar zip"><i class="fas fa-download"></i></button>
+        <button class="btn btn-light btn-xs" ng-show="persona.files_exist_documentos_fiscales === 1 && !persona.show_files" ng-click="getFilesDocumentosFiscales(persona)" title="Descargar archivos por separado" ><i class="fas fa-ellipsis-h"></i></button>
+        <button class="btn btn-light btn-xs" ng-show="persona.files_exist_documentos_fiscales === 1 && persona.show_files" ng-click="hideFiles(persona)"><i class="fas fa-ellipsis-h"></i></button>
+        <div ng-show="persona.show_files">
+            <hr>
+            <h6><i class="fas fa-caret-right"></i>Documentos Fiscales</h6>
+            <ul class="list-group ml-6">
+                <li class="list-group-item list-group-item-action" ng-repeat="file in persona.files">
+                    <span>{{file.nombre}}</span>
+                    <button class="btn btn-xs"ng-click="downloadFileDocumentosFiscalesById(persona.id, file)"><i class="fas fa-download"></i></button>
+                </li>
+            </ul>
+            <div class="m-3" ng-if="!persona.show_password">
+                <span class="m-2">Efirma:  </span>
+                <input type="password" class="border text-success" ng-model ="persona.efirma" disabled/>
+                <button type="button" class="btn btn-info btn-sm" title="Ver contrase&ntilde;a" ng-click="persona.show_password = true"><i class="fa fa-eye"></i></button>
+            </div>
+            <div class="m-3" ng-if="persona.show_password">
+                <span class="m-2">Efirma:  </span>
+                <input type="text" class="border text-success" ng-model ="persona.efirma" disabled/>
+                <button type="button" class="btn btn-info btn-sm" title="Ver contrase&ntilde;a" ng-click="persona.show_password = false"><i class="fa fa-eye"></i></button>
+            </div>
+        </div>
+    </li>
+</ul>

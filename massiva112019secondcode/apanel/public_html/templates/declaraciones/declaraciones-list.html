@@ -1,0 +1,55 @@
+<div class="card card-main">
+    <div class="card-header">
+        <h2>{{state_title}}</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="declaraciones.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Persona
+                    </th>
+                    <th>
+                        Mes
+                    </th>
+                    <th>
+                        Año
+                    </th>
+                    <th>
+                        Estatus
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="declaracion in declaraciones" ng-mouseover="contador.hover = true" ng-mouseleave="contador.hover = false" ng-init="contador.hover = false">
+                    <td>
+                        {{declaracion.rfc}}
+                    </td>
+                    <td>
+                        {{get_nombre_del_mes(declaracion.mes_correspondiente)}}
+                    </td>
+                    <td>
+                        {{declaracion.anio_correspondiente}}
+                    </td>
+                    <td>
+                        {{get_text_status_declaracion(declaracion.status)}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="contador.hover === true" class="float-left">
+<!--                            <a ui-sref="main.paquetes_edit({id:paquete.id})" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                            <button class="btn btn-sm btn-danger" ng-click="inactivate(contador.id)"><i class="fa fa-trash"></i></button>
+                            <a class="btn btn-sm btn-primary" ui-sref="main.show_personas({contador_id:contador.id})" >Ver personas asignadas</a>-->
+                            <!--<a ng-if="requiere_boton_adjuntar_para_pago(declaracion.status)" class="btn btn-sm btn-primary" ui-sref="main.adjuntar_para_pago({persona_id:declaracion.persona_id, declaracion_id:declaracion.id})" >Adjuntar para pago</a>-->
+                            <a ng-if="requiere_boton_adjuntar_para_pago(declaracion.status)" class="btn btn-sm btn-primary" ui-sref="{{get_state_destino(declaracion.persona_id,declaracion.id)}}" >Adjuntar para pago</a>
+                            <!--<a class="btn btn-sm btn-primary" ui-sref={{getState(contador.id)}}>{{etiqueta_boton}}</a>-->
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="declaraciones.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

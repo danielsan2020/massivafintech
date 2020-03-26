@@ -1,0 +1,62 @@
+<div class="card card-main">
+    <div class="card-header">
+        <a ui-sref="main.paquetes_create" class="btn btn-primary float-right ml-3" title="Agregar"><i class="fa fa-plus"></i></a>
+        <a ui-sref = "main.paquetes_list_inactive" class="btn btn-outline-secondary float-right" title="Editar paquetes inactivos">Paquetes inactivos</a>
+        <h2> Paquetes</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="paquetes.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Periodo en meses
+                    </th>
+                    <th>
+                        Tipo
+                    </th>
+                    <th>
+                        Precio
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="paquete in paquetes" ng-mouseover="paquete.hover = true" ng-mouseleave="paquete.hover = false" ng-init="paquete.hover = false">
+                    <td>
+                        {{paquete.nombre}}
+                    </td>
+                    <td>
+                        <span ng-if="paquete.periodo === 1">1 mes</span>
+                        <span ng-if="paquete.periodo !== 1">{{paquete.periodo}} meses</span>
+                    </td>
+                    <td>
+                        <span ng-if="paquete.tipo === '1'">
+                            Personas F&iacute;sicas
+                        </span>
+                        <span ng-if="paquete.tipo === '2'">
+                            Personas Morales
+                        </span>
+                        <span ng-if="paquete.tipo === '3'">
+                            Extras
+                        </span>
+                    </td>
+                    <td class="text-right">
+                        {{paquete.precio|currency}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="paquete.hover === true" class="float-right">
+                            <a ui-sref="main.paquetes_informacion({id:paquete.id})" class="btn btn-sm btn-primary">Ver detalles</a>
+                            <button class="btn btn-sm btn-danger" ng-click="inactivate(paquete.id)"><i class="fa fa-trash"></i></button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="paquetes.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

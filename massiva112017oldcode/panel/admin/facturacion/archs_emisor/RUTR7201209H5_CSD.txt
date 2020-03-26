@@ -1,0 +1,72 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            30:30:30:30:31:30:30:30:30:30:30:33:30:33:33:33:38:34:39:31
+    Signature Algorithm: sha1WithRSAEncryption
+        Issuer: CN=A.C. del Servicio de Administraci\xC3\xB3n Tributaria, O=Servicio de Administraci\xC3\xB3n Tributaria, OU=Administraci\xC3\xB3n de Seguridad de la Informaci\xC3\xB3n/emailAddress=acods@sat.gob.mx/street=Av. Hidalgo 77, Col. Guerrero/postalCode=06300, C=MX, ST=Distrito Federal, L=Cuauht\xC3\xA9moc/x500UniqueIdentifier=SAT970701NN3/unstructuredName=Responsable: Claudia Covarrubias Ochoa
+        Validity
+            Not Before: Mar 14 17:57:11 2014 GMT
+            Not After : Mar 14 17:57:11 2018 GMT
+        Subject: CN=RENE RUEDA TORRES/name=RENE RUEDA TORRES, O=RENE RUEDA TORRES/x500UniqueIdentifier=RUTR7201209H5/serialNumber=RUTR720120HDFDRN01, OU=RENE RUEDA
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (1024 bit)
+                Modulus:
+                    00:93:5a:86:f0:d9:1a:1e:c5:db:f0:59:f5:d4:14:
+                    ec:63:56:39:91:a6:05:c0:95:52:28:26:92:f4:76:
+                    d3:ca:bb:b7:58:f1:c9:1f:34:06:3b:5a:58:c0:0a:
+                    c9:a1:f6:1b:7b:7c:03:3b:9f:12:83:fb:48:0f:6e:
+                    16:19:8b:84:d4:de:88:d5:04:39:c0:59:40:48:79:
+                    a3:4a:d6:7b:a1:64:5d:7a:0b:71:50:1b:73:c2:a4:
+                    08:64:5b:62:b1:64:bf:39:76:37:1c:16:c0:0a:a8:
+                    49:99:dc:01:ae:f0:47:1b:7c:9b:8b:f5:80:c0:4c:
+                    e2:ea:36:68:52:6d:b0:45:91
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: critical
+                CA:FALSE
+            X509v3 Key Usage: 
+                Digital Signature, Non Repudiation
+    Signature Algorithm: sha1WithRSAEncryption
+         cd:97:e8:fb:3f:23:e0:e5:31:37:ec:03:5a:f3:59:1f:c3:86:
+         a4:63:03:cf:9d:0c:20:e5:e9:ea:2b:fa:39:41:19:d7:77:f7:
+         c0:b8:42:b2:93:3b:f3:e7:5b:9a:ab:6c:46:90:82:41:31:b4:
+         c4:65:b4:f3:bd:b8:de:33:04:95:fe:e7:f8:9f:6d:34:15:ee:
+         34:d7:45:21:5c:e0:4d:b3:38:9f:78:20:cb:7f:66:b2:07:fb:
+         af:6a:31:ba:63:77:56:09:3d:2c:7d:df:4d:3b:ca:1f:d8:70:
+         1c:79:6e:c5:ba:4d:07:03:d9:72:e6:c4:6c:42:78:c8:e4:38:
+         12:6f:2e:41:18:f2:8f:37:08:c2:90:82:8c:a4:cd:ca:ff:cd:
+         27:2c:cf:a6:89:ac:5b:ea:a4:ae:25:5b:11:41:fc:32:b0:ea:
+         35:cc:d2:1d:8b:6c:8f:62:55:94:11:e8:65:1a:db:87:e3:3b:
+         13:b8:5a:a4:a2:1d:6d:bf:37:58:12:6b:3d:c6:e7:41:cd:e2:
+         6c:ae:db:e1:16:f6:5b:58:6c:96:46:ab:88:69:cc:ce:ef:39:
+         bb:0d:91:60:14:67:2d:f9:64:43:59:75:85:51:85:ab:f1:5f:
+         f8:25:0d:fd:48:9a:13:ab:9e:64:c5:fe:e4:41:67:f6:26:e7:
+         fd:22:34:f2
+-----BEGIN CERTIFICATE-----
+MIIEUjCCAzqgAwIBAgIUMDAwMDEwMDAwMDAzMDMzMzg0OTEwDQYJKoZIhvcNAQEF
+BQAwggGKMTgwNgYDVQQDDC9BLkMuIGRlbCBTZXJ2aWNpbyBkZSBBZG1pbmlzdHJh
+Y2nDs24gVHJpYnV0YXJpYTEvMC0GA1UECgwmU2VydmljaW8gZGUgQWRtaW5pc3Ry
+YWNpw7NuIFRyaWJ1dGFyaWExODA2BgNVBAsML0FkbWluaXN0cmFjacOzbiBkZSBT
+ZWd1cmlkYWQgZGUgbGEgSW5mb3JtYWNpw7NuMR8wHQYJKoZIhvcNAQkBFhBhY29k
+c0BzYXQuZ29iLm14MSYwJAYDVQQJDB1Bdi4gSGlkYWxnbyA3NywgQ29sLiBHdWVy
+cmVybzEOMAwGA1UEEQwFMDYzMDAxCzAJBgNVBAYTAk1YMRkwFwYDVQQIDBBEaXN0
+cml0byBGZWRlcmFsMRQwEgYDVQQHDAtDdWF1aHTDqW1vYzEVMBMGA1UELRMMU0FU
+OTcwNzAxTk4zMTUwMwYJKoZIhvcNAQkCDCZSZXNwb25zYWJsZTogQ2xhdWRpYSBD
+b3ZhcnJ1YmlhcyBPY2hvYTAeFw0xNDAzMTQxNzU3MTFaFw0xODAzMTQxNzU3MTFa
+MIGeMRowGAYDVQQDExFSRU5FIFJVRURBIFRPUlJFUzEaMBgGA1UEKRMRUkVORSBS
+VUVEQSBUT1JSRVMxGjAYBgNVBAoTEVJFTkUgUlVFREEgVE9SUkVTMRYwFAYDVQQt
+Ew1SVVRSNzIwMTIwOUg1MRswGQYDVQQFExJSVVRSNzIwMTIwSERGRFJOMDExEzAR
+BgNVBAsTClJFTkUgUlVFREEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJNa
+hvDZGh7F2/BZ9dQU7GNWOZGmBcCVUigmkvR208q7t1jxyR80BjtaWMAKyaH2G3t8
+AzufEoP7SA9uFhmLhNTeiNUEOcBZQEh5o0rWe6FkXXoLcVAbc8KkCGRbYrFkvzl2
+NxwWwAqoSZncAa7wRxt8m4v1gMBM4uo2aFJtsEWRAgMBAAGjHTAbMAwGA1UdEwEB
+/wQCMAAwCwYDVR0PBAQDAgbAMA0GCSqGSIb3DQEBBQUAA4IBAQDNl+j7PyPg5TE3
+7ANa81kfw4akYwPPnQwg5enqK/o5QRnXd/fAuEKykzvz51uaq2xGkIJBMbTEZbTz
+vbjeMwSV/uf4n200Fe4010UhXOBNszifeCDLf2ayB/uvajG6Y3dWCT0sfd9NO8of
+2HAceW7Fuk0HA9ly5sRsQnjI5DgSby5BGPKPNwjCkIKMpM3K/80nLM+miaxb6qSu
+JVsRQfwysOo1zNIdi2yPYlWUEehlGtuH4zsTuFqkoh1tvzdYEms9xudBzeJsrtvh
+FvZbWGyWRquIaczO7zm7DZFgFGct+WRDWXWFUYWr8V/4JQ39SJoTq55kxf7kQWf2
+Juf9IjTy
+-----END CERTIFICATE-----

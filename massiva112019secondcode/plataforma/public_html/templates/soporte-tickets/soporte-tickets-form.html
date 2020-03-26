@@ -1,0 +1,114 @@
+<style>
+    .drop-box {
+        background: #F8F8F8;
+        border: 5px dashed #DDD;
+        height: 150px;
+        text-align: center;
+    }
+</style>
+<div class="card card-main">
+    <div class="card-header">
+        <h2>Generar nueva consulta de soporte</h2>
+    </div>
+    <div class="card-body">
+        <form novalidate name="form" ng-submit="submit()">
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="categoria">Categor&iacute;a:*</label>
+                <div class="col-sm-10">
+                    <select name="categoria_id" class="form-control" ng-model="soporte_ticket_form.soporte_categoria_id" required>
+                        <option value="">Selecciona un tipo de categoria</option>
+                        <optgroup label="Contable">
+                            <option ng-repeat="categoria_contable in soporte_categorias_contables" value="{{categoria_contable.id}}">{{categoria_contable.categoria}}</option>
+                        </optgroup>
+                        <optgroup label="Tecnicos">
+                            <option ng-repeat="categoria_tecnico in soporte_categorias_tecnicos" value="{{categoria_tecnico.id}}">{{categoria_tecnico.categoria}}</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="descripcion">Descripci&oacute;n:*</label>
+                <div class="col-sm-10">
+                    <textarea name="descripcion" class="form-control" ng-model="soporte_ticket_form.descripcion" required></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="comentario">Comentario:*</label>
+                <div class="col-sm-10">
+                    <textarea name="comentario" class="form-control" ng-model="soporte_ticket_form.comentario" required></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="archivos" class=" col-sm-2 col-form-label">Documentos:</label>
+                <div class="col-sm-10">
+                    <div class="card">
+                        <div class="card-header">
+                            Todos los formatos est&aacute;n permitidos excepto videos
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="card form-control-drop">
+                                            <div class="card-header">
+                                                Selecciona o arrastra los archivos
+                                            </div>
+                                            <div class="card-body">
+                                                <div  class="drop-box"
+                                                      name="file"
+                                                      ng-model="archivo.file"
+                                                      ngf-multiple="true"
+                                                      ngf-keep="'distinct'"
+                                                      ngf-drop=""
+                                                      ngf-select=""
+                                                      ngf-drop-available="dropAvailable"
+                                                      ngf-pattern="'!video/*'" 
+                                                      ngf-accept="'!video/*'" 
+                                                      ngf-max-size="50MB" 
+                                                      >
+                                                    <button type="button" class="btn btn-lg btn-default"><i class="fa fa-upload"></i></button>
+                                                    <br/>
+                                                    <small>tama&ntilde;o m&aacute;ximo 50 MB</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Tama&ntilde;o</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-init="show_archivo_nuevo = []" ng-repeat="archivo_nuevo in archivos.nuevos" ng-mouseover="show_archivo_nuevo[$index] = true" ng-mouseleave="show_archivo_nuevo[$index] = false"  ng-init="show_archivo_nuevo[$index] = false">
+                                                <td>
+                                                    {{archivo_nuevo.name}}
+                                                </td>
+                                                <td>
+                                                    {{archivo_nuevo.size|size_format}}
+                                                </td>
+                                                <td class="actions">
+                                                    <span ng-show="show_archivo_nuevo[$index]">
+                                                        <button type="button" class="btn btn-sm btn-outline-danger" ng-click="removeArchivoNuevo($index)" title="Eliminar Archivo"><i class="fa fa-trash"></i></button>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group float-right">
+                <small>* Campos obligatorios</small>
+                <button type="submit" class="btn btn-md btn-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="card card-main">
+    <div class="card-header">
+        <h2> Declaraciones mensuales atrasadas</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="lista_declaraciones_atrasadas.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th class="text-right">Total</th>
+                    <th>Diferencia</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="declaracion_atrasada in lista_declaraciones_atrasadas">
+                    <td>
+                            {{declaracion_atrasada.mes_y_anio}}
+                    </td>  
+                    <td class="text-right" ng-class="(declaracion_atrasada.a_favor_o_en_contra === '1') ? 'text-success' : ''">
+                        {{declaracion_atrasada.total| currency}} 
+                    </td>
+                    <td ng-class="(declaracion_atrasada.a_favor_o_en_contra === '1') ? 'text-success' : ''">
+                        {{(declaracion_atrasada.a_favor_o_en_contra==="1")?"A favor":"En contra"}}
+                    </td>
+                    <td class="actions">                        
+                        <button class="btn btn-sm btn-danger"  ng-class="{'d-none': !$first}" ng-click="inactivate(declaracion_atrasada.id)">No autorizo</button>
+                        <button class="btn btn-sm btn-primary"  ng-class="{'d-none': !$first}" ng-click="activate(declaracion_atrasada.id)">Autorizar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="paquetes.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+body{
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+.wrapper {
+    height: 100vh;
+    min-height: 500px;
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.far, .fas{
+    color: #F1005E;
+}
+a, a:hover{
+    color: #F1005E;    
+}
+
+.btn-primary {
+    background-color: #eac52d;
+    border-color: #eac52d;
+}
+.btn-outline-primary{
+    color: #eac52d;
+    border-color: #eac52d;
+}
+.btn-primary:hover, .btn-outline-primary:hover{
+    background-color: #e7bc15;
+    border-color: #e7bc15;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+    background-color: #e7bc15;
+    border-color: #e7bc15;
+}
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus, .btn-primary.focus, .btn-primary:focus {
+    box-shadow: 0 0 0 .2rem rgba(245, 227, 153,.5);
+}

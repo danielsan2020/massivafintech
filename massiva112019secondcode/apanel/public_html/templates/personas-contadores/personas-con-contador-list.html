@@ -1,0 +1,38 @@
+<div class="card card-main">
+    <div class="card-header">
+        <h2> Personas con contador asignado</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="personas.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>RFC</th>
+                    <th>Raz&oacute;n Social</th>
+                    <th>Nombre contador actual</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="persona in personas" ng-mouseover="persona.hover = true" ng-mouseleave="persona.hover = false" ng-init="persona.hover = false">
+                    <td>
+                        {{persona.rfc}}
+                    </td>
+                    <td>
+                        {{persona.razon_social}}
+                    </td>
+                    <td>
+                        {{persona.nombre}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="persona.hover === true" class="float-right">
+                            <a class="btn btn-sm btn-primary" ui-sref="main.cambiar_contador_a_persona({personas_contadores_id: persona.personas_contadores_id})" >Asignar</a>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="personas.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

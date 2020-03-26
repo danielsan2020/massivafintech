@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:can="http://facturacion.finkok.com/cancel">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <can:get_sat_status>
+         <can:username>controlescolarenlinea@gmail.com</can:username>
+         <can:password>CtrlEsc@26</can:password>
+         <can:taxpayer_id>TCM970625MB1</can:taxpayer_id>
+         <can:rtaxpayer_id>AAD990814BP7</can:rtaxpayer_id>
+         <can:uuid>B922F33D-1F2B-4B03-9C5E-28DA6F3A40B1</can:uuid>
+         <can:total>1434.34</can:total>
+      </can:get_sat_status>
+   </soapenv:Body>
+</soapenv:Envelope>      

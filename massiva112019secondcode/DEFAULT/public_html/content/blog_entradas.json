@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "titulo":"Cómo sacar una cita en el SAT",
+        "url": "https://www.elcontribuyente.mx/2019/04/%F0%9F%93%85-como-hago-una-cita-en-el-sat/",
+        "created_at": "2019-12-10 09:12:34"
+    },
+    {
+        "id": 2,
+        "titulo":"Trabajadores de Plataformas Digitales el SAT les tiene noticias",
+        "url": "https://amp.elfinanciero.mx/economia/hacienda-retendra-isr-e-iva-a-socios-de-plataformas-como-uber-y-rappi?fbclid=IwAR0wV2kjdltzsoV_WGm-IHNYgzgcG0JAO_lXhEeUpqlZoqFCmRh6z6gaIj0",
+        "created_at": "2019-12-10 09:11:38"
+    },
+    {
+        "id": 3,
+        "titulo":"Las Personas Físicas pueden deducir los intereses de más de una hipoteca",
+        "url": "https://www.elcontribuyente.mx/2019/04/%F0%9F%8F%A1-las-personas-fisicas-pueden-deducir-los-intereses-de-mas-de-una-hipoteca/",
+        "created_at": "2019-12-10 18:03:24"
+    }
+]

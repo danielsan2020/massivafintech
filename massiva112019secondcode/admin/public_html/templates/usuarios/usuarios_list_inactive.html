@@ -1,0 +1,62 @@
+<div class="card card-main">
+    <div class="card-header">
+        <a ui-sref = "main.usuarios_list" class="btn btn-outline-secondary float-right" title="Usuarios inactivos">Regresar</a>
+        <h2> Usuarios Inactivos</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="usuarios.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Apellido paterno
+                    </th>
+                    <th>
+                        Apellido materno
+                    </th>
+                    <th>
+                        Tipo
+                    </th>
+                    <th>
+                        Usuario
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="usuario in usuarios" ng-mouseover="usuario.hover = true" ng-mouseleave="usuario.hover = false" ng-init="usuario.hover = false">
+                    <td>
+                        {{usuario.nombre}}
+                    </td>
+                    <td>
+                        {{usuario.apellido_paterno}}
+                    </td>
+                    <td>
+                        {{usuario.apellido_materno}}
+                    </td>
+                    <td>
+                        <label ng-if="usuario.tipo === '1'">
+                            Administrador
+                        </label>
+                        <label ng-if="usuario.tipo === '4'">
+                            Contador
+                        </label>
+                    </td>
+                    <td>
+                        {{usuario.username}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="usuario.hover === true" class="float-right">
+                            <button class="btn btn-sm btn-success" ng-click="reactivate(usuario.id)">Activar</button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="usuarios.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

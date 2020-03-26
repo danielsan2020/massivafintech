@@ -1,0 +1,28 @@
+
+.EstiloBordeFino{
+    border-collapse: collapse;
+    border-width: 1px;
+    border-color: #A7A7A7;
+    border-style: solid;
+    font-size: 9pt;
+}
+
+.EstiloGrisTenue9{
+    background-color:#F0F0F0;
+    color:#000000;
+    text-decoration: none;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 9pt;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+
+    border-collapse:collapse;
+    border-width: 1px;
+    border-color: #A7A7A7;
+    border-style: solid;      
+}
+
+
+
+

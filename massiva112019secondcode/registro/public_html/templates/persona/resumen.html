@@ -1,0 +1,175 @@
+<div class="card card-main">
+    <div class="card-header">
+        <h2>Resumen</h2>
+    </div>
+
+    <h4 class="card-title p-3 bg-white border border-warning">1. Datos fiscales</h4>
+    <div class="card-body mb-3">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label" for="rfc">RFC: </label>
+                    <div class="col-md-8">
+                        <label readonly class="form-control-plaintext bg-light p-1" ng-model="datos_persona.rfc" id="rfc">{{datos_persona.rfc}}</label>
+                    </div> 
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label" for="razon_social">Raz&oacute;n Social: </label>
+                    <div class="col-md-8">
+                        <label readonly class="form-control-plaintext bg-light p-1" ng-model="datos_persona.razon_social" id="razon_social">{{datos_persona.razon_social}}</label>
+                    </div> 
+                </div> 
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label" for="curp">CURP: </label>
+                    <div class="col-md-8">
+                        <label readonly class="form-control-plaintext bg-light p-1" ng-model="datos_persona.curp" id="curp">{{datos_persona.curp}}</label>
+                    </div> 
+                </div> 
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label" for="actividad">Actividad: </label>
+                    <div class="col-md-8">
+                        <label readonly class="form-control-plaintext bg-light p-1"  ng-model="datos_persona.actividad" id="actividad" placeholder="Actividad">{{datos_persona.actividad}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label" for="tipo">Forma Jurídica: </label>
+                    <div class="col-8" ng-repeat="tipo in tipos">
+                        <label readonly class="form-control-plaintext bg-light p-1" id="tipo" ng-value="tipo.value" ng-model="datos_persona.tipo">{{tipo.tipo}}</label> 
+                    </div> 
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label" for="cantidad_trabajadores">Cantidad trabajadores: *</label>
+                    <div class="col-md-8">
+                        <label readonly class="form-control-plaintext bg-light p-1" ng-model="datos_persona.cantidad_trabajadores" id="cantidad_trabajadores">{{datos_persona.cantidad_trabajadores}}</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label" for="contabilidad_atrasada">¿Tengo mi contabilidad atrasada?: *</label>
+                    <div class="col-md-8">
+                        <label readonly class="form-control-plaintext bg-light p-1" id="contabilidad_atrasada" ng-model="datos_persona.contabilidad_atrasada"> {{datos_persona.contabilidad_atrasada}}</label> 
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label" for="tiene_efirma_vigente">¿Tengo e-firma?: </label>
+                    <div class="col-md-8">
+                        <label readonly class="form-control-plaintext bg-light p-1" id=""  type="radio" ng-model="datos_persona.tiene_efirma_vigente">{{datos_persona.tiene_efirma_vigente}}</label> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h4 class="card-title p-3 bg-white border border-warning">2. Direcci&oacute;n fiscal</h4>
+    <div class="card-body mb-3">
+        <div class="row ">
+            <div class="col-lg-6">
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Tipo de domicilio: </label>
+                    <div class="col-md-8">
+                        <label readonly class="form-control-plaintext bg-light p-1 m-2"  ng-model="datos_persona.nombre">{{datos_persona.nombre}}</label> 
+                    </div>
+                    <!--<small ng-if="datos_persona.nombre === 'Particular'" class="alert alert-warning">Toma en cuenta que en los domicilios particulares, la mayoría de los gastos no son deducibles</small>-->
+                </div>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Colonia: </label>
+                    <div class="col-md-8">
+                        <label readonly class="form-control-plaintext bg-light p-1 m-2">{{colonia_selected.colonia}}</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Alcald&iacute;a/Municipio: </label>
+                    <div class="col-md-8">
+                        <label readonly class="form-control-plaintext bg-light p-1 m-2">{{colonia_selected.alcaldia_municipio}}</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">N&uacute;mero exterior: </label>
+                    <div class="col-md-8">
+                        <label readonly class="form-control-plaintext bg-light p-1 m-2">{{datos_persona.numero_exterior}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">C&oacute;digo postal: </label>
+                    <div class="col-md-8">
+                        <label readonly class="form-control-plaintext bg-light p-1 m-2">{{colonia_selected.cp}}</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Estado: </label>
+                    <div class="col-md-8">
+                        <label readonly class="form-control-plaintext bg-light p-1 m-2">{{colonia_selected.estado}}</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Calle: </label>
+                    <div class="col-md-8">
+                        <label readonly class="form-control-plaintext bg-light p-1 m-2">{{datos_persona.calle}}</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">N&uacute;mero interior: </label>
+                    <div class="col-md-8">
+                        <label readonly class="form-control-plaintext bg-light p-1 m-2">{{datos_persona.numero_interior}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h4 class="card-title p-3 bg-white border border-warning">3. Documentaci&oacute;n</h4>
+    <div class="card-body mb-3">
+        <div class="row  mt-3">
+            <div class="col-lg-6">
+                <div class="form-group row">
+                    <label class="col-3 col-form-label">Comprobante de domicilio:</label>
+                    <div class="col-md-8">
+                        <label readonly class="form-control-plaintext bg-light p-1">{{files_guardados.comprobante_domicilio.nombre}}</label>
+                    </div>
+                    <div class="col-1">
+                        <button class="btn btn-primary btn-sm" ng-click="clickToOpen(files_guardados.comprobante_domicilio.extension, files_guardados.comprobante_domicilio.url)"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-3 col-form-label"> Identificaci&oacute;n oficial delantera: </label>
+                    <div class="col-md-8">
+                        <label readonly class="form-control-plaintext bg-light p-1">{{files_guardados.identificacion_oficial_delantera.nombre}}</label>
+                    </div>
+                    <div class="col-1">
+                        <button class="btn btn-primary btn-sm" ng-click="clickToOpen(files_guardados.identificacion_oficial_delantera.extension, files_guardados.identificacion_oficial_delantera.url)"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-3 col-form-label">Identificaci&oacute;n oficial trasera: </label>
+                    <div class="col-md-8">
+                        <label readonly class="form-control-plaintext bg-light p-1">{{files_guardados.identificacion_oficial_trasera.nombre}}</label>
+                    </div>
+                    <div class="col-1">
+                        <button class="btn btn-primary btn-sm" ng-click="clickToOpen(files_guardados.identificacion_oficial_trasera.extension, files_guardados.identificacion_oficial_trasera.url)"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group row">
+                    <label class="col-3 col-form-label">e.firma KEY: </label>
+                    <div class="col-8">
+                        <label readonly class="form-control-plaintext bg-light p-1">{{files_guardados.key.nombre}}</label>
+                    </div>
+                    <div class="col-1">
+                        <button class="btn btn-primary btn-sm" ng-click="downloadFileDocumentosFiscalesById(datos_persona.id, files_guardados.key)"><i class="fas fa-file-download"></i></button>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-3 col-form-label">e.firma CER: </label>
+                    <div class="col-md-8">
+                        <label readonly class="form-control-plaintext bg-light p-1">{{files_guardados.cer.nombre}}</label>
+                    </div>
+                    <div class="col-1">
+                        <button class="btn btn-primary btn-sm" ng-click="downloadFileDocumentosFiscalesById(datos_persona.id, files_guardados.cer)"><i class="fas fa-file-download"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

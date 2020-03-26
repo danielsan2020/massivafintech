@@ -1,0 +1,34 @@
+<div class="card card-main">
+    <div class="card-header">
+        <a ui-sref="main.personas_create" class="btn btn-primary float-right ml-2" title="Agregar"><i class="fa fa-plus"></i></a>
+        <a ui-sref = "main.personas_list_inactive" class="btn btn-outline-secondary float-right" title="Personas inactivos">Personas inactivos</a>
+        <h2> Personas</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="personas.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        RFC
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="persona in personas" ng-mouseover="persona.hover = true" ng-mouseleave="persona.hover = false" ng-init="persona.hover = false">
+                    <td>
+                        {{persona.rfc}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="persona.hover === true" class="float-right">
+                            <a ui-sref="main.solicitudes_sat_cfdis({persona_id:persona.id})" class="btn btn-sm btn-primary"><i class="fa fa-list"></i></a>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="personas.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

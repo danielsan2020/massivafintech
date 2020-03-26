@@ -1,0 +1,93 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>{{heading}} cliente_contacto</h2>
+        </div>
+        <div class="card-body">
+            <form novalidate name="form" ng-submit="submit()">
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="nombre">Nombre:</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" ng-model="form_personas_clientes_contacto.nombre" id="nombre" placeholder="Nombre" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="apellido_paterno">Apellido paterno:</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" ng-model="form_personas_clientes_contacto.apellido_paterno" id="apellido_paterno" placeholder="Apellido paterno" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="apellido_materno">Apellido materno:</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" ng-model="form_personas_clientes_contacto.apellido_materno" id="apellido_materno" placeholder="Apellido materno" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="departamento">Departamento:</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" ng-model="form_personas_clientes_contacto.departamento" id="departamento" placeholder="Departamento" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="puesto">Puesto:</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" ng-model="form_personas_clientes_contacto.puesto" id="puesto" placeholder="Puesto" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="telefono_1">Tel&eacute;fono 1:</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" ng-model="form_personas_clientes_contacto.telefono_1" id="telefono_1" placeholder="Tel&eacute;fono 1" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="telefono_2">Tel&eacute;fono 2:</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" ng-model="form_personas_clientes_contacto.telefono_2" id="telefono_2" placeholder="Tel&eacute;fono 2" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="celular_1">Celular 1:</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" ng-model="form_personas_clientes_contacto.celular_1" id="celular_1" placeholder="Celular 1" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="celular_2">Celular 2:</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" ng-model="form_personas_clientes_contacto.celular_2" id="celular_2" placeholder="Celular 2" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="email_1">Correo electr&oacute;nico 1:</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" ng-model="form_personas_clientes_contacto.email_1" id="email_1" placeholder="Correo electr&oacute;nico 1" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="email_2">Correo electr&oacute;nico 2:</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" ng-model="form_personas_clientes_contacto.correo_electronico_2" id="email_2" placeholder="Correo electr&oacute;nico 2" />
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-md btn-primary pull-right"><i class="fa fa-save"></i> Guardar</button>
+                    <button style="margin-right: 5px;" type="button" ui-sref="main.personas_clientes_contacto_list" class="btn btn-md btn-default pull-right"><i class="fa fa-remove"></i> Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

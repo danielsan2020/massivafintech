@@ -1,0 +1,48 @@
+<div class="card card-main">
+    <div class="card-header">
+        <h2> Contadores asignados</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="contadores.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Apellido paterno
+                    </th>
+                    <th>
+                        Apellido materno
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="contador in contadores" ng-mouseover="contador.hover = true" ng-mouseleave="contador.hover = false" ng-init="contador.hover = false">
+                    <td>
+                        {{contador.nombre}}
+                    </td>
+                    <td>
+                        {{contador.apellido_paterno}}
+                    </td>
+                    <td>
+                        {{contador.apellido_materno}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="contador.hover === true" class="float-right">
+                            <!--                            <a ui-sref="main.paquetes_edit({id:paquete.id})" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                                                        <button class="btn btn-sm btn-danger" ng-click="inactivate(contador.id)"><i class="fa fa-trash"></i></button>-->
+                            <!--<a class="btn btn-sm btn-primary" ui-sref="main.show_personas({contador_id:contador.id})" >Ver personas asignadas</a>-->
+                            <a class="btn btn-sm btn-info" ui-sref={{getState(contador.id)}}>{{etiqueta_boton}}</a>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="contadores.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

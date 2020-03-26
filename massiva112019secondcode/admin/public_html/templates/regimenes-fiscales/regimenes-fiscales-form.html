@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>{{heading}} régimen fiscal</h2>
+        </div>
+        <div class="card-body">
+            <form novalidate name="form" ng-submit="submit()">
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="regimen">R&eacute;gimen:</label>
+                    <div class="col-md-10">
+                        <input class="form-control" type="text" ng-model="form_regimenes_fiscales.regimen" id="regimen" placeholder="R&eacute;gimen"  required/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="descripcion">Descripci&oacute;n:</label>
+                    <div class="col-md-10">
+                        <ng-quill-editor ng-model="form_regimenes_fiscales.descripcion" id="descripcion" placeholder="Descripci&oacute;n" required>
+                            <ng-quill-toolbar>
+                                <div id="ng-quill-toolbar">
+                                    <button class="ql-bold" ng-attr-title="{{'Negrita'}}"></button>
+                                    <button class="ql-italic" ng-attr-title="{{'Cursiva'}}"></button>                                            
+                                    <button class="ql-underline" ng-attr-title="{{'Subrayado'}}"></button>                                            
+                                    <button class="ql-strike" ng-attr-title="{{'Tachado'}}"></button>
+                                    <select class="ql-align" ng-attr-title="{{'Alineacion'}}">
+                                        <option selected></option>
+                                        <option value="center"></option>
+                                        <option value="right"></option>
+                                        <option value="justify"></option>
+                                    </select>    
+                                    <button class="ql-blockquote" ng-attr-title="{{'Cita'}}"></button>
+                                    <select class="ql-header">
+                                        <option value="1"></option>
+                                        <option value="2"></option>
+                                        <option value="3"></option>
+                                        <option value="4"></option>
+                                        <option value="5"></option>
+                                        <option value="6"></option>
+                                    </select>
+                                    <button class="ql-list" value="ordered" ng-attr-title="{{'Lista ordenada'}}"></button>
+                                    <button class="ql-list" value="bullet" ng-attr-title="{{'Viñetas'}}"></button>
+                                    <button class="ql-script" value="sub" ng-attr-title="{{'Subindice'}}"></button>
+                                    <button class="ql-script" value="super" ng-attr-title="{{'Superindice'}}"></button>
+                                    <button class="ql-indent" value="-1" ng-attr-title="{{'Disminuir sangria'}}"></button>
+                                    <button class="ql-indent" value="+1" ng-attr-title="{{'Aumentar sangria'}}"></button>
+                                    <button type="button" class="ql-clean" ng-attr-title="{{'Borrar formato'}}"></button>
+                                    <!--<button type="button" class="ql-video"></button>-->
+                                    <button type="button" class="ql-image" ng-attr-title="{{'Agregar imagen'}}"></button>
+                                    <!--<button type="button" class="ql-link" ng-attr-title="{{'Agregar video'}}"></button>-->
+                                </div>
+                            </ng-quill-toolbar>
+                        </ng-quill-editor>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="tipo">Tipo:</label>
+                    <div class="col-md-10">
+                        <select class="form-control" ng-model="form_regimenes_fiscales.tipo" ng-change="fokiu()" id="tipo" required>
+                            <option value=""></option>
+                            <option ng-repeat="tipo in tipos" ng-value="tipo.id">{{tipo.tipo}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-md btn-primary float-right">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

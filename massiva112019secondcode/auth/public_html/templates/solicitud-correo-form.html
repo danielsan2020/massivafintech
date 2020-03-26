@@ -1,0 +1,67 @@
+<!--<div class="container">
+    <div class="card text-center" style="margin-top: 100px;">
+        <div class="card-header" style="background-color: #FFF;">
+        <div class="wrapper">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-center">
+                    <div class="col-sm-10 col-md-6 col-lg-4">    
+                        <div class="row">
+                            <img src="images/logo-light.png"/>
+                        </div>
+                        </div>
+                        <div class="card-block p-5">
+                            <h3 class="panel-title" >{{header}}</h3>
+
+                            <form name="LoginForm" class="form" ng-submit="submit()" novalidate>
+                                <div class="form-group row">
+                                    <div class="col-2">
+                                        <label class="form-control-label">Correo electr&oacute;nico</label>
+                                    </div>
+                                    <div class="col-10">
+                                        <input type="email" name="user" class="form-control col-xs-2" ng-model="form.email" required/>
+                                    </div>
+                                </div>
+                                <button type="button" ng-click ="cancelar()" class="btn btn-danger float-right m-3">Cancelar</button>
+                                <button type="submit" class="btn btn-success float-right m-3"> Enviar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<div class="wrapper">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center justify-content-center">
+            <div class="col-sm-10 col-md-6 col-lg-6">
+                <div class="text-center pt-4 pb-4">
+                    <img src="images/logo-light.png"/>
+                </div>
+                <div class="card text-center">
+                    <div class="card-block p-5">
+                        <h4 class="panel-title m-3" >{{header}}</h4>
+                        <form class="form" ng-show="!show_link" ng-submit="submit()" novalidate>
+                            <div class="form-group row">
+                                <div class="col-sm-1 col-md-2 col-lg-2">
+                                    <!--<label class="form-control-label ">Correo electr&oacute;nico</label>-->
+                                    <label for="user" class="form-control-label"><i class="far fa-envelope"></i></label>
+
+                                </div>
+                                <div class="col-sm-11 col-md-10 col-lg-10">
+                                    <input type="email" name="user"  class="form-control col-xs-2" ng-model="form.email" placeholder="Inserta tu correo electr&oacute;nico" required/>
+                                </div>
+                            </div>
+                            <button style="btn btn-primary: 20px;" type="button" ng-click ="cancelar()" class="btn btn-danger float-right m-1">Cancelar</button>
+                            <button style="btn btn-primary: 20px;" type="submit" class="btn btn-primary float-right m-1"> Enviar</button>
+                        </form>
+                        <div class="text-center" ng-show="show_link">
+                            En unos momentos te enviaremos un correo elect&oacute;nico para el cambio de contrase&ntilde;a.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="card card-main">
+    <div class="card-header">
+        <a class="btn btn-outline-primary float-right ml-3" ui-sref="main.facturas_create" title="Agregar"><i class="fa fa-plus"></i></a>
+        <h2> Facturas</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="facturas.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Raz&oacute;n social
+                    </th>
+                    <th>
+                        RFC
+                    </th>
+                    <th>
+                        Moneda
+                    </th>
+                    <th>
+                        Fecha de Creaci&oacute;n
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="factura in facturas" ng-mouseover="factura.hover = true" ng-mouseleave="factura.hover = false" ng-init="factura.hover = false">
+                    <td>
+                        {{factura.nombre}}
+                    </td>
+                    <td>
+                        {{factura.razon_social}}
+                    </td>
+                    <td>
+                        {{factura.rfc}}
+                    </td>
+                    <td>
+                        {{factura.moneda}}
+                    </td>
+                    <td>
+                        {{factura.created_at}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="factura.hover === true" class="float-right">
+                            <button class="btn btn-sm btn-danger" ng-click="timbrarFactura(factura.id)">Timbrar</button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="facturas.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

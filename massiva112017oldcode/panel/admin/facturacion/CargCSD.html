@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+
+<html>
+    
+    <head>
+        <title>Cargar Certificados de Sellos Gigitales</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="CargCSD_estilos.css" />
+    </head>
+    
+    <body>
+        
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+
+        var xmlHttp;
+
+        function CreateXmlHttp() {
+            if (window.XMLHttpRequest) {
+                    xmlHttp =  new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                    xmlHttp =  new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }        
+
+        function NumAleat(){
+            Num =  Math.floor((Math.random()*10000000000)+1);
+            return Num;
+        }    
+
+    </script>
+
+
+    <table border="0" cellspacing="0" cellpadding="0" style="width: 100%;">
+
+        <tr>
+            <td align="left" valign="middle" style="width: 50px; height: auto;">
+                &nbsp;
+            </td>
+        </tr>
+
+        <tr>
+            <td align="left" valign="top">
+
+                <div id="CargCSD_Cont" style="overflow-y: auto; height: auto; margin-top: 2px; width: 730px;" class="EstiloPersiana">
+
+                    <form id="CSD_upload_form" enctype="multipart/form-data" method="post" action="#">
+
+                        <table border="1" cellpadding="5" cellspacing="0" style="width: 540px;" class="EstiloBordeFino">
+
+                            <tr>
+                                <td valign="middle" height="" align="left" class="EstiloGrisTenue9" style="padding: 2px; padding-left: 4px;" >
+                                    SELECCIONE LOS ARCHIVOS CORRESPONDIENTES A LOS "SELLOS DIGITALES".
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="estilocelda" valign="middle" height="" align="left">
+                                    Archivo .KEY&nbsp;<input name="CSD_Archivo1" id="CSD_Archivo1" type="file" onchange="CSD_fileSelected(this);" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="estilocelda" valign="middle" height="" align="left">
+                                    Archivo .CER&nbsp;<input name="CSD_Archivo2" id="CSD_Archivo2" type="file" onchange="CSD_fileSelected(this);" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="estilocelda" valign="middle" height="" align="left">
+                                    Contraseña:&nbsp;<input type="text" id="CSD_ClaveSellos" value="12345678a" size="12" onchange="LimpiarCadenaObj(Objeto)" class="EstiloTextBox" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="estilocelda" valign="top" height="" align="left">
+                                    <input type="button" onclick="CSD_startUploading()" value="Subir archivos" />
+                                </td>
+                            </tr>
+
+                        </table>
+
+
+                        <div id="CSD_progress_info" style="display: none;">
+
+                            <table border="0" width="50%" cellpadding="6" cellspacing="0">
+
+                                <tr>
+                                    <td width="100%" align="left" valign="top" height="22">
+                                        <progress id="CSD_progressBar" value="0" max="100" style="width:400px; height: 20px; display: none;"></progress>
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                                <div id="CSD_progress"></div>
+                                <div id="CSD_progress_percent">&nbsp;</div>
+                                <div class="CSD_clear_both"></div>
+                                <div>
+                                    <div id="CSD_b_transfered">&nbsp;</div>
+                                    <div class="CSD_clear_both"></div>
+                                </div>
+                                <div id="CSD_upload_response"></div>
+
+                        </div>
+
+                    </form> 
+
+                </div>
+                
+                <div id="CargCSD_Resp" style="overflow-y: auto; height: auto; margin-top: 2px; width: 730px;" class="EstiloPersiana">
+                    
+                    
+                </div>
+                
+
+            </td>
+        </tr>
+
+    </table>            
+
+    <script type="text/javascript">
+
+        $("input[type=text]").focus(function(){	   
+          this.select();
+        });              
+
+        $.ajax({
+            url: "CargCSD.js?ver="+NumAleat(),
+            dataType: 'script',
+            cache: true
+        });
+
+    </script>
+
+
+

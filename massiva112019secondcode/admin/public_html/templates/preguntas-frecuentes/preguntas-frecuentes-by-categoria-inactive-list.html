@@ -1,0 +1,37 @@
+<div class="card card-main">
+    <div class="card-header">
+        <a ui-sref = "main.preguntas_frecuentes_by_categoria_list({categoria_id: categoria.id})" class="btn btn-outline-secondary float-right">Regresar</a>
+        <h2> Preguntas Inactivas de la categoría {{categoria.categoria}}</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="preguntas_frecuentes.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Pregunta</th>
+                    <th>Respuesta</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{preguntas_frecuentes.categoria}}
+                <tr ng-repeat="categoria in preguntas_frecuentes" ng-mouseover="categoria.hover = true" ng-mouseleave="categoria.hover = false" ng-init="categoria.hover = false">
+
+                    <td>
+                        {{categoria.pregunta}}
+                    </td>
+                    <td>
+                        {{categoria.respuesta}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="categoria.hover === true" class="float-right">
+                            <button class="btn btn-sm btn-success" ng-click="reactivate(categoria.id)">Activar</button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="preguntas_frecuentes.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

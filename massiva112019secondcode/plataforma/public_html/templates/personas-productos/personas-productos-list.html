@@ -1,0 +1,72 @@
+<div class="card card-main">
+    <div class="card-header">
+        <a class="btn btn-outline-primary float-right ml-3" ui-sref="main.personas_productos_create" title="Agregar"><i class="fa fa-plus"></i></a>
+        <a class="btn btn-outline-secondary float-right" ui-sref = "main.personas_productos_list_inactive" title="Ir a productos inactivos">Productos inactivos</a>
+        <h2>Productos del cliente</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="personas_productos.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        
+                    </th>
+                    <th>
+                        Clave producto
+                    </th>
+                    <th>
+                        Producto
+                    </th>
+                    <th>
+                        Cantidad
+                    </th>
+                    <th>
+                       Precio compra
+                    </th>
+                    <th>
+                        Precio venta
+                    </th>
+                    <th>
+                        Proveedor
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="producto in personas_productos" ng-mouseover="producto.hover = true" ng-mouseleave="producto.hover = false" ng-init="producto.hover = false">
+                    <td>
+                        <img ng-src="{{producto.url}}" height="35" width="35" >
+                    </td>
+                    <td>
+                        {{producto.clave}}
+                    </td>
+                    <td>
+                        {{producto.producto}}
+                    </td>
+                    <td>
+                        {{producto.cantidad}}
+                    </td>
+                    <td>
+                        {{producto.precio_compra|currency}}
+                    </td>
+                    <td>
+                        {{producto.precio_venta|currency}}
+                    </td>
+                    <td>
+                        {{producto.proveedor}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="producto.hover === true" class="float-right">
+                            <a ui-sref="main.personas_productos_edit({id:producto.id})" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                            <button class="btn btn-sm btn-danger" ng-click="inactivate(producto.id)"><i class="fa fa-trash"></i></button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="personas_productos.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

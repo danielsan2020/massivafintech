@@ -1,0 +1,54 @@
+<div class="card card-main">
+    <div class="card-header">
+        <h2>{{heading}} usuario</h2>
+    </div>
+    <div class="card-body">
+        <form novalidate name="form" ng-submit="submit()">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="nombre">Nombre:*</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" ng-model="form_usuarios.nombre" id="nombre" placeholder="Nombre" ng-pattern ="/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/" pattern-err-type="letras" required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="apellido_paterno">Apellido paterno:*</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" ng-model="form_usuarios.apellido_paterno" id="apellido_paterno" placeholder="Apellido paterno"  ng-pattern ="/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/" pattern-err-type="letras" required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="apellido_materno">Apellido materno:*</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" ng-model="form_usuarios.apellido_materno" id="apellido_materno"  placeholder="Apellido materno"   ng-pattern ="/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/" pattern-err-type="letras" required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="username">Nombre de usuario:*</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" ng-model="form_usuarios.username" id="username" placeholder="Nombre de usuario"  required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="tipo">Tipo:*</label>
+                <div class="col-md-10">
+                    <select class="form-control" ng-model="form_usuarios.tipo" id="tipo" ng-options="tipo.id as tipo.tipo for tipo in tipos" required></select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="email">Correo electr&oacute;nico:*</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" ng-model="form_usuarios.email" id="email" placeholder="Correo electr&oacute;nico"  required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="telefono">Tel&eacute;fono:*</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" ng-model="form_usuarios.telefono" id="telefono" numbers-only placeholder="Tel&eacute;fono" required/>
+                </div>
+            </div>
+            <div class="form-group text-right">
+                <button type="submit" class="btn btn-md btn-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>

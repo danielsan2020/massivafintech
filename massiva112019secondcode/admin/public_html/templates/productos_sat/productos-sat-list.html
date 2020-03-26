@@ -1,0 +1,48 @@
+<div class="card card-main">
+    <div class="card-header">
+        <a class="btn btn-outline-primary float-right ml-3" ui-sref="main.divisiones_sat_create" title="Agregar"><i class="fa fa-plus"></i></a>
+        <!--falta completar el state-->
+        <a class="btn btn-outline-secondary float-right" ui-sref = "main.productos_sat_list_inactive({grupo_sat_id:grupo_sat.id,division_sat_id:division_sat.id })" title="Lista de productos sat">Productos inactivos</a>
+        <h2>Productos del grupo : {{grupos_sat.clave}}</h2>
+    </div>
+    <div class="card-body">
+        <table ng-if="productos_sat.length > 0" datatable="" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Clave
+                    </th>
+                    <th>
+                        Descripcion
+                    </th>
+                    <th>
+                        Busquedas similares
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="producto_sat in productos_sat" ng-mouseover="division.hover = true" ng-mouseleave="division.hover = false" ng-init="division.hover = false">
+                    <td>
+                        {{producto_sat.clave}}
+                    </td>
+                    <td>
+                        {{producto_sat.descripcion}}
+                    </td>
+                    <td>
+                        {{producto_sat.busquedas_similares}}
+                    </td>
+                    <td class="actions">
+                        <span ng-show="division.hover === true" class="float-right">
+                            <a ui-sref="main.grupos_sat_by_divisiones_sat_list({id:division_sat.id})" class="btn btn-sm btn-primary"><i class="fas fa-list"></i></a>
+                            <a ui-sref="main.divisiones_sat_edit({id:division_sat.id})" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                            <button class="btn btn-sm btn-danger" ng-click="inactivate(division_sat.id)"><i class="fa fa-trash"></i></button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="productos_sat.length === 0">
+            <h4>No hay registros...</h4>
+        </div>
+    </div>
+</div>

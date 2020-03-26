@@ -1,0 +1,99 @@
+<div class="card card-main">
+        <div class="card-header">
+            <h2>Datos de la Persona registrada ante el SAT</h2>
+        </div>
+        <div class="card-body">
+            <form novalidate name="form" ng-submit="submit()">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4>Datos generales</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" for="nombre">Nombre:</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" type="text" ng-model="form_persona.nombre" readonly id="nombre" placeholder="Nombre" required/>
+                                    </div> 
+                                </div> 
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" for="apellido_paterno">Apellido paterno:</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" type="text" ng-model="form_persona.apellido_paterno" readonly id="apellido_paterno" placeholder="Apellido paterno" required/>
+                                    </div> 
+                                </div> 
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" for="curp">CURP:</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" type="text" ng-model="form_persona.curp" readonly id="curp" placeholder="CURP" ng-pattern="/^([a-zA-Z]{4})([0-9]{6})([a-zA-Z]{6})([a-zA-Z0-9]{2})$/" pattern-err-type="curp" required/>
+                                    </div>
+                                </div> 
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" for="correo">Correo: *</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" type="text" ng-model="form_persona.email" id="correo" placeholder="Correo" required/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" for="estado">Estado:</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" type="text" ng-model="form_persona.estado" id="estado" readonly placeholder="Estado" required/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label" for="codigo_postal">CP:</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" type="text" ng-model="form_persona.cp" id="codigo_postal"  readonly placeholder="C&oacute;digo postal" required/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                        <label class="col-md-3 col-form-label" for="forma_juridica">Forma juridica:</label>
+                                        <div class="col-md-9">
+                                            <input class="form-control" type="text" ng-model="form_persona.forma_juridica" id="forma_juridica"  readonly placeholder="forma_juridica" required/>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group row">
+                                    <label class="col-md-6 col-form-label" for="fecha_nacimiento">Fecha de nacimiento:</label>
+                                    <div class="col-md-6">
+                                        <input class="form-control" type="text" ng-model="form_persona.fecha_nacimiento" id="fecha_nacimiento" placeholder="Fecha de nacimiento" required/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-6 col-form-label">Apellido materno:</label>
+                                    <label class="col-3"><input id="apellido_materno"  type="text" ng-model="form_persona.apellido_materno"  required> </label> 
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-6 col-form-label">Direcci&oacute;n fiscal:</label>
+                                    <label class="col-3"><input id="direccion_fiscal" type="text" ng-model="form_persona.direccion_fiscal"  required> </label> 
+                            </div>
+                                <div class="form-group row">
+                                    <label class="col-6 col-form-label">Ciudad:</label>
+                                    <label class="col-3"><input id="ciudad" type="text" ng-model="form_persona.ciudad"  required> </label> 
+                            </div>
+                                <div class="form-group row">
+                                    <label class="col-6 col-form-label">Tipo de actividad que ejerces:</label>
+                                    <label class="col-3"><input id="actividad" type="text" ng-model="form_persona.actividad"  required> </label> 
+                            </div>
+                                <div class="form-group row">
+                                    <label class="col-6 col-form-label">Cantidad de trabajadores:</label>
+                                    <label class="col-3"><select id="cantidad_trabajadores" type="text" ng-model="form_persona.cantidad_trabajadores"  required>
+                                        <option ng-value="0">Tengo 0 trabajadores</option>
+                                        <option ng-value="1">Tengo de 1 a 5 trabajadores</option>
+                                        <option ng-value="2">Tengo de 6 a 10 trabajadores</option>
+                                        <option ng-value="3">Tengo de 11 a 20 trabajadores</option>
+                                        <option ng-value="4">Tengo de 21 a 50 trabajadores</option>
+                                        <option ng-value="5">Tengo mas de 50 trabajadores</option>
+                                    </select> </label> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-md btn-primary float-right">Siguiente</button>
+                </div>
+            </form>
+        </div>
+    </div>

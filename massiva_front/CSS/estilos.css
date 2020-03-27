@@ -15,14 +15,19 @@ a
 	text-decoration: none;
 }
 
+.encabezado1
+{
+	line-height: 1rem;
+}
+
 .Buscador
 {
-	background: #F8CB00;
+	background: #f7bd00;
 	padding: 3%;
 	width: 100%;
 	margin: 0%;
 	color: rgb(255, 255, 255);
-	font-size: 18px;
+	font-size: 15px;
 	
 }
 
@@ -33,14 +38,14 @@ a
 
 .encabezado1, .encabezado4, .encabezado5
 {
-	color: #636158;
+	color: #727277;
 }
 
 .encabezado2, .encabezado6
 {
-	width: 2%;
+	height: 10%;
 	text-align: center;
-	font-size: 20px;
+	font-size: 15px;
 }
 
 .encabezado3
@@ -63,7 +68,7 @@ a
 .menu
 {
 	width: 94%;
-	background: #636158;
+	background: #727277;
 	padding: 7px;
 	border-radius: 13px;
 	margin: 0 auto;
@@ -82,7 +87,7 @@ a
 
 .Menú_Nav:hover
 {
-	background: #f14141;
+	/* background: #f1005e; */
 	color: white;
 	border-radius: 5px;
 	padding: 5px;
@@ -114,7 +119,7 @@ a
 	width: 60%;
 	margin: 2% auto;
 	padding: 1%;
-	color: #636158;
+	color: #727277;
 	text-align: center;
 	position: relative;
 }
@@ -134,7 +139,7 @@ a
 .btn1, .btn2, .btn3, .btn4, .btn5, .btn6
 {
 	display: inline-block;
-	background: #F8CB00;
+	background: #f7bd00;
 	border-radius: 13px;
 	margin: 1%;
 	padding: 2%;
@@ -145,13 +150,13 @@ a
 
 .btn1:hover, .btn2:hover, .btn3:hover, .btn4:hover, .btn5:hover, .btn6:hover
 {
-	background: #f14141;
+	background: #f1005e;
 	color: white;
 }
 
 div div a div
 {
-	color: #636158;
+	color: #727277;
 	text-align: center;
 }
 
@@ -173,13 +178,13 @@ div header nav img
 	border: none;
 	font-family: "Century Gothic";
 	color: white;
-	background: #F8CB00;
+	background: #f7bd00;
 	
 }
 
 div div form span
 {
-	color: #636158;
+	color: #727277;
 }
 
 span
@@ -203,10 +208,10 @@ span
 .EstadoSAT
 {
 	text-align: center;
-	background: #F8CB00;
+	background: #f7bd00;
 	border-radius: 13px;
 	margin: 18px;
-	color: #636158;
+	color: #727277;
 	padding: 5px;
 	font-size: 17px;
 	width: 17%;
@@ -214,14 +219,14 @@ span
 
 .OKSAT
 {
-	color: #f14141;
+	color: #f1005e;
 	font-size: 17px;
 }
 
 .Proceso1
 {
 	text-align: center;
-	background: #636158;
+	background: #727277;
 	border-radius: 13px;
 	margin: 45px;
 	color: white;
@@ -245,7 +250,7 @@ span
 .Proceso1:hover
 {
 	color: white;
-	background: #f14141;
+	background: #f1005e;
 }
 
 .Caja1, .Caja2, .Caja3
@@ -286,14 +291,14 @@ span
 
 .Caja11
 {
-	border-right: 1px solid #636158;
-	color: #F8CB00;
+	border-right: 1px solid #727277;
+	color: #f7bd00;
 	text-align: left;
 }
 
 .Caja12
 {
-	color: #f14141;
+	color: #f1005e;
 	text-align: left;
 }
 
@@ -302,7 +307,7 @@ span
 	width: 98%;
 	margin: 3px;
 	padding: 10px;
-	border-top: 1px solid #636158;
+	border-top: 1px solid #727277;
 }
 
 .MesProceso
@@ -319,7 +324,7 @@ span
 
 .Cifra1, .Cifra2
 {
-	color: #636158;
+	color: #727277;
 	font-size: 25px;
 }
 
@@ -335,5 +340,5 @@ span
 
 .ProcesoEstado
 {
-	color: #F8CB00;
+	color: #f7bd00;
 }

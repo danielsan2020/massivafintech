@@ -9,11 +9,11 @@ body
 	font-family: "Century Gothic";
 	font-size: 14px;
 }
-
+/* data
 a
 {
 	text-decoration: none;
-}
+} */
 
 .encabezado1
 {
@@ -28,24 +28,27 @@ a
 	margin: 0%;
 	color: rgb(255, 255, 255);
 	font-size: 15px;
-	
 }
 
-.encabezado1, .encabezado2, .encabezado3, .encabezado4, .encabezado5, .encabezado6, .encabezado7
+.encabezado1, .encabezado2, .encabezado3, .encabezado4, .encabezado5, .encabezado6, .encabezado7, .encabezado8
 {
 	display: inline-block;
 }
 
-.encabezado1, .encabezado4, .encabezado5
+.encabezado1, .encabezado5, .encabezado6
 {
 	color: #727277;
+
 }
 
-.encabezado2, .encabezado6
+.encabezado1 {
+	line-height: 8%;
+} 
+
+
+.encabezado1 a:hover
 {
-	height: 10%;
-	text-align: center;
-	font-size: 15px;
+	color: #f1005e;
 }
 
 .encabezado3

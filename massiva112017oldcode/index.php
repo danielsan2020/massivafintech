@@ -27,13 +27,13 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>Massiva | plataforma contable innovadora</title>
+    <title>Massiva | Plataforma contable innovadora</title>
     <link rel="shortcut icon" type="image/x-icon" href="/images/massiva.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Massiva plataforma contable innovadora.
         Te simplificamos tus obligaciones fiscales, la facturación y le dirás adiós a las declaraciones.
         Massiva realiza la contabilidad a todas las Personas Físicas y Asalariados.">
-    <meta name="keywords" content="facturación, personas físicas, declaraciones, contabilidad, massiva, impuestos, automatización">
+    <meta name="keywords" content="facturación, personas físicas, declaraciones y contabilidad, massiva plataforma contable, pago de impuestos">
     <meta name="author" content="massiva">
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/animate.css" type="text/css">
@@ -48,6 +48,7 @@
     <link rel="stylesheet" href="css/rev-settings.css" type="text/css">
     <link rel="shortcut icon" type="image/x-icon" href="images/massiva.ico" />
     <link rel="stylesheet" type="text/css" href="css/per.css">
+
     <!-- Smartsupp Live Chat script -->
     <script type="text/javascript">
     var _smartsupp = _smartsupp || {};
@@ -58,6 +59,7 @@
       c.type='text/javascript';c.charset='utf-8';c.async=true;
       c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
     })(document);
+
     </script-->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style type="text/css">
@@ -187,8 +189,8 @@ document.getElementById('cookie1').style.bottom = '-50px';
                     <div class="col-md-12">
                         <div id="logo">
                             <a href="index.php">
-                                <img class="logo" src="images/logo-light.png" alt="">
-                                <img class="logo-2" src="images/logo-dark.png" alt="">
+                                <img class="logo" src="images/logo-light.png" alt="Massiva Contabilidad Innovadora">
+                                <img class="logo-2" src="images/logo-dark.png" alt="Massiva Contabilidad Innovadora">
                             </a>
                         </div>
                         <span id="menu-btn"></span>
@@ -196,13 +198,13 @@ document.getElementById('cookie1').style.bottom = '-50px';
                             <ul id="mainmenu">
                                 <li class="amaRi"><a href="index.php" style="font-family: 'century Gothic'" class="redes">Inicio<span></span></a></li>
                                 <li class="redes"><a href="#section-welcome" style="font-family: 'century Gothic'" class="redes">Beneficios<span></span></a></li>
-                                <!--li class="redes"><a href="#section-startup-features" style="font-family: 'century Gothic'" class="redes">Planes<span></span></a></li-->
-                                <!--li class="redes"><a href="#faq" style="font-family: 'century Gothic'" class="redes">Faq´s<span></span></a></li-->
-                                <li class="redes"><a href="#contacti" style="font-family: 'century Gothic'" class="redes">Contacto<span></span></a></li>
-                                <!--li class="redes"><a data-toggle="modal" data-target="#altaR" style="font-family: 'century Gothic'; cursor:pointer;" class="redes">Darse de alta<span></span></a></li-->
+                                li class="redes"><a href="#section-startup-features" style="font-family: 'century Gothic'" class="redes">Planes<span></span></a></li
+                                li class="redes"><a href="#faq" style="font-family: 'century Gothic'" class="redes">Faq´s<span></span></a></li
+                                <li class="redes"><a href="#contacto" style="font-family: 'century Gothic'" class="redes">Contacto<span></span></a></li>
+                                li class="redes"><a data-toggle="modal" data-target="#altaR" style="font-family: 'century Gothic'; cursor:pointer;" class="redes">Darse de alta<span></span></a></li
                                 <li class="redes"><a href="https://www.facebook.com/massivamx/" target="_blank" class='redes'><i class="fa fa-facebook redes"></i><span></span></a></li>
                                 <li class="redes"><a href='https://twitter.com/massivamx' target="_blank" class='redes'><i class="fa fa-twitter redes"></i><span></span></a></li>
-                                <!--li class="redes"><a data-placement="bottom"   href='https://app.massiva.mx/' target="_blank" style="font-family: 'century Gothic'" class="redes"> Ingreso<span></span></a></li-->
+                                li class="redes"><a data-placement="bottom"   href='https://app.massiva.mx/' target="_blank" style="font-family: 'century Gothic'" class="redes"> Ingreso<span></span></a></li
                             </ul>
                         </nav>
                     </div>
@@ -278,7 +280,7 @@ document.getElementById('cookie1').style.bottom = '-50px';
                                 facturación
                             </div>
 
-                            <!--<div class="tp-caption text-center"
+                            <div class="tp-caption text-center"
                                 data-x="center"
                                 data-y="400"
                                 data-width="none"
@@ -287,8 +289,8 @@ document.getElementById('cookie1').style.bottom = '-50px';
                                 data-transform_in="y:100px;opacity:0;s:500;e:Power2.easeOut;"
                                 data-transform_out="opacity:0;y:-100;s:600;e:Power2.easeInOut;"
                                 data-start="700" style="font-family: 'century Gothic'">
-                                Freelance | MiPymes | Emprendedor | Productor
-                            </div>--->
+                                Freelance | MiPymes | Emprendedor
+                            </div>-
                             
                         </li>
                         <li data-transition="fade" data-slotamount="10" data-masterspeed="default" data-thumb="">
@@ -324,7 +326,7 @@ document.getElementById('cookie1').style.bottom = '-50px';
                                 declaraciones
                             </div>
 
-                            <!--<div class="tp-caption text-center"
+                            <div class="tp-caption text-center"
                                 data-x="center"
                                 data-y="400"
                                 data-width="none"
@@ -333,8 +335,8 @@ document.getElementById('cookie1').style.bottom = '-50px';
                                 data-transform_in="y:100px;opacity:0;s:500;e:Power2.easeOut;"
                                 data-transform_out="opacity:0;y:-100;s:600;e:Power2.easeInOut;"
                                 data-start="700" style="font-family: 'century Gothic'">
-                                Freelance | MiPymes | Emprendedor | Productor
-                            </div>--->
+                                Freelance | MiPymes | Emprendedor 
+                            </div>-
                         </li>
                     </ul>
                 </div>
@@ -384,9 +386,9 @@ document.getElementById('cookie1').style.bottom = '-50px';
                         <br> <br>
                     </div>
                 <!-- </div> -->
+
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-1">
-                    <!--<div class="row-fluid display-table sequence"> -->
                         <div class="col-md-6 col-sm-1 feature-box left sq-item wow" data-bgcolor="#e9e9e9">
                             <div class="padding60 heightBox">
                                 <i class="icon_lock_alt id-color" style="color: #e7bc15"></i>
@@ -431,7 +433,7 @@ document.getElementById('cookie1').style.bottom = '-50px';
             </div>
         </section>
         
-        <!--seccion de planes
+        <!-- seccion de planes -->
         <section id="section-startup-features" class="no-top no-bottom">
             <div class="overlay-solid">
                 <div class="overlay-bg t0">
@@ -626,7 +628,7 @@ document.getElementById('cookie1').style.bottom = '-50px';
             <br>
             <br>
             <br>
-            <br-->
+            <br
             <br>
             <br>
             <br>
@@ -651,117 +653,6 @@ document.getElementById('cookie1').style.bottom = '-50px';
                 <br>
             <br>
         </section>
-
-        <!-- seccion de noticias begin 
-        <div id="content" class="no-top"><br>
-             <div class="row text-center">
-                <div class="col-md-12">
-                    <h2 style="font-family: 'century Gothic'">massiva informa</h2>
-                    <div class="small-border center"></div>
-                </div>
-            </div>
-            <div id="blog-carousel" class="owl-carousel owl-theme">
-                <?php while($rspTablaInfo = $rspTabla->fetch_object()){ ?>    
-                <div class="bloglist item">
-                    <div class="post-content">
-                        <div class="post-image">
-                            <img src="panel/admin/contenedor/noticiasWeb/<?= $rspTablaInfo->imagen;?>" alt="<?= $rspTablaInfo->titulo;?>" style='height: 350px;' />
-                        </div>
-                        <div class="post-text">
-                            <h3><a href="<?= $rspTablaInfo->url;?>" target="_blank"><?= $rspTablaInfo->titulo;?></a></h3>
-                            <span class="post-date"><?= $rspTablaInfo->fecha;?></span>
-                        </div>
-                    </div>
-                </div>
-                <?php }?>
-            </div>
-        </div-->
-
-    <!-- content close
-    <div id="faq" class="no-top no-bottom"><br>
-            <div class="row text-center"><div class="col-md-12"><h2 style="color:#FFFFFF" >Preguntas frecuentes</h2><div class="small-border center"></div></div></div>
-            <section id="pricing-table">
-                <div class="container"><br>
-                    <div class="row">
-                        
-                        <div class="col-md-6" style="font-family: 'century Gothic'">
-                            <h3 ><b>PREGUNTAS GENERALES</b></h3>
-                               
-                            <div class="acc_wrap no-style">
-                                <?php while($rspunoInfo = $rspuno->fetch_object()){ ?> 
-                                <div class="accordion s1">
-                                    <a class="NoneActive first" href="#pr_<?= $rspunoInfo->idPregunta;?>"><?= $rspunoInfo->pregunta;?></a>
-                                    <div id="pr_<?= $rspunoInfo->idPregunta;?>"><?= $rspunoInfo->respuesta;?></div>
-                                </div>
-                                <?php }?>
-                            </div>
-                            
-                            <div class="spacer-double"></div>
-
-                            <h3><b>RIF, SAS Y OTRAS PERSONAS MORALES</b></h3>
-                            
-                            <div class="acc_wrap no-style">
-                                <?php while($rsptresInfo = $rsptres->fetch_object()){ ?>    
-                                <div class="accordion s1">
-                                    <a class="NoneActive first" href="#pr_<?= $rsptresInfo->idPregunta;?>"><?= $rsptresInfo->pregunta;?></a>
-                                    <div id="pr_<?= $rsptresInfo->idPregunta;?>"><?= $rsptresInfo->respuesta;?></div>
-                                </div>
-                                <?php }?>
-                            </div>
-                            
-                            <div class="spacer-double"></div>
-
-                            <h3><b>FACTURAS Y COTIZACIONES</b></h3>
-                            <div class="acc_wrap no-style">
-                                <?php while($rspcuatroInfo = $rspcuatro->fetch_object()){ ?>    
-                                <div class="accordion s1">
-                                    <a class="NoneActive first" href="#pr_<?= $rspcuatroInfo->idPregunta;?>"><?= $rspcuatroInfo->pregunta;?></a>
-                                    <div id="pr_<?= $rspcuatroInfo->idPregunta;?>"><?= $rspcuatroInfo->respuesta;?></div>
-                                </div>
-                                <?php }?>
-                            </div>
-                            
-                        </div>
-                        
-                        <div class="col-md-6" style="font-family: 'century Gothic'">
-                            <h3><b>DECLARACIONES</b></h3>
-                            <div class="acc_wrap no-style">
-                                <?php while($rspcincoInfo = $rspcinco->fetch_object()){ ?>
-                                <div class="accordion s1">
-                                    <a class="NoneActive first" href="#pr_<?= $rspcincoInfo->idPregunta;?>"><?= $rspcincoInfo->pregunta;?></a>
-                                    <div id="pr_<?= $rspcincoInfo->idPregunta;?>"><?= $rspcincoInfo->respuesta;?></div>
-                                </div>
-                                <?php }?>
-                            </div>
-                                
-                            <div class="spacer-double"></div>
-
-                            <h3><b>PLATAFORMA</b></h3>
-                            <div class="acc_wrap no-style">
-                                <?php while($rspseisInfo = $rspseis->fetch_object()){ ?>
-                                <div class="accordion s1">
-                                    <a class="NoneActive first" href="#pr_<?= $rspseisInfo->idPregunta;?>"><?= $rspseisInfo->pregunta;?></a>
-                                    <div id="pr_<?= $rspseisInfo->idPregunta;?>"><?= $rspseisInfo->respuesta;?></div>
-                                </div>
-                                <?php }?>
-                            </div>
-
-                            <div class="spacer-double"></div>
-
-                            <h3><b>OTRAS CONSULTAS O DUDAS</b></h3>
-                            <div class="acc_wrap no-style">
-                                <?php while($rspsieteInfo = $rspsiete->fetch_object()){ ?>
-                                <div class="accordion s1">
-                                    <a class="NoneActive first" href="#pr_<?= $rspsieteInfo->idPregunta;?>"><?= $rspsieteInfo->pregunta;?></a>
-                                    <div id="pr_<?= $rspsieteInfo->idPregunta;?>"><?= $rspsieteInfo->respuesta;?></div>
-                                </div>
-                                <?php }?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-           </section>
-    </div-->
         
     <!--seccion de contacto-->
     <div id="contacti" class="no-top no-bottom">
@@ -775,7 +666,7 @@ document.getElementById('cookie1').style.bottom = '-50px';
                                         <h3 style="font-family: 'century Gothic'">Oficina México</h3>
                                         <address class="s1">
                                             <span><i class="fa fa-map-marker fa-lg" style="color: #e2004a;"></i>Horario de 9:00 - 18:30</span><br>
-                                            <span><i class="fa fa-envelope-o fa-lg" style="color: #e2004a"></i><a href="mailto:contact@example.com">atencionalcliente@massiva.mx</a></span><br>
+                                            <span><i class="fa fa-envelope-o fa-lg" style="color: #e2004a"></i><a href="mailto:atencionalcliente@massiva.mx">atencionalcliente@massiva.mx</a></span><br>
                                         </address>
                                     </div>
                                 </div>
@@ -805,7 +696,9 @@ document.getElementById('cookie1').style.bottom = '-50px';
                                             <select class="form-control" id="cActividad" name="cActividad" required>
                                                 <option>Selecciona tu forma jurídica</option>
                                                 <option>Persona Física</option>
+                                                <option>Asalariados</option>
                                                 <!--option>Persona Moral</option-->
+
                                                 <option>Asalariados</option>
                                             </select>
                                             <div class="field-set"><textarea name='message' id='message' class="form-control" placeholder="Escriba su mensaje" required></textarea></div>
@@ -856,7 +749,7 @@ document.getElementById('cookie1').style.bottom = '-50px';
         <!--valor para la informacion legal de la pagina--->
         <div class="subfooter">
             <div class="container text-center">
-                  <div class="row"><div class="col-md-12" style="font-family: 'century Gothic'">&copy; 2020 © Todos los derechos Reservados. Diseño y programación por: Massiva Contabilidad Innovadora S.C.</div></div>
+                  <div class="row"><div class="col-md-12" style="font-family: 'century Gothic'">&copy; 2020 Todos los Derechos Reservados. Diseño y programación por: Massiva Contabilidad Innovadora S.C.</div></div>
             </div>
         </div>
     </footer>
@@ -956,6 +849,7 @@ document.getElementById('cookie1').style.bottom = '-50px';
                 <img src="images/logocolor.png" style="height:35px;">
             </div>
             <!--valores ocultos-->
+
             <div class="modal-body">
                 
                 <div class="row" id='contentCargador' name='contentCargador'></div>
@@ -994,6 +888,7 @@ document.getElementById('cookie1').style.bottom = '-50px';
                                 <option>*Tu forma jurídica</option>
                                 <option value="f">Persona Física</option>
                                 <!--option value="m">Persona Moral</option-->
+
                             </select>
                         </div>
                     </div>

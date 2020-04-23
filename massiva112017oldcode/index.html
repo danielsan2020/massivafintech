@@ -45,9 +45,6 @@
     <link rel="stylesheet" type="text/css" href="revolution/css/settings.css">
     <link rel="stylesheet" type="text/css" href="revolution/css/layers.css">
     <link rel="stylesheet" type="text/css" href="revolution/css/navigation.css">
-    <link rel="stylesheet" href="css/rev-settings.css" type="text/css">
-    <link rel="shortcut icon" type="image/x-icon" href="images/massiva.ico" />
-    <link rel="stylesheet" type="text/css" href="css/per.css">
     <!-- Smartsupp Live Chat script -->
     <script type="text/javascript">
     var _smartsupp = _smartsupp || {};
@@ -127,36 +124,6 @@
  
 </style>
 </head>
-
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.isotope.min.js"></script>
-<script src="js/easing.js"></script>
-<script src="js/owl.carousel.js"></script>
-<script src="js/jquery.countTo.js"></script>
-<script src="js/validation.js"></script>
-<script src="js/wow.min.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/enquire.min.js"></script>
-<script src="js/jquery.stellar.min.js"></script>
-<script src="js/jquery.plugin.js"></script>
-<script src="js/typed.js"></script>
-<script src="js/typed-custom.js"></script>
-<script src="js/app.js"></script>
-<script src="js/designesia.js"></script>
-<script src="revolution/js/jquery.themepunch.tools.min.js?rev=5.0"></script>
-<script src="revolution/js/jquery.themepunch.revolution.min.js?rev=5.0"></script>
-<script src="revolution/js/extensions/revolution.extension.video.min.js"></script>
-<script src="revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-<script src="revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-<script src="revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-<script src="revolution/js/extensions/revolution.extension.actions.min.js"></script>
-<script src="revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-<script src="revolution/js/extensions/revolution.extension.migration.min.js"></script>
-<script src="revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-<script src="js/typed.js"></script>
-<script src="js/typed-custom.js"></script>
-<script src="js/web.js"></script>
 <!--imagen para el telefono de contacto
 
 <script type="text/javascript">
@@ -704,7 +671,30 @@ document.getElementById('cookie1').style.bottom = '-50px';
             <br>
         </section>
 
-      
+        <!-- seccion de noticias begin 
+        <div id="content" class="no-top"><br>
+             <div class="row text-center">
+                <div class="col-md-12">
+                    <h2 style="font-family: 'century Gothic'">massiva informa</h2>
+                    <div class="small-border center"></div>
+                </div>
+            </div>
+            <div id="blog-carousel" class="owl-carousel owl-theme">
+                <?php while($rspTablaInfo = $rspTabla->fetch_object()){ ?>    
+                <div class="bloglist item">
+                    <div class="post-content">
+                        <div class="post-image">
+                            <img src="panel/admin/contenedor/noticiasWeb/<?= $rspTablaInfo->imagen;?>" alt="<?= $rspTablaInfo->titulo;?>" style='height: 350px;' />
+                        </div>
+                        <div class="post-text">
+                            <h3><a href="<?= $rspTablaInfo->url;?>" target="_blank"><?= $rspTablaInfo->titulo;?></a></h3>
+                            <span class="post-date"><?= $rspTablaInfo->fecha;?></span>
+                        </div>
+                    </div>
+                </div>
+                <?php }?>
+            </div>
+        </div-->
 
         <script>
             const toggleArrow = e => {
@@ -955,6 +945,35 @@ document.getElementById('cookie1').style.bottom = '-50px';
     <div id="preloader"><div class="s1"><span></span><span></span></div></div>
 
 <!--scripts para los plugins--> 
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.isotope.min.js"></script>
+<script src="js/easing.js"></script>
+<script src="js/owl.carousel.js"></script>
+<script src="js/jquery.countTo.js"></script>
+<script src="js/validation.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/enquire.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/jquery.plugin.js"></script>
+<script src="js/typed.js"></script>
+<script src="js/typed-custom.js"></script>
+<script src="js/app.js"></script>
+<script src="js/designesia.js"></script>
+<script src="revolution/js/jquery.themepunch.tools.min.js?rev=5.0"></script>
+<script src="revolution/js/jquery.themepunch.revolution.min.js?rev=5.0"></script>
+<script src="revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script src="revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script src="revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script src="revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script src="revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script src="revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script src="revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script src="revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script src="js/typed.js"></script>
+<script src="js/typed-custom.js"></script>
+<script src="js/web.js"></script>
     
 <!--seccion de modal-->
 <!---modal para el registro de informacion para contacto de telefono-->

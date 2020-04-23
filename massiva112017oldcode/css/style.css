@@ -95,6 +95,8 @@ body {
 	padding: 0;
 	display: none;
 }
+
+
 body.de_light {
 	color: #86888c;
 }
@@ -378,7 +380,7 @@ header.header-full{
 }
 .de-navbar-left header #mainmenu>li a:hover {
 	opacity: 1;
-	color: 
+	/*color: */
 }
 .de-navbar-left header #mainmenu>li>a:after {
 	content: none;
@@ -2257,10 +2259,11 @@ h4.s3 {
 	font-size: 12px;
 	letter-spacing: 15px;
 }
+/* error
 .404040-to-action h3 {
 	text-transform: none;
 	font-size: 20px;
-}
+} */
 h1.slogan_big {
 	font-weight: 300;
 	font-size: 64px;
@@ -3365,7 +3368,7 @@ span.teaser {
 }
 .accordion div {
     height:auto;
-	padding:20px 0 20px 0;
+	padding:20px 20px 20px 20px; /*original 20px 0 20px 0*/
     display:none;
 }
 .accordion a{
@@ -3375,46 +3378,82 @@ span.teaser {
 	outline:none;
 	text-decoration:none;
 }
-.accordion a:before{
+/*.accordion a:before{
 	position:absolute;
 	font-family: FontAwesome;
 	content: "\f055";
 	font-size: 20px;
 	right:40px;
+}*/
+
+/*Se agrega icon css*/
+
+.accordion a i{
+	position:absolute;
+	font-size: 20px;
+	right:40px;
 }
-.accordion a.Active {
+
+/*Se agrega a css*/
+
+/*.accordion a.Active {
     display:block;
 	color:#e7bc15 !important;
-}
-.accordion a.Active:before{
+}*/
+/*.accordion a.Active:before{
 	content: "\f056";
-}
+}*/
 .accordion a.NoneActive {
     display:block;
     text-decoration:none;
 	border-bottom: solid 1px #ddd;
 }
-.accordion a.NoneActive:before{
+/*.accordion a.NoneActive:before{
 	content: "\f055";
-}
+}*/
 .accordion a:first-child{
 	border-top: solid 1px #ddd;
 }
 
-.accordion.s1 a{
+/*Se modifica first y se agrega second para intercambiar clases*/
+
+.accordion.s1 a.first{
 	margin-bottom:10px;
-	background:#f5f5f5;
+	background: #f5f5f5;
 	border:none;
 	padding: 0px 40px 0px 15px;
+    display:block;
+	color: #888888;
 }
+
+.accordion.s1 a.second{
+	margin-bottom:10px;
+	background: #e7bc15;
+	border:none;
+	padding: 0px 40px 0px 15px;
+	display:block;
+	color: #ffffff;
+}
+
 .accordion.s1 a:before{
 	right:30px;
 }
 
-.accordion.s1 a.Active{
+/*.accordion.s1 a.Active{
 	background:#e7bc15;
 	color:#fff !important;
+}*/
+
+.collapse div{
+	font:  bold;
+	font-size: 15px;
 }
+
+.first p{
+	color: #f1005e;
+}
+
+
 
 .expand-list .expand-custom:nth-child(even){
 	background:#f9f9f9;
@@ -4918,25 +4957,26 @@ video, object {
 
 /* ================================================== */
 
-.404040-to-action-box {
+/* .404040-to-action-box {
 	background: #f6f6f6;
 	border: solid 1px #ddd;
 	background: rgb(255, 255, 255);
 	/* Old browsers */
-	background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(242, 242, 242, 1) 100%);
+	/*background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(242, 242, 242, 1) 100%);
 	/* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 1)), color-stop(100%, rgba(242, 242, 242, 1)));
+	/*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 1)), color-stop(100%, rgba(242, 242, 242, 1)));
 	/* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(242, 242, 242, 1) 100%);
+	/*background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(242, 242, 242, 1) 100%);
 	/* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(242, 242, 242, 1) 100%);
+	/*background: -o-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(242, 242, 242, 1) 100%);
 	/* Opera 11.10+ */
-	background: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(242, 242, 242, 1) 100%);
+	/*background: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(242, 242, 242, 1) 100%);
 	/* IE10+ */
-	background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(242, 242, 242, 1) 100%);
+	/*background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(242, 242, 242, 1) 100%);
 	/* W3C */
-	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f2f2', GradientType=0);
+	/*filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f2f2', GradientType=0);
 	/* IE6-9 */
+	/*
 }
 .404040-to-action-box {
 	background: #27282B;
@@ -6348,10 +6388,10 @@ p.intro {
 .owl-arrow .prev:before, .owl-arrow .next:before {
 	font-family: "FontAwesome";
 	content: '\f177';
-	color: #2;
+	/* color: #2;
 	padding: 20px;
 	font-size: 32px;
-	display: block;
+	display: block; */
 }
 .owl-arrow .next:before {
 	content: '\f178';
@@ -7788,7 +7828,8 @@ a, img {
 	header.header-mobile-sticky {
 		position: fixed;
 	}
-	#subheader, {
+	/* tenia , despues de subheader*/
+	#subheader {
 		padding: 0 0 0 0;
 	}
 	.de-navbar-left #subheader {
@@ -8141,7 +8182,7 @@ a, img {
 	}
 }
 	
-}
+
 
 /* -------------------------------------------------- 
 	custom for 320px & 480px 
@@ -8323,9 +8364,9 @@ a, img {
 .nbtnSel:hover{
 	color:#e7bc15;
 }
-.active:active {
+/*se comenta para que no cambie de color al dar click en 'Incluye' .active:active {
     color: #e7bc15 !important;
-}
+}*/
 .nav-pills .nav-link.active,
 .show>.nav-pills .nav-link{
     background: #e7bc15 !important;
